@@ -58,3 +58,7 @@ next-env.d.ts
 
 # Muestras de audio locales
 /.samples/
+
+# Symlinks a .agents/skills/, que está gitignorado: versionarlos deja 7
+# enlaces roto en cada clon. `npx skills add` los regenera desde skills-lock.json.
+/.claude/skills/
