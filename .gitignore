@@ -52,3 +52,6 @@ next-env.d.ts
 # Estado local de episodios
 /.episodes/
 /.cache/
+
+# Skills vendorizadas — restaurables con `npx skills add` desde skills-lock.json
+/.agents/
