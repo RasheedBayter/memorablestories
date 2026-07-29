@@ -3,6 +3,7 @@ import {
   MODEL_CHAR_LIMIT,
   NARRATION_MODEL_ID,
   WORDS_PER_MINUTE,
+  wordsPerMinute,
   type ChunkPlan,
   type EditorialIsland,
   type NarrationChunk,
@@ -424,7 +425,16 @@ function normalizeWhitespace(text: string): string {
     .trim();
 }
 
-/** Duración estimada a 150 palabras/minuto, la tasa de lectura documental. */
-export function estimateMinutes(text: string): number {
-  return countWords(text) / WORDS_PER_MINUTE;
+/**
+ * Duración estimada. Pasa el `voiceId` siempre que se conozca: el ritmo medido va
+ * de 140 a 174 wpm según la voz, así que omitirlo mete un error de hasta el 16 %
+ * en la única cifra que decide cuánto guion escribir. Ver `MEASURED_WPM`.
+ */
+export function estimateMinutes(text: string, voiceId?: string): number {
+  return countWords(text) / wordsPerMinute(voiceId);
+}
+
+/** Palabras a escribir para alcanzar una duración con una voz concreta. */
+export function wordsForMinutes(minutes: number, voiceId?: string): number {
+  return Math.round(minutes * wordsPerMinute(voiceId));
 }

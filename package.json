@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "ideas": "tsx scripts/ingest-ideas.ts",
     "verify:canon": "tsx scripts/verify-canon.ts",
-    "episode": "tsx scripts/episode.ts"
+    "episode": "tsx scripts/episode.ts",
+    "narrate:sample": "tsx scripts/narrate-sample.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",

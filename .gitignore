@@ -55,3 +55,6 @@ next-env.d.ts
 
 # Skills vendorizadas — restaurables con `npx skills add` desde skills-lock.json
 /.agents/
+
+# Muestras de audio locales
+/.samples/

@@ -3,12 +3,26 @@
  *
  * Todo el módulo gira alrededor de una sola invariante: **la línea de tiempo se
  * deriva de los BYTES de audio, nunca de los timestamps devueltos por la API**.
- * El audio tiene silencio después del último carácter alineado, así que
- * `max(characterEndTimesSeconds)` roba 100–400 ms por juntura de forma
- * acumulativa. Con PCM crudo, `offset = Σ bytes / (sample_rate × 2)` da deriva
- * cero por construcción.
+ * Con PCM crudo, `offset = Σ bytes / (sample_rate × 2)` da deriva cero por
+ * construcción, sea cual sea el comportamiento de la API.
  *
- * Verificado el 29/07/2026 contra `@elevenlabs/elevenlabs-js@2.59.0`.
+ * La justificación original decía que el audio lleva 100–400 ms de silencio tras
+ * el último carácter alineado. **Esa cifra no se sostiene medida.** Contra la API
+ * real (`pcm_24000`, `eleven_multilingual_v2`, 105 caracteres):
+ *
+ *     duración del PCM         7,0124 s
+ *     último carácter termina   7,0120 s
+ *     cola                      0,0004 s   ← no 100–400 ms
+ *
+ * La invariante se mantiene, pero por el motivo correcto y no por el que estaba
+ * escrito: el offset por bytes es exacto *por construcción*, así que no depende
+ * de cuánta cola haya. Derivar de `max(characterEndTimesSeconds)` sigue siendo
+ * un error — solo que el error medido es de 0,4 ms por juntura, no de 100–400 ms,
+ * y una medición sobre un chunk corto no autoriza a extrapolar a los ~2.500
+ * caracteres que usa el pipeline. Se conserva la aritmética exacta porque es
+ * gratis; lo que se corrige aquí es la cifra inventada.
+ *
+ * Verificado el 29/07/2026 contra la API en vivo y `@elevenlabs/elevenlabs-js@2.59.0`.
  */
 
 import type { AnyElevenAlignment } from '../captions/types';
@@ -85,8 +99,45 @@ export const REQUEST_ID_TTL_MS = 2 * 60 * 60 * 1000;
 /** `previous_request_ids` admite como máximo 3 entradas. */
 export const MAX_PREVIOUS_REQUEST_IDS = 3;
 
-/** 150 palabras habladas = 1 minuto. 20 min de documental = 3.000 palabras. */
+/**
+ * Ritmo de lectura, MEDIDO por voz contra la API el 29/07/2026.
+ *
+ * El 150 wpm que había aquí era la convención del género, no una medición de
+ * nuestras voces. El mismo texto de 697 caracteres y 126 palabras, con
+ * `eleven_multilingual_v2` y `pcm_24000`:
+ *
+ *     George (JBFqnCB…)  43,543 s → 174 wpm   british · narrative_story
+ *     Daniel (onwK4e9…)  52,831 s → 143 wpm   british · informative_educational
+ *     Bill   (pqHfZKP…)  54,131 s → 140 wpm   american · old · advertisement
+ *
+ * El rango es del 24 %, así que la voz decide cuánto guion hay que escribir para
+ * un objetivo de duración. Con el 150 genérico, 3.000 palabras dan 21,4 min con
+ * Bill y 17,2 min con George. Y escribir para una voz y narrar con otra es peor:
+ * las 3.480 palabras del objetivo de George, leídas por Bill, dan 24,9 min; las
+ * 2.800 de Bill leídas por George dan 16,1. Ese par cubre casi toda la banda de
+ * 15–28 minutos, lo que significa que el objetivo de duración no existe sin fijar
+ * antes la voz.
+ *
+ * Medido sobre UN fragmento por voz. La densidad de puntuación mueve el ritmo, y
+ * el cold open está deliberadamente cortado en frases secas, que es el tramo más
+ * lento del guion. Tratar estos números como el suelo del rango, no como la media.
+ */
+export const MEASURED_WPM: Record<string, number> = {
+  JBFqnCBsd6RMkjVDRZzb: 174,
+  onwK4e9ZLuTAKqWW03F9: 143,
+  pqHfZKP75CvOlQylNhV4: 140,
+};
+
+/**
+ * Solo para texto cuya voz aún no se ha elegido. Es la convención documental, no
+ * una medición: en cuanto haya `voiceId`, usa `wordsPerMinute(voiceId)`.
+ */
 export const WORDS_PER_MINUTE = 150;
+
+/** Ritmo medido de la voz, o la convención del género si no se ha medido. */
+export function wordsPerMinute(voiceId?: string): number {
+  return (voiceId && MEASURED_WPM[voiceId]) || WORDS_PER_MINUTE;
+}
 
 /**
  * Ajustes de voz compartidos por TODOS los chunks del video.

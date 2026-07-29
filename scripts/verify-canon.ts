@@ -13,6 +13,13 @@ import { assetBudget, REUSE_FACTOR, SHOTS_PER_MINUTE } from '../src/lib/assets/r
 import { areIndependent, computeGroundedness, independenceObstacle } from '../src/lib/script/verify';
 import { findBannedPhrases } from '../src/lib/script/sections';
 import {
+  MEASURED_WPM,
+  WORDS_PER_MINUTE,
+  estimateMinutes,
+  wordsForMinutes,
+  wordsPerMinute,
+} from '../src/lib/narration';
+import {
   ELEVEN_REQUEST_ID_TTL_MS,
   invalidateFrom,
   narrationChainExpired,
@@ -200,6 +207,74 @@ console.log('\n\x1b[1mMáquina de estados del episodio\x1b[0m');
   check('...y la cadena de narración', rolled.narration_started_at === undefined);
   check('...y conserva solo las firmas anteriores', rolled.input_hashes.research === 'aaa' && rolled.input_hashes.script === undefined);
   check('la etapa retrocede a la invalidada', rolled.stage === 'script');
+}
+
+// ---------------------------------------------------------------------------
+// Canon: ritmo de lectura MEDIDO por voz, no la convención del género
+//
+// El 150 wpm que había en el código era la convención documental. Medido contra
+// la API el 29/07/2026 con el mismo texto de 126 palabras, las tres voces
+// candidatas van de 140 a 174 wpm: un 24 % de rango que decide cuánto guion hay
+// que escribir. Estas comprobaciones existen porque el error no da síntoma —
+// produce un video correcto de la duración equivocada.
+// ---------------------------------------------------------------------------
+console.log('\n\x1b[1mRitmo de lectura por voz\x1b[0m');
+{
+  const george = 'JBFqnCBsd6RMkjVDRZzb';
+  const bill = 'pqHfZKP75CvOlQylNhV4';
+
+  check('George mide 174 wpm', wordsPerMinute(george) === 174, `→ ${wordsPerMinute(george)}`);
+  check('Bill mide 140 wpm', wordsPerMinute(bill) === 140, `→ ${wordsPerMinute(bill)}`);
+  check(
+    'una voz sin medir cae en la convención del género',
+    wordsPerMinute('voz-inventada') === WORDS_PER_MINUTE && WORDS_PER_MINUTE === 150,
+  );
+  check('sin voz también cae en la convención', wordsPerMinute() === 150);
+
+  // El fallo concreto que esto bloquea. Dos magnitudes distintas, y la primera
+  // versión de este check las confundió — el check cazó mi propia aritmética:
+  //
+  //  a) usar el 150 genérico y narrar con Bill: 3.000/140 = 21,4 min (+7 %)
+  //  b) escribir para una voz y narrar con otra: 3.480/140 = 24,9 min, y
+  //     2.800/174 = 16,1 min. Ese par cubre casi toda la banda de 15-28.
+  const genericVsBill = wordsForMinutes(20) / wordsPerMinute(bill);
+  check(
+    'el 150 genérico narrado por Bill se pasa de 21 min',
+    genericVsBill > 21 && genericVsBill < 22,
+    `3.000 palabras → ${genericVsBill.toFixed(1)} min`,
+  );
+
+  const crossHigh = wordsForMinutes(20, george) / wordsPerMinute(bill);
+  const crossLow = wordsForMinutes(20, bill) / wordsPerMinute(george);
+  check(
+    'cruzar voz y objetivo cubre casi toda la banda de 15-28 min',
+    crossHigh > 24 && crossLow < 17,
+    `${crossLow.toFixed(1)} - ${crossHigh.toFixed(1)} min`,
+  );
+  check(
+    'wordsForMinutes compensa la voz',
+    wordsForMinutes(20, bill) === 2800 && wordsForMinutes(20, george) === 3480,
+    `Bill ${wordsForMinutes(20, bill)} · George ${wordsForMinutes(20, george)}`,
+  );
+
+  // Ida y vuelta: estimar la duración de lo que wordsForMinutes pidió escribir.
+  const text = Array.from({ length: wordsForMinutes(20, george) }, () => 'word').join(' ');
+  check(
+    'estimateMinutes invierte a wordsForMinutes',
+    Math.abs(estimateMinutes(text, george) - 20) < 0.01,
+    `→ ${estimateMinutes(text, george).toFixed(3)} min`,
+  );
+  check(
+    'estimateMinutes sin voz NO coincide con la voz medida',
+    Math.abs(estimateMinutes(text) - 20) > 1,
+    `genérico → ${estimateMinutes(text).toFixed(1)} min`,
+  );
+
+  check(
+    'las tres voces medidas siguen en la tabla',
+    Object.keys(MEASURED_WPM).length >= 3,
+    `→ ${Object.keys(MEASURED_WPM).length}`,
+  );
 }
 
 console.log(

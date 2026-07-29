@@ -21,6 +21,8 @@ export {
   REQUEST_ID_TTL_MS,
   TIER_OUTPUT_FORMAT,
   WORDS_PER_MINUTE,
+  MEASURED_WPM,
+  wordsPerMinute,
   assertNarrationModelId,
   sampleRateOf,
 } from './types';
@@ -49,6 +51,7 @@ export type {
 export {
   countWords,
   estimateMinutes,
+  wordsForMinutes,
   planChunks,
   splitClauses,
   splitSentences,
