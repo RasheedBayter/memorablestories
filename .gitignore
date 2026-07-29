@@ -45,3 +45,6 @@ coverage/
 /.next/
 /out/
 next-env.d.ts
+
+# Backlog local del motor de ideas
+/.data/
