@@ -1,6 +1,24 @@
 import type { CaptionPage } from './types';
 
 /**
+ * ⚠️ ALCANCE REDUCIDO — este módulo se escribió para Shorts verticales.
+ *
+ * En formato largo los subtítulos van como **pista SRT subida a YouTube**, no
+ * quemados: de quince canales del nicho auditados, **cero** los queman. Quemarlos
+ * destruye la indexabilidad para búsqueda, impide la auto-traducción gratuita a
+ * más de cien idiomas, tapa el material de archivo, y no se puede corregir sin
+ * volver a subir el video. Ver `narration/timeline.ts` para la pista SRT y
+ * `publish/captions.ts` para la subida.
+ *
+ * Lo que sigue siendo válido de aquí: **cartelas de diseño** quemadas —
+ * topónimos, fechas en pantalla ("Constantinople, 1453"), citas destacadas. Eso
+ * es motion graphics, no subtitulado, y ahí ASS es la herramienta correcta.
+ *
+ * `pagesToHighlightAss` y `pagesToKaraokeAss` (resaltado palabra por palabra a
+ * 1080×1920) NO deben usarse en el pipeline de documental largo.
+ *
+ * ---
+ *
  * Generación de subtítulos ASS con resaltado palabra por palabra (estilo TikTok).
  *
  * Por qué ASS y no SRT: SRT no tiene estilos ni posicionamiento. ASS soporta

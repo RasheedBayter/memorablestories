@@ -1,0 +1,155 @@
+/**
+ * Comprobaciones ejecutables de los hechos verificados del canon.
+ *
+ * Los jueces del workflow encontraron los defectos EJECUTANDO el código, no
+ * leyéndolo: el regex anti-tics compilaba y dejaba pasar la frase que debía
+ * bloquear, y `assetBudget(20)` devolvía rangos fuera del canon. Este fichero
+ * fija esas comprobaciones para que no vuelvan a colarse.
+ *
+ *   npm run verify:canon
+ */
+
+import { assetBudget, REUSE_FACTOR, SHOTS_PER_MINUTE } from '../src/lib/assets/reuse';
+import { areIndependent, computeGroundedness, independenceObstacle } from '../src/lib/script/verify';
+import { findBannedPhrases } from '../src/lib/script/sections';
+
+let failures = 0;
+
+function check(name: string, ok: boolean, detail = '') {
+  const mark = ok ? '\x1b[32m✓\x1b[0m' : '\x1b[31m✗\x1b[0m';
+  console.log(`${mark} ${name}${detail ? `  \x1b[2m${detail}\x1b[0m` : ''}`);
+  if (!ok) failures++;
+}
+
+// ---------------------------------------------------------------------------
+// Canon: 90-120 planos y 70-95 assets únicos para 20 minutos
+// ---------------------------------------------------------------------------
+console.log('\n\x1b[1mPresupuesto de assets\x1b[0m');
+{
+  const b = assetBudget(20);
+  check(
+    'assetBudget(20).shots dentro del canon 90-120',
+    b.shots[0] === 90 && b.shots[1] === 120,
+    `→ [${b.shots.join(', ')}]`,
+  );
+  check(
+    'assetBudget(20).uniqueAssets contiene el objetivo 70-95',
+    b.uniqueAssets[0] <= 70 && b.uniqueAssets[1] >= 95,
+    `→ [${b.uniqueAssets.join(', ')}]`,
+  );
+  check(
+    'SHOTS_PER_MINUTE es el régimen de archivo (4,5-6), no el de edición rápida',
+    SHOTS_PER_MINUTE.min === 4.5 && SHOTS_PER_MINUTE.max === 6,
+  );
+  check('REUSE_FACTOR recomendado 1,25-1,4x', REUSE_FACTOR.min === 1.25 && REUSE_FACTOR.max === 1.4);
+}
+
+// ---------------------------------------------------------------------------
+// Canon: dos fuentes independientes = distinto autor Y distinta vía
+// ---------------------------------------------------------------------------
+console.log('\n\x1b[1mIndependencia de fuentes\x1b[0m');
+{
+  const base = { kind: 'academic' as const, title: 't', url: 'https://x' };
+  const src = (id: string, author: string | undefined, path: string) =>
+    ({ ...base, source_id: id, author, discovery_path: path }) as never;
+
+  check(
+    'autor distinto Y vía distinta → independientes',
+    areIndependent(src('a', 'Hobsbawm', 'crossref'), src('b', 'Thompson', 'web_search')),
+  );
+  check(
+    'mismo autor → NO independientes',
+    !areIndependent(src('a', 'Hobsbawm', 'crossref'), src('b', 'hobsbawm', 'web_search')),
+  );
+  check(
+    'misma vía → NO independientes',
+    !areIndependent(src('a', 'Hobsbawm', 'crossref'), src('b', 'Thompson', 'crossref')),
+  );
+  // Este es el defecto que reportaron dos jueces y el agente de research: la
+  // versión anterior resolvía la autoría desconocida a favor de la independencia.
+  check(
+    'AUTOR DESCONOCIDO → NO independientes (aunque la vía difiera)',
+    !areIndependent(src('a', undefined, 'crossref'), src('b', 'Thompson', 'web_search')),
+  );
+  check(
+    'el obstáculo es accionable, no un booleano',
+    independenceObstacle(src('a', undefined, 'crossref'), src('b', 'Thompson', 'web_search')) ===
+      'author_unknown',
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Canon: groundedness = SUPPORTED / puntuadas. PARTIALLY_SUPPORTED cuenta CERO.
+// ---------------------------------------------------------------------------
+console.log('\n\x1b[1mGroundedness\x1b[0m');
+{
+  const v = (verdict: string, i: number) =>
+    ({ claim_id: `c${i}`, verdict }) as never;
+
+  // 90 % SUPPORTED + 10 % PARTIALLY. Con la ponderación a media unidad daba
+  // 0,95 exactos y la puerta se abría; con la fórmula del canon da 0,90.
+  const mixed = [
+    ...Array.from({ length: 90 }, (_, i) => v('SUPPORTED', i)),
+    ...Array.from({ length: 10 }, (_, i) => v('PARTIALLY_SUPPORTED', 90 + i)),
+  ];
+  const r = computeGroundedness(mixed);
+  check(
+    '90 % SUPPORTED + 10 % PARTIALLY → 0,90, no 0,95',
+    Math.abs(r.groundedness - 0.9) < 1e-9,
+    `→ ${r.groundedness.toFixed(3)}`,
+  );
+  check('...y por tanto NO publicable', !r.publishable);
+  check(
+    'el diagnóstico "si se cierran los parciales" sí llega a 1,0',
+    Math.abs(r.groundedness_if_partials_closed - 1) < 1e-9,
+  );
+
+  // NOT_A_CLAIM no puntúa: una transición no es una afirmación.
+  const withTransitions = [
+    ...Array.from({ length: 19 }, (_, i) => v('SUPPORTED', i)),
+    v('NOT_A_CLAIM', 19),
+    v('PARTIALLY_SUPPORTED', 20),
+  ];
+  const r2 = computeGroundedness(withTransitions);
+  check(
+    'NOT_A_CLAIM excluido del denominador',
+    r2.scored_claims === 20 && Math.abs(r2.groundedness - 0.95) < 1e-9,
+    `→ ${r2.scored_claims} puntuadas, ${r2.groundedness.toFixed(3)}`,
+  );
+
+  const contradicted = [v('SUPPORTED', 0), v('CONTRADICTED', 1)];
+  check('un solo CONTRADICTED bloquea', !computeGroundedness(contradicted).publishable);
+}
+
+// ---------------------------------------------------------------------------
+// Canon: prohibida la antítesis "not X, but Y"
+// ---------------------------------------------------------------------------
+console.log('\n\x1b[1mAnti-tics de escritura\x1b[0m');
+{
+  const banned = [
+    'This was not a defeat, but a warning.',
+    'The city was not lost, it was abandoned.',
+    'It was not just a battle, but a turning point.',
+    'The cause was not luck, but preparation.',
+  ];
+  for (const text of banned) {
+    check(`bloquea: "${text.slice(0, 46)}…"`, findBannedPhrases(text).length > 0);
+  }
+
+  // Coordinada normal: NO debe bloquearse. Un falso positivo aquí mutila prosa
+  // legítima, que es peor que dejar pasar un tic.
+  const allowed = [
+    'The siege was not finished, but the army had already crossed the river.',
+    'He did not surrender, and the garrison held for three more weeks.',
+  ];
+  for (const text of allowed) {
+    check(`permite: "${text.slice(0, 46)}…"`, findBannedPhrases(text).length === 0);
+  }
+}
+
+console.log(
+  failures === 0
+    ? '\n\x1b[32mTodas las comprobaciones del canon pasan.\x1b[0m\n'
+    : `\n\x1b[31m${failures} comprobación(es) del canon FALLAN.\x1b[0m\n`,
+);
+process.exit(failures === 0 ? 0 : 1);
