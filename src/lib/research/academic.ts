@@ -176,8 +176,12 @@ export async function buscarCrossref(
   const params = new URLSearchParams({
     'query.bibliographic': consulta,
     rows: String(limite),
+    // `subtype` NO es seleccionable en /works: Crossref devuelve 400 con
+    // "select-not-available" y la búsqueda entera se pierde en ese proveedor.
+    // Detectado ejecutando el pipeline, no leyendo la doc: el campo existe en el
+    // esquema de respuesta, así que pedirlo parece razonable hasta que falla.
     select:
-      'DOI,title,subtitle,author,issued,published-print,published-online,container-title,publisher,type,subtype,ISBN,URL,abstract,link,is-referenced-by-count',
+      'DOI,title,subtitle,author,issued,published-print,published-online,container-title,publisher,type,ISBN,URL,abstract,link,is-referenced-by-count',
   });
   if (CROSSREF_MAILTO) params.set('mailto', CROSSREF_MAILTO);
 

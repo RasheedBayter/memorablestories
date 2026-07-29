@@ -25,6 +25,7 @@ import {
   type EpisodeState,
   type StageHandlers,
 } from '../src/lib/pipeline';
+import { PENDING_WIRING, defaultHandlers } from '../src/lib/pipeline/handlers';
 
 const DIM = '\x1b[2m';
 const BOLD = '\x1b[1m';
@@ -36,14 +37,7 @@ const CYAN = '\x1b[36m';
 
 const store = new EpisodeStore();
 
-/**
- * Manejadores de etapa. Vacío a propósito en este commit: el cableado real a los
- * seis módulos va en `src/lib/pipeline/handlers.ts`, que es el siguiente paso.
- * Con el objeto vacío, `advanceEpisode` devuelve `no_handler` y el loop lo
- * reporta en vez de fingir progreso — que es exactamente lo que quiero que haga
- * mientras el cableado no exista.
- */
-const handlers: StageHandlers = {};
+const handlers: StageHandlers = defaultHandlers();
 
 function arg(name: string): string | undefined {
   const i = process.argv.indexOf(`--${name}`);
