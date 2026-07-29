@@ -965,3 +965,60 @@ export function hayParIndependiente(fuentes: readonly FuentePlana[]): boolean {
   }
   return false;
 }
+
+// ---------------------------------------------------------------------------
+// Búsquedas -> Dossier
+// ---------------------------------------------------------------------------
+
+/**
+ * Encadena los resultados de `buscarFuentesAcademicas` en un `Dossier`
+ * deduplicado.
+ *
+ * Existía todo lo necesario —`fuenteDesdeResultado`, `registrar`, `fusionar`—
+ * pero no la función que los une, así que el llamador tenía que conocer el orden
+ * correcto y la deduplicación quedaba a su cuidado. Cablear el pipeline lo puso
+ * en evidencia: la etapa `research` no podía avanzar sin reimplementar esto.
+ *
+ * No hace falta pasar la consulta: `fuenteDesdeResultado` la propaga desde
+ * `ResultadoAcademico.consulta` al `RegistroVia`, y de ahí depende la regla de
+ * independencia —dos fuentes halladas por la misma vía Y la misma consulta son
+ * el mismo hallazgo, no dos corroboraciones.
+ */
+export interface DossierDesdeBusquedas {
+  dossier: Dossier;
+  altas: AltaFuente[];
+  /** Desglose de la deduplicación, para poder auditarla. */
+  resumen: { nuevas: number; fusionadas: number; yaRegistradas: number };
+}
+
+export function dossierDesdeBusquedas(
+  busquedas: readonly { consulta: string; resultados: readonly ResultadoAcademico[] }[],
+  opts: OpcionesDossier = {},
+): DossierDesdeBusquedas {
+  const dossier = new Dossier(opts);
+  const altas: AltaFuente[] = [];
+
+  for (const busqueda of busquedas) {
+    for (const resultado of busqueda.resultados) {
+      // La vía ES el proveedor: `ViaDescubrimiento` incluye `ProveedorAcademico`
+      // en su unión, así que no hay mapa que mantener.
+      const fuente = fuenteDesdeResultado(resultado, {
+        via: resultado.proveedor,
+        ventanaPrimaria: opts.ventanaPrimaria,
+      });
+      altas.push(dossier.registrar(fuente));
+    }
+  }
+
+  return {
+    dossier,
+    altas,
+    resumen: {
+      nuevas: altas.filter((a) => a.accion === 'nueva').length,
+      fusionadas: altas.filter((a) => a.accion === 'fusionada').length,
+      // `ya-registrada` se cuenta aparte a propósito: sumarla a `nuevas` haría
+      // que un llamador que cuenta fuentes reunidas contase dos veces la misma obra.
+      yaRegistradas: altas.filter((a) => a.accion === 'ya-registrada').length,
+    },
+  };
+}

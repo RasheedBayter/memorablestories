@@ -2,6 +2,8 @@ import path from 'node:path';
 import { JsonIdeaStore } from '@/lib/ideas/store-json';
 import {
   buscarFuentesAcademicas,
+  dossierDesdeBusquedas,
+  evaluarPuertaCobertura,
   type ResultadoBusqueda,
 } from '@/lib/research';
 import {
@@ -110,22 +112,39 @@ function researchHandler(deps: HandlerDeps) {
       );
     }
 
-    // TODO(research): falta el puente de `ResultadoAcademico[]` a `Fuente[]`.
-    // `dossierDesdeFuentes` espera `Fuente` (el modelo deduplicado con
-    // viaDescubrimiento y extractos), y la búsqueda devuelve `ResultadoAcademico`.
-    // El módulo `research` expone `fuenteDesdeResultado` y `fusionar`, pero no una
-    // función de alto nivel que encadene búsqueda -> dedupe -> Dossier.
-    // Firma que hace falta en src/lib/research/dossier.ts:
-    //   export function dossierDesdeBusquedas(
-    //     busquedas: ResultadoBusqueda[],
-    //     opts?: { fiabilidadMinima?: number },
-    //   ): Dossier
-    throw new StageNotWiredError(
-      'research',
-      'research.dossierDesdeBusquedas(busquedas) — encadenar ResultadoBusqueda -> ' +
-        `Fuente[] deduplicadas -> Dossier. La búsqueda ya funciona: devolvió ` +
-        `${busqueda.resultados.length} resultados de ${Object.keys(busqueda.porProveedor).length} proveedores.`,
+    const { dossier, resumen } = dossierDesdeBusquedas([busqueda], { tema: topic });
+    const fuentes = dossier.todas();
+    const citables = dossier.citables();
+
+    // La puerta de cobertura evalúa contra las afirmaciones, que aún no existen
+    // (las produce el guion). Aquí solo se comprueba el suelo de fuentes: sin
+    // material no hay guion que escribir, y descubrirlo ahora ahorra la etapa.
+    if (citables.length < 8) {
+      throw new Error(
+        `Solo ${citables.length} fuentes citables (Wikipedia no cuenta). El plan exige ` +
+          `>=8 académicas para un documental de 20 min. Amplía el tema o afina la consulta.`,
+      );
+    }
+
+    const dossierPath = await ctx.store.writeArtifact(
+      ctx.state.episode_id,
+      'research/dossier.json',
+      JSON.stringify({ tema: topic, fuentes }, null, 2),
     );
+
+    return {
+      artifacts: { dossier: dossierPath },
+      cost: {
+        // Las APIs académicas usadas son gratuitas. OpenAlex es el único
+        // facturado ($0,001 por búsqueda) y es opt-in explícito.
+        research_usd: deps.useOpenAlex ? 0.001 : 0,
+      },
+      notes: [
+        `${fuentes.length} fuentes (${citables.length} citables) de ${Object.keys(busqueda.porProveedor).length} proveedores`,
+        `dedupe: ${resumen.nuevas} nuevas · ${resumen.fusionadas} fusionadas · ${resumen.yaRegistradas} ya registradas`,
+      ],
+      inputSignature: { topic, proveedores: Object.keys(busqueda.porProveedor) },
+    };
   };
 }
 

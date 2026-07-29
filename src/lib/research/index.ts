@@ -93,9 +93,11 @@ export {
   sonIndependientes,
   sonIndependientesPlano,
   urlCanonica,
+  dossierDesdeBusquedas,
 } from './dossier';
 export type {
   AltaFuente,
+  DossierDesdeBusquedas,
   CoberturaDossier,
   FuentePlana,
   NivelDedupe,
