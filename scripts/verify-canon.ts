@@ -12,6 +12,12 @@
 import { assetBudget, REUSE_FACTOR, SHOTS_PER_MINUTE } from '../src/lib/assets/reuse';
 import { areIndependent, computeGroundedness, independenceObstacle } from '../src/lib/script/verify';
 import { findBannedPhrases } from '../src/lib/script/sections';
+import {
+  ELEVEN_REQUEST_ID_TTL_MS,
+  invalidateFrom,
+  narrationChainExpired,
+  newEpisode,
+} from '../src/lib/pipeline';
 
 let failures = 0;
 
@@ -145,6 +151,55 @@ console.log('\n\x1b[1mAnti-tics de escritura\x1b[0m');
   for (const text of allowed) {
     check(`permite: "${text.slice(0, 46)}…"`, findBannedPhrases(text).length === 0);
   }
+}
+
+// ---------------------------------------------------------------------------
+// Canon: los request IDs de ElevenLabs caducan a las 2 horas
+// ---------------------------------------------------------------------------
+console.log('\n\x1b[1mMáquina de estados del episodio\x1b[0m');
+{
+  check('la ventana de request IDs es 2 h', ELEVEN_REQUEST_ID_TTL_MS === 2 * 60 * 60 * 1000);
+
+  const base = newEpisode({ episode_id: 'e1', now: new Date('2026-07-29T10:00:00Z') });
+
+  // Reanudar la narración pasada la ventana produce junturas audibles SIN error
+  // que lo delate: es el fallo silencioso que esta comprobación protege.
+  const narrating = { ...base, narration_started_at: '2026-07-29T10:00:00Z' };
+  check(
+    'a la 1 h 59 min la cadena sigue viva',
+    !narrationChainExpired(narrating, new Date('2026-07-29T11:59:00Z')),
+  );
+  check(
+    'a las 2 h 01 min la cadena está caducada',
+    narrationChainExpired(narrating, new Date('2026-07-29T12:01:00Z')),
+  );
+  check(
+    'sin narración empezada no hay caducidad que evaluar',
+    !narrationChainExpired(base, new Date('2027-01-01T00:00:00Z')),
+  );
+
+  // Invalidar el guion tiene que tirar la narración: si no, el video diría algo
+  // distinto de lo que dice el guion aprobado.
+  const full = {
+    ...base,
+    stage: 'publish' as const,
+    narration_started_at: '2026-07-29T10:00:00Z',
+    artifacts: {
+      dossier: 'dossier.json',
+      script_verified: 'script.json',
+      narration_pcm: 'narration.pcm',
+      master: 'master.mp4',
+    },
+    input_hashes: { research: 'aaa', script: 'bbb', narrate: 'ccc' },
+  };
+  const rolled = invalidateFrom(full, 'script');
+  check('invalidar el guion conserva el dossier', rolled.artifacts.dossier === 'dossier.json');
+  check('invalidar el guion tira el guion', rolled.artifacts.script_verified === undefined);
+  check('...y tira la narración posterior', rolled.artifacts.narration_pcm === undefined);
+  check('...y el máster', rolled.artifacts.master === undefined);
+  check('...y la cadena de narración', rolled.narration_started_at === undefined);
+  check('...y conserva solo las firmas anteriores', rolled.input_hashes.research === 'aaa' && rolled.input_hashes.script === undefined);
+  check('la etapa retrocede a la invalidada', rolled.stage === 'script');
 }
 
 console.log(

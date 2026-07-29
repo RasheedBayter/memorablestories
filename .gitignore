@@ -48,3 +48,7 @@ next-env.d.ts
 
 # Backlog local del motor de ideas
 /.data/
+
+# Estado local de episodios
+/.episodes/
+/.cache/
