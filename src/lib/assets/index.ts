@@ -220,3 +220,4 @@ export async function prepareAssetPlan(
 
   return { ...discovery, reuse };
 }
+export * from './footage';
