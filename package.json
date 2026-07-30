@@ -17,7 +17,8 @@
     "measure": "tsx scripts/measure-script.ts",
     "verify:script": "tsx scripts/verify-script.ts",
     "narrate": "tsx scripts/narrate-episode.ts",
-    "assets": "tsx scripts/assets-episode.ts"
+    "assets": "tsx scripts/assets-episode.ts",
+    "context": "tsx scripts/context-episode.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",

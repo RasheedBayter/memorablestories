@@ -28,6 +28,11 @@ auditados, cero los queman. Y esta build de ffmpeg ni siquiera trae libass, así
 que la decisión está tomada por partida doble.
 """
 
+# El Python del sistema es 3.9 y la sintaxis `list[dict] | None` (PEP 604) exige
+# 3.10: sin esto el script revienta al DEFINIR la función, antes de ejecutar
+# nada. Con las anotaciones perezosas no se evalúan en tiempo de importación.
+from __future__ import annotations
+
 import json
 import math
 import pathlib
@@ -71,8 +76,45 @@ def ffprobe_dur(ruta: pathlib.Path) -> float:
     return float(texto)
 
 
-def construir_segmento(idx: int, seccion: str, imagenes: list[dict], dur: float) -> pathlib.Path:
-    """Un segmento de vídeo mudo con Ken Burns sobre N imágenes."""
+def conformar_clip(origen: pathlib.Path, destino: pathlib.Path, dur: float) -> pathlib.Path:
+    """
+    Lleva un clip generado al formato del montaje: 1920x1080, 30 fps, GOP cerrado.
+
+    Higgsfield devuelve ~1200x780 a 24 fps y no expone parámetro de resolución,
+    así que hay que ampliar. Se hace con `lanczos` y no con el escalador por
+    defecto: sobre material ya blando, un bicúbico añade halo en los bordes duros
+    —los marcos de los cuadros, las molduras— y eso es lo que delata la ampliación.
+
+    El recorte a 16:9 va DESPUÉS de ampliar por el lado corto: al revés se pierde
+    resolución donde luego hay que recuperarla.
+    """
+    vf = (f'scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,'
+          f'crop={W}:{H},fps={FPS},setsar=1,format=yuv420p')
+    subprocess.run(
+        ['ffmpeg', '-y', '-hide_banner', '-loglevel', 'error',
+         '-i', str(origen), '-t', f'{dur:.3f}', '-vf', vf,
+         '-c:v', 'libx264', '-preset', 'medium', '-crf', '20',
+         '-g', '60', '-keyint_min', '60', '-sc_threshold', '0',
+         '-pix_fmt', 'yuv420p', '-r', str(FPS), '-an', str(destino)],
+        check=True, capture_output=True)
+    return destino
+
+
+def construir_segmento(
+    idx: int,
+    seccion: str,
+    imagenes: list[dict],
+    dur: float,
+    generados: list[dict] | None = None,
+) -> pathlib.Path:
+    """
+    Un segmento mudo con Ken Burns sobre N imágenes, y los clips generados dentro.
+
+    Los clips generados SUSTITUYEN tiempo de archivo, no se suman: la duración de
+    la sección la fija la narración, y añadir siete segundos de vídeo IA
+    desplazaría todo lo posterior. Así que el reparto de planos fijos se hace
+    sobre `dur - suma(generados)`.
+    """
     destino = SEGMENTOS / f'{idx:02d}-{seccion}.mp4'
 
     # La caché valida DECODIFICANDO, no pesando. La versión anterior aceptaba
@@ -94,9 +136,13 @@ def construir_segmento(idx: int, seccion: str, imagenes: list[dict], dur: float)
             print(f'  ↻ {destino.name}  ilegible: se rehace')
         destino.unlink()
 
-    n = max(1, min(len(imagenes), round(dur / SEG_POR_PLANO_MIN)))
+    gen = generados or []
+    dur_gen = sum(g['duracionSegundos'] for g in gen)
+    dur_archivo = max(1.0, dur - dur_gen)
+
+    n = max(1, min(len(imagenes), round(dur_archivo / SEG_POR_PLANO_MIN)))
     usar = imagenes[:n]
-    por_plano = dur / len(usar)
+    por_plano = dur_archivo / len(usar)
 
     entradas, filtros = [], []
     for i, img in enumerate(usar):
@@ -155,8 +201,33 @@ def construir_segmento(idx: int, seccion: str, imagenes: list[dict], dur: float)
            '-g', '60', '-keyint_min', '60', '-sc_threshold', '0',
            '-pix_fmt', 'yuv420p', '-r', str(FPS), '-an', str(destino)]
 
+    if not gen:
+        subprocess.run(cmd, check=True, capture_output=True)
+        print(f'  ✓ {destino.name}  {len(usar)} planos · {dur:.1f}s')
+        return destino
+
+    # Con clips generados: la parte de archivo va a un temporal, cada clip se
+    # conforma al formato del montaje, y se concatenan por COPIA. Todos salen ya
+    # con GOP cerrado, así que la unión no recodifica.
+    parcial = SEGMENTOS / f'.{idx:02d}-archivo.mp4'
+    cmd[-1] = str(parcial)
     subprocess.run(cmd, check=True, capture_output=True)
-    print(f'  ✓ {destino.name}  {len(usar)} planos · {dur:.1f}s')
+
+    partes = [parcial]
+    for j, g in enumerate(gen):
+        clip = SEGMENTOS / f'.{idx:02d}-gen{j}.mp4'
+        partes.append(conformar_clip(pathlib.Path(g['fichero']), clip, g['duracionSegundos']))
+
+    lista = SEGMENTOS / f'.{idx:02d}-lista.txt'
+    lista.write_text(''.join(f"file '{q.name}'\n" for q in partes), encoding='utf-8')
+    subprocess.run(
+        ['ffmpeg', '-y', '-hide_banner', '-loglevel', 'error',
+         '-f', 'concat', '-safe', '0', '-i', str(lista), '-c', 'copy', str(destino)],
+        check=True, capture_output=True)
+    for q in [*partes, lista]:
+        q.unlink(missing_ok=True)
+
+    print(f'  ✓ {destino.name}  {len(usar)} planos + {len(gen)} generado(s) · {dur:.1f}s')
     return destino
 
 
@@ -164,6 +235,13 @@ def main() -> None:
     for req in (ASSETS, NARRACION, LINEA):
         if not req.exists():
             sys.exit(f'Falta {req}')
+
+    generados_por_seccion: dict[str, list[dict]] = {}
+    plan_gen = BASE / 'generated' / 'plan.json'
+    if plan_gen.exists():
+        for g in json.loads(plan_gen.read_text(encoding='utf-8')):
+            if pathlib.Path(g['fichero']).exists():
+                generados_por_seccion.setdefault(g['seccion'], []).append(g)
 
     catalogo = json.loads(ASSETS.read_text(encoding='utf-8'))
     if not catalogo:
@@ -174,8 +252,14 @@ def main() -> None:
     SEGMENTOS.mkdir(parents=True, exist_ok=True)
 
     total = sum(v['endSec'] - v['startSec'] for v in secciones.values())
+    n_gen = sum(len(v) for v in generados_por_seccion.values())
+    seg_gen = sum(g['duracionSegundos'] for v in generados_por_seccion.values() for g in v)
     print(f'\nnarración {total / 60:.1f} min · {len(catalogo)} imágenes · '
-          f'{len(secciones)} secciones\n')
+          f'{len(secciones)} secciones')
+    if n_gen:
+        print(f'vídeo generado: {n_gen} clip(s) · {seg_gen}s · '
+              f'{seg_gen / total * 100:.1f} % del episodio (techo 15 %)')
+    print()
 
     # Cada asset se asigna a la sección que HABLA de él, no por turno rotatorio.
     #
@@ -215,8 +299,22 @@ def main() -> None:
     usados: set[str] = set()
     segmentos, capitulos = [], []
 
+    # La duración de cada segmento de VÍDEO es la de su HUECO en el audio, no la
+    # de su habla. La narración lleva 0,6 s de entrada y 0,7 s de respiro entre
+    # actos —6,9 s repartidos—, y concatenar los segmentos pegados adelantaba la
+    # imagen de forma acumulativa: medido, -0,6 s en el cold open y -7,3 s en el
+    # cierre. El total cuadraba porque la cola lo compensaba al final, así que el
+    # síntoma no aparecía en la duración: solo mirando dónde empieza cada acto.
+    ids = list(secciones.keys())
+    dur_audio_total = ffprobe_dur(NARRACION)
+    huecos: list[float] = []
+    for i, sid in enumerate(ids):
+        ini = 0.0 if i == 0 else secciones[sid]['startSec']
+        fin = secciones[ids[i + 1]]['startSec'] if i + 1 < len(ids) else dur_audio_total
+        huecos.append(fin - ini)
+
     for i, (sid, rango) in enumerate(secciones.items()):
-        dur = rango['endSec'] - rango['startSec']
+        dur = huecos[i]
         cuantas = max(1, round(dur / SEG_POR_PLANO_MAX))
 
         # Ronda 1: sin repetir, recorriendo los artículos de la sección en orden.
@@ -240,8 +338,9 @@ def main() -> None:
         while len(trozo) < cuantas:
             trozo.append(catalogo[len(trozo) % len(catalogo)])
 
-        capitulos.append((rango['startSec'], sid))
-        segmentos.append(construir_segmento(i, sid, trozo, dur))
+        capitulos.append((0.0 if i == 0 else rango['startSec'], sid))
+        segmentos.append(
+            construir_segmento(i, sid, trozo, dur, generados_por_seccion.get(sid)))
         ultima = trozo[-1]
 
     def concatenar(partes: list[pathlib.Path], destino: pathlib.Path) -> float:
