@@ -13,7 +13,8 @@
     "episode": "tsx scripts/episode.ts",
     "narrate:sample": "tsx scripts/narrate-sample.ts",
     "audit:dossier": "tsx scripts/audit-dossier.ts",
-    "enrich:dossier": "tsx scripts/enrich-dossier.ts"
+    "enrich:dossier": "tsx scripts/enrich-dossier.ts",
+    "measure": "tsx scripts/measure-script.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",
