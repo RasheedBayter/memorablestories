@@ -34,7 +34,8 @@ export type ProveedorAcademico =
   | 'semantic-scholar'
   | 'openalex'
   | 'core'
-  | 'open-library';
+  | 'open-library'
+  | 'europe-pmc';
 
 /**
  * Cómo llegó una fuente al dossier.

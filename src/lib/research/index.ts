@@ -131,4 +131,4 @@ export type {
 // -- Instrumentación de web_fetch -------------------------------------------
 export { ContadorFetch } from './fetch-metrics';
 export type { InformeFetch, RegistroFetch } from './fetch-metrics';
-export * from './adapter';
+export * from './europepmc';

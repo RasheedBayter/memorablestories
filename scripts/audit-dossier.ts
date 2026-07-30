@@ -12,7 +12,8 @@
 
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { adaptarDossier } from '../src/lib/research/adapter';
+import { dossierDesdeFuentes, particionarPorExtracto } from '../src/lib/script/adapters';
+import type { DossierSource } from '../src/lib/script/types';
 import type { Fuente } from '../src/lib/research/types';
 import { independenceObstacle } from '../src/lib/script/verify';
 
@@ -24,7 +25,7 @@ const id = process.argv[2] ?? readdirSync(root)[0];
 const raw = JSON.parse(readFileSync(join(root, id, 'research/dossier.json'), 'utf8'));
 const fuentes = raw.fuentes as Fuente[];
 
-const { sources, sinExtracto } = adaptarDossier(fuentes, { omitirSinExtracto: true });
+const { conTexto: sources, sinTexto: sinExtracto } = particionarPorExtracto(fuentes);
 
 console.log(`\n${BOLD}${raw.tema}${RESET} ${DIM}· ${id.slice(0, 8)}${RESET}\n`);
 console.log(`  fuentes en el dossier      ${fuentes.length}`);
@@ -34,9 +35,7 @@ console.log(`  ${sinExtracto.length ? RED : GREEN}sin texto (inutilizables)  ${s
 // Independencia sobre TODAS las fuentes, ignorando el texto: mide el techo del
 // dossier si se recuperara el texto de todas. Separa "no hay material" de "no
 // he leído el material", que se arreglan de formas distintas.
-const todas = adaptarDossier(fuentes, {
-  extractos: Object.fromEntries(fuentes.map((f) => [f.id, 'placeholder'])),
-}).sources;
+const todas: DossierSource[] = dossierDesdeFuentes(fuentes);
 
 let indep = 0, total = 0;
 const obst: Record<string, number> = {};
@@ -57,19 +56,32 @@ for (const [k, v] of Object.entries(obst).sort((a, b) => b[1] - a[1])) {
   console.log(`    ${DIM}${k.padEnd(24)} ${v}${RESET}`);
 }
 
-const conAutor = todas.filter((s) => s.author).length;
+// La cifra que de verdad decide. El techo de arriba supone texto en todas; esto
+// mide con las que HOY tienen texto, que es contra lo que se puede verificar.
+let indepReal = 0, totalReal = 0;
+for (let i = 0; i < sources.length; i++) {
+  for (let j = i + 1; j < sources.length; j++) {
+    totalReal++;
+    if (independenceObstacle(sources[i], sources[j]) === null) indepReal++;
+  }
+}
+console.log(`\n${BOLD}Independencia REAL${RESET} ${DIM}(solo fuentes con texto)${RESET}`);
+console.log(`  pares evaluables           ${totalReal}`);
+console.log(`  ${indepReal > 0 ? GREEN : RED}pares independientes       ${indepReal}${RESET}`);
+
+const conAutor = todas.filter((x) => x.author).length;
 const kinds: Record<string, number> = {};
-for (const s of todas) kinds[s.kind] = (kinds[s.kind] ?? 0) + 1;
+for (const x of todas) kinds[x.kind] = (kinds[x.kind] ?? 0) + 1;
 console.log(`\n${BOLD}Composición${RESET}`);
 console.log(`  con autor conocido         ${conAutor}/${todas.length}`);
 console.log(`  ${DIM}` + Object.entries(kinds).map(([k, v]) => `${k}:${v}`).join(' · ') + RESET);
 
-const citables = todas.filter((s) => s.kind !== 'reference').length;
-const paraCitas = todas.filter((s) => s.kind === 'primary' || s.kind === 'academic').length;
+const citables = todas.filter((x) => x.kind !== 'reference').length;
+const paraCitas = todas.filter((x) => x.kind === 'primary' || x.kind === 'academic').length;
 console.log(`  citables                   ${citables}`);
 console.log(`  ${paraCitas < 8 ? YELLOW : GREEN}pueden avalar cita literal ${paraCitas}${RESET}`);
 
-if (indep === 0) {
+if (indepReal === 0) {
   console.log(`\n${RED}${BOLD}El guion NO es escribible con este dossier.${RESET}`);
   console.log(`  Sin un solo par independiente, ninguna afirmación puede salir SUPPORTED.\n`);
   process.exit(1);

@@ -36,6 +36,7 @@ const TIPO_A_KIND: Record<TipoFuente, SourceKind> = {
   primaria: 'primary',
   // Un libro cuenta como respaldo de cita textual: la regla del canon pide
   // "primaria o académica", y una monografía es lo segundo a efectos de citar.
+  // Ver `kindDeLibro`, que restringe esto cuando el libro no está revisado.
   libro: 'academic',
   prensa: 'press',
   archivo: 'archive',
@@ -53,6 +54,11 @@ const VIA_A_PATH: Record<ViaDescubrimiento, DiscoveryPath> = {
   openalex: 'other',
   core: 'core',
   'open-library': 'open_library',
+  // Europe PMC es un índice DISTINTO de Crossref, y esa distinción es el motivo
+  // de que exista el proveedor: en un dossier donde 30 de 41 fuentes venían de
+  // Crossref —y por tanto no eran independientes entre sí—, cada fuente que
+  // entra por aquí abre pares nuevos con todas las de Crossref.
+  'europe-pmc': 'europe_pmc',
   'web-search': 'web_search',
   archivo: 'loc',
   // Una fuente encontrada DENTRO de otra nunca es un descubrimiento
@@ -71,8 +77,55 @@ const VIA_A_PATH: Record<ViaDescubrimiento, DiscoveryPath> = {
  * las dos. Quedarse con la primera haría pasar por independiente a un par que
  * no lo es.
  */
-export function fuenteADossierSource(f: Fuente): DossierSource {
+export class ExcerptFaltanteError extends Error {
+  constructor(readonly fuenteId: string, readonly titulo: string) {
+    super(
+      `La fuente "${titulo}" (${fuenteId}) no tiene texto recuperado.\n` +
+        `  La verificación es a libro cerrado sobre \`excerpt\`: sin texto, ninguna\n` +
+        `  afirmación puede salir SUPPORTED, así que la fuente no resta — engaña.\n` +
+        `  Recupera el texto (\`buscarEuropePmc\` + \`textoCompleto\`, o web_fetch\n` +
+        `  sobre \`superficieDeFetch\`) o excluye la fuente del dossier.`,
+    );
+    this.name = 'ExcerptFaltanteError';
+  }
+}
+
+export interface DossierMappingOptions {
+  /**
+   * Con `true`, una fuente sin extractos lanza `ExcerptFaltanteError` en vez de
+   * producir `excerpt: ''`.
+   *
+   * El valor por defecto es `false` por compatibilidad, pero el pipeline lo pone
+   * a `true`: una fuente con `excerpt` vacío pasa por el verificador sin error y
+   * hace fallar TODAS las afirmaciones que dependan de ella, sin decir por qué.
+   * Medido sobre el dossier de Anticitera: 41 fuentes, 41 con excerpt vacío,
+   * groundedness 0, y ni un mensaje en consola.
+   */
+  exigirExtractos?: boolean;
+}
+
+/**
+ * Un libro solo respalda una cita literal si está revisado por pares.
+ *
+ * `TIPO_A_KIND` manda `libro` a `academic` porque una monografía académica lo es.
+ * Pero Open Library devuelve también divulgación de quiosco con el mismo `tipo`,
+ * y `verify.ts` admite cita textual con `primary` o `academic`, así que la
+ * versión ancha dejaba que un libro de aeropuerto avalase una cita entrecomillada.
+ */
+function kindDeFuente(f: Fuente): SourceKind {
+  const base = TIPO_A_KIND[f.tipo] ?? 'other';
+  if (f.tipo === 'libro' && !f.revisadaPorPares) return 'other';
+  return base;
+}
+
+export function fuenteADossierSource(
+  f: Fuente,
+  opts: DossierMappingOptions = {},
+): DossierSource {
   const paths = uniquePaths(f.viaDescubrimiento.map((v) => VIA_A_PATH[v.via] ?? 'other'));
+
+  const excerpt = f.extractos.map((e) => e.texto.trim()).filter(Boolean).join('\n\n');
+  if (!excerpt && opts.exigirExtractos) throw new ExcerptFaltanteError(f.id, f.titulo);
 
   return {
     source_id: f.id,
@@ -84,17 +137,33 @@ export function fuenteADossierSource(f: Fuente): DossierSource {
     author: f.autores[0]?.clave ?? f.autores[0]?.nombre,
     discovery_path: paths[0] ?? 'other',
     discovery_paths: paths,
-    kind: TIPO_A_KIND[f.tipo] ?? 'other',
+    kind: kindDeFuente(f),
     // Todos los extractos, no solo el primero: la verificación es a libro
     // cerrado y esto es TODO lo que el verificador podrá mirar. Se conservan
     // literales para que `cited_text` siga siendo copia exacta.
-    excerpt: f.extractos.map((e) => e.texto.trim()).filter(Boolean).join('\n\n'),
+    excerpt,
     published: f.anio !== undefined ? String(f.anio) : undefined,
   };
 }
 
-export function dossierDesdeFuentes(fuentes: readonly Fuente[]): DossierSource[] {
-  return fuentes.map(fuenteADossierSource);
+export function dossierDesdeFuentes(
+  fuentes: readonly Fuente[],
+  opts: DossierMappingOptions = {},
+): DossierSource[] {
+  return fuentes.map((f) => fuenteADossierSource(f, opts));
+}
+
+/** Fuentes utilizables (con texto) y las que se quedan fuera, sin lanzar. */
+export function particionarPorExtracto(
+  fuentes: readonly Fuente[],
+): { conTexto: DossierSource[]; sinTexto: Fuente[] } {
+  const conTexto: DossierSource[] = [];
+  const sinTexto: Fuente[] = [];
+  for (const f of fuentes) {
+    if (f.extractos.some((e) => e.texto.trim())) conTexto.push(fuenteADossierSource(f));
+    else sinTexto.push(f);
+  }
+  return { conTexto, sinTexto };
 }
 
 function uniquePaths(paths: DiscoveryPath[]): DiscoveryPath[] {

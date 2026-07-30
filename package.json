@@ -12,7 +12,8 @@
     "verify:canon": "tsx scripts/verify-canon.ts",
     "episode": "tsx scripts/episode.ts",
     "narrate:sample": "tsx scripts/narrate-sample.ts",
-    "audit:dossier": "tsx scripts/audit-dossier.ts"
+    "audit:dossier": "tsx scripts/audit-dossier.ts",
+    "enrich:dossier": "tsx scripts/enrich-dossier.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",

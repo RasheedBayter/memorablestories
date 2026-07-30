@@ -99,6 +99,7 @@ export type DiscoveryPath =
   | 'semantic_scholar'
   | 'core'
   | 'open_library'
+  | 'europe_pmc'
   | 'europeana'
   | 'loc'
   | 'web_search'

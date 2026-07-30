@@ -21,6 +21,7 @@
  *   - Open Library     gratis, 1 rps sin identificar.
  */
 
+import { buscarEuropePmc } from './europepmc';
 import type { ProveedorAcademico, ResultadoAcademico, TipoFuente } from './types';
 
 const USER_AGENT =
@@ -63,6 +64,7 @@ const LIMITADORES: Record<ProveedorAcademico, Limitador> = {
   openalex: new Limitador(120),
   core: new Limitador(300),
   'open-library': new Limitador(1_100),
+  'europe-pmc': new Limitador(10),
 };
 
 export class ErrorProveedor extends Error {
@@ -609,6 +611,7 @@ const BUSCADORES: Record<
   openalex: buscarOpenAlex,
   core: buscarCore,
   'open-library': buscarOpenLibrary,
+  'europe-pmc': buscarEuropePmc,
 };
 
 /**
@@ -631,7 +634,14 @@ export async function buscarFuentesAcademicas(
   // en todas las consultas siguientes sin haberlo pedido. Todo este módulo está
   // construido sobre que OpenAlex sea opt-in explícito en cada llamada.
   const activos: ProveedorAcademico[] = [
-    ...(opts.proveedores ?? (['crossref', 'semantic-scholar', 'core', 'open-library'] as const)),
+    ...(opts.proveedores ??
+      // `europe-pmc` va en el conjunto por defecto por dos razones distintas y
+      // ambas necesarias: es el único proveedor que devuelve el CUERPO del
+      // artículo —sin el cual no hay detalle narrativo verificable— y es un
+      // índice distinto de Crossref, así que abre pares independientes en un
+      // dossier donde 30 de 41 fuentes venían de Crossref y por tanto no eran
+      // independientes entre sí.
+      (['crossref', 'semantic-scholar', 'core', 'open-library', 'europe-pmc'] as const)),
   ];
   if (usarOpenAlex && !activos.includes('openalex')) activos.push('openalex');
 
@@ -647,6 +657,7 @@ export async function buscarFuentesAcademicas(
     openalex: 0,
     core: 0,
     'open-library': 0,
+    'europe-pmc': 0,
   };
 
   acabados.forEach((r, i) => {
