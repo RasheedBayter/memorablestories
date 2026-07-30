@@ -65,3 +65,6 @@ next-env.d.ts
 
 # Episodios locales: artefactos pesados y regenerables.
 /.episodes/
+
+# El PDF se regenera con `python3 scripts/scripts-to-pdf.py`.
+scripts-out/*.pdf

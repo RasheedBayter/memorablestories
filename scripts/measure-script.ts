@@ -15,7 +15,13 @@ const GREEN = '\x1b[32m', YELLOW = '\x1b[33m';
 const ruta = process.argv[2];
 if (!ruta) throw new Error('Uso: npm run measure -- <fichero.md>');
 
-const narrado = readFileSync(ruta, 'utf8')
+// La cabecera del fichero —hasta el primer `---`— es una nota para quien edita,
+// no texto narrado. Contarla inflaba la medida en ~41 palabras y con ella la
+// duración: 15,3 min declarados frente a 15,0 reales.
+const crudo = readFileSync(ruta, 'utf8');
+const cuerpo = crudo.includes('\n---\n') ? crudo.split('\n---\n').slice(1).join('\n---\n') : crudo;
+
+const narrado = cuerpo
   .split('\n')
   .filter((l) => !/^(#|>>|\||\*\*|---)/.test(l.trim()) && l.trim())
   .join(' ')

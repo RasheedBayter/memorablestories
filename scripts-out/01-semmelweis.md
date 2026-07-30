@@ -1,6 +1,6 @@
 # The Doctor Who Was Right
 
-**Episodio 1 · inglés · objetivo 20 min · voz George (174 wpm) · ~3.480 palabras**
+**Episodio 1 · inglés · objetivo 20 min · voz George (174 wpm)**
 
 Cada beat lleva `[fuente]` con el `source_id` del dossier y `>>` con la pista visual.
 Los números van en cifra: la normalización para TTS es el ÚLTIMO paso, después de
