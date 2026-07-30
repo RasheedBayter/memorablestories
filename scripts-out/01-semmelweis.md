@@ -44,7 +44,7 @@ And he died in an asylum, at forty-seven, with the medical establishment of Euro
 
 >> Modern hospital corridor, hand sanitiser dispenser, present day
 
-The intervention he proposed is the one you were told to perform, over and over, in 2020. It is the cheapest and most effective infection control measure ever devised.
+The intervention he proposed is the one drilled into every one of us the last time a disease moved through the world. His work on infection prevention remains highly relevant today, in contemporary practice aimed at controlling the spread of disease and improving patient safety. [doi:10.7759/cureus.71689]
 
 It took the profession the better part of forty years to accept it. This is why — and the answer is more uncomfortable than the version you have probably been told.
 
@@ -57,6 +57,18 @@ It took the profession the better part of forty years to accept it. This is why 
 In July 1846, Semmelweis was appointed to oversee the First Obstetrical Clinic. [doi:10.3205/dgkh000608] By the 1850s and 1860s the hospital was treating something like 7,000 to 8,000 patients a year. [doi:10.3205/dgkh000608]
 
 It was one of the largest medical institutions in Europe. And it was a teaching hospital, which mattered more than anyone yet understood.
+
+>> Portrait, young Semmelweis, engraving
+
+He had not planned to be there.
+
+He was born on the first of July, 1818, in Buda — now part of Budapest — the fifth child of a prosperous family. He first studied at the law university, and only then changed to medical school. He graduated in 1844 with a medical degree from the University of Vienna. [doi:10.7759/cureus.71689]
+
+>> Latin manuscript, close on handwriting
+
+His doctoral thesis was not about disease at all. It was botanical, composed in Neo-Latin, and it showed linguistic and stylistic talent alongside a broad knowledge of gynaecology and obstetrics. [doi:10.1007/s10354-020-00738-1]
+
+A lawyer turned doctor who wrote his thesis about plants, in Latin. Hold on to that, because the man who could not persuade anyone of the most important finding of his century began by demonstrating he could write beautifully in a dead language.
 
 >> Ward interior, rows of beds, archive illustration
 
@@ -78,6 +90,20 @@ The hospitals made it worse.
 
 These supposed improvements led to regular internal examinations for women in labour, unsterilised tools, bandages and fabrics, and the overcrowding of patients. [doi:10.7759/cureus.71689] The lack of knowledge about asepsis let infection spread, and mortality climbed. It was considered safer to deliver at home than in a hospital. [doi:10.7759/cureus.71689]
 
+>> Bleeding bowl, lancets, period instruments
+
+And understand what medicine had to offer against it.
+
+Bloodletting and extensive purging were the treatment of choice at the time, and they proved to be largely ineffective. [doi:10.3205/dgkh000608]
+
+Until the late 1800s, the concept that disease might be caused by specific microorganisms had not been established. Germ theory had not yet emerged, which left the prevention and treatment of these diseases without a solid scientific foundation. [doi:10.3205/dgkh000608]
+
+>> Miasma illustration, foul air rising, period engraving
+
+The prevailing theories attributed infection to bad air — to miasmas — and to an imbalance of the bodily humours. [doi:10.3205/dgkh000608]
+
+That is the intellectual world Semmelweis had to argue inside. Not a world that was wrong about one fact, but a world with no available category for the thing he had found.
+
 >> Modern hospital, sterile, cold light — visual contrast
 
 That sentence deserves to sit for a moment, because it inverts everything we assume about medical progress. The most advanced obstetric institution in the Habsburg empire was more dangerous than a bedroom.
@@ -98,7 +124,7 @@ That is not a metaphor. That is what the record shows.
 
 >> Semmelweis at a desk with ledgers, reconstruction
 
-Semmelweis did something that was, in 1846, genuinely unusual. He treated the hospital as a dataset.
+Semmelweis did something that was, in 1846, genuinely unusual. [doi:10.7759/cureus.71689] He treated the hospital as a dataset.
 
 He noticed that deaths from puerperal fever in the first clinic were more than twice those of the second. [doi:10.3205/dgkh000608] He went looking for what differed between them, and he did it by elimination, ruling out explanation after explanation.
 
@@ -108,7 +134,7 @@ This is the part of the story that usually gets flattened. Semmelweis is remembe
 
 The disparity, one modern analysis notes, was likely due to the greater incidence of induced or accelerated labour among women attended by medical students — who often went directly from the dissecting room to the delivery room. [doi:10.7759/cureus.71689]
 
-That last clause is the answer. In 1846, nobody could see it.
+That last clause is the answer. In 1846, nobody could see it. [doi:10.7759/cureus.71689]
 
 ---
 
@@ -146,6 +172,14 @@ He compared the clinical practices in the two clinics and found that the doctors
 
 There it was. The midwives did not dissect corpses. The medical students did — and then they walked down the corridor and put their hands inside labouring women.
 
+>> Portrait of Johann Klein, formal, unsmiling
+
+And that practice had a defender with a name and an office.
+
+Medical students' education through participation in deliveries was a priority, passionately supported by Semmelweis's superior — Doctor Johann Klein, who lived from 1788 to 1856, and who was Head of the Maternity Sector. [doi:10.7759/cureus.62543]
+
+So the finding was not merely inconvenient. It said that the teaching programme run by the man Semmelweis reported to was killing the patients.
+
 >> The two doors again, callback
 
 He called them cadaverous particles. [doi:10.7759/cureus.71689]
@@ -174,7 +208,7 @@ And it worked. The intervention significantly reduced the spread of infection, d
 
 Consider what has just happened, methodologically. A man has formed a causal hypothesis from a natural experiment, designed an intervention that follows from the hypothesis, applied it to one arm and not the other, and measured the outcome against a baseline he had already established over six years of records.
 
-That is a clinical trial. In 1847. Before germ theory. Before the word existed.
+That is a clinical trial. In 1847. [doi:10.7759/cureus.71689] Before germ theory. Before the word existed.
 
 >> Semmelweis at ledgers again, older, tired
 
@@ -302,13 +336,69 @@ He was forty-seven years old.
 
 The interventions he advocated were only accepted after his death, as germ theory and antiseptic practices became widely recognised and better understood. [doi:10.7759/cureus.71689]
 
-That is the sentence. *After his death.* The proof had been available since 1847. The acceptance arrived once the man who had been shouting it was safely gone, and the idea could arrive attached to someone else's name.
+That is the sentence. *After his death.* The proof had been available since 1847. [doi:10.7759/cureus.71689] The acceptance arrived once the man who had been shouting it was safely gone, and the idea could arrive attached to someone else's name.
 
 >> Modern surgical scrub, present day, bright
 
 Almost thirty years after Semmelweis first proposed his theory of a single necessary cause of puerperal infection, it was still contested among the leading experts. [doi:10.1093/shm/hkab097]
 
 Thirty years. Count the wards.
+
+---
+
+## ACT IV — WHAT IT ACTUALLY WAS
+
+>> Microscope, brass, period, low light
+
+Semmelweis died not knowing what he had found.
+
+He called it cadaverous particles because that was the most precise language available to him. He was describing a thing that had no name, using a vocabulary built for a theory that was wrong.
+
+>> Petri dish, culture, modern
+
+The name arrived fourteen years after his death.
+
+In 1879, the haemolytic streptococcus was identified as the cause of postpartum sepsis — which led to the definitive conclusion that so many young mothers could be saved, and puerperal fever prevented, simply by enforcing antiseptic technique in maternity clinics. [doi:10.7759/cureus.62543]
+
+>> Robert Koch portrait, laboratory
+
+By the late nineteenth century, bacteriology had become the new science, with microorganisms moving into the realm of medicine. The German physician Robert Koch, who lived from 1843 to 1910, identified several bacteria as causes of infectious disease. [doi:10.1017/mdh.2025.10020]
+
+That work led to greater authority for experimental laboratory methods in medicine — and to the appreciation of a possible bacteriological basis for puerperal infection. [doi:10.1017/mdh.2025.10020]
+
+>> Attribution, competing names on screen
+
+Even the credit is contested. The identification of Streptococcus pyogenes as the specific causal agent is usually attributed to Louis Pasteur — but the historian Irvine Loudon argues it really belonged to Amédée Doléris, in 1880. [doi:10.1017/mdh.2025.10020]
+
+Which is its own quiet joke. The discovery that vindicated a man destroyed by a priority dispute is itself the subject of a priority dispute.
+
+>> Paris, Académie de Médecine, 1892, interior
+
+But the moment that closes this story properly happened in Paris, in 1892. [doi:10.7759/cureus.62543]
+
+Twenty-seven years after Semmelweis died. Forty-five years after he first ordered the basins filled with chlorinated lime.
+
+>> A lecture in progress, formal, hostile
+
+At the Paris Medical Academy, a famous gynaecologist was criticising the theory of direct transmission of puerperal fever. [doi:10.7759/cureus.62543]
+
+Still. In 1892. [doi:10.7759/cureus.62543]
+
+>> A figure rising from the audience
+
+Suddenly someone in the audience interrupted him, rose to the podium, drew some pictures representing streptococci on the blackboard, and said in a soft voice: "Here is your infection, sir." [doi:10.7759/cureus.62543]
+
+>> Chalk on blackboard, the drawn chains of cocci
+
+The gynaecologist did not answer.
+
+Because the gentleman who had taken the stage was Louis Pasteur. [doi:10.7759/cureus.62543]
+
+>> Hold on the blackboard, silence
+
+That is the sentence Semmelweis spent his life trying to say, and it took the most famous scientist in Europe, standing at a blackboard, to make a room full of doctors sit still for it.
+
+He had been dead for twenty-seven years.
 
 ---
 
@@ -350,3 +440,6 @@ Wash your hands.
 | `doi:10.1007/s10654-022-00871-8` | Stang A | 2022 | partos en la calle, crítica epidemiológica moderna |
 | `doi:10.5152/jtgga.2013.08` | Ataman AD | 2013 | rango de mortalidad 10–35 %, "padre del control de infecciones" |
 | `doi:10.36519/idcm.2025.747` | Keske Ş | 2025 | las seis C y la séptima, comunicación |
+| `doi:10.7759/cureus.62543` | Lepenos T | 2024 | Johann Klein, estreptococo 1879, la escena de Pasteur en 1892 |
+| `doi:10.1017/mdh.2025.10020` | Bajpayee K | 2025 | Koch, bacteriología, la disputa de prioridad Pasteur/Doléris |
+| `doi:10.1007/s10354-020-00738-1` | Schreiner S | 2020 | biografía: derecho, tesis botánica en neolatín |

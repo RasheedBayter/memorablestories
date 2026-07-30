@@ -68,3 +68,6 @@ next-env.d.ts
 
 # El PDF se regenera con `python3 scripts/scripts-to-pdf.py`.
 scripts-out/*.pdf
+
+# Salidas de episodio: audio, video y assets. Pesados y regenerables.
+scripts-out/*/

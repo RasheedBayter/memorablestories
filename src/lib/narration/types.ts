@@ -100,30 +100,35 @@ export const REQUEST_ID_TTL_MS = 2 * 60 * 60 * 1000;
 export const MAX_PREVIOUS_REQUEST_IDS = 3;
 
 /**
- * Ritmo de lectura, MEDIDO por voz contra la API el 29/07/2026.
+ * Ritmo de lectura, MEDIDO por voz contra la API.
  *
- * El 150 wpm que había aquí era la convención del género, no una medición de
- * nuestras voces. El mismo texto de 697 caracteres y 126 palabras, con
- * `eleven_multilingual_v2` y `pcm_24000`:
+ * George se midió DOS veces y las dos cifras no coinciden, lo que es el dato más
+ * útil de esta constante:
  *
- *     George (JBFqnCB…)  43,543 s → 174 wpm   british · narrative_story
- *     Daniel (onwK4e9…)  52,831 s → 143 wpm   british · informative_educational
- *     Bill   (pqHfZKP…)  54,131 s → 140 wpm   american · old · advertisement
+ *     cold open de 697 chars, 2 chunks   ->  174 wpm   (29/07/2026)
+ *     episodio completo, 20.565 chars    ->  159 wpm   (30/07/2026)
  *
- * El rango es del 24 %, así que la voz decide cuánto guion hay que escribir para
- * un objetivo de duración. Con el 150 genérico, 3.000 palabras dan 21,4 min con
- * Bill y 17,2 min con George. Y escribir para una voz y narrar con otra es peor:
- * las 3.480 palabras del objetivo de George, leídas por Bill, dan 24,9 min; las
- * 2.800 de Bill leídas por George dan 16,1. Ese par cubre casi toda la banda de
- * 15–28 minutos, lo que significa que el objetivo de duración no existe sin fijar
- * antes la voz.
+ * Un 9 % de diferencia, y la muestra corta se equivocaba por exceso. La causa
+ * está en las fronteras de párrafo: ElevenLabs inserta pausa en cada `\n\n`, y
+ * un guion de veinte minutos tiene muchas más por palabra que un fragmento de
+ * cuarenta segundos. El comentario anterior aquí afirmaba lo contrario —que el
+ * cold open, cortado en frases secas, sería el tramo más LENTO y por tanto un
+ * suelo—. Era una hipótesis razonable y la medición la desmintió.
  *
- * Medido sobre UN fragmento por voz. La densidad de puntuación mueve el ritmo, y
- * el cold open está deliberadamente cortado en frases secas, que es el tramo más
- * lento del guion. Tratar estos números como el suelo del rango, no como la media.
+ * Las cifras vigentes son las de episodio completo cuando existen. Daniel y Bill
+ * solo tienen medición corta, así que arrastran el mismo sesgo del 9 % y hay que
+ * tratarlas como techo, no como valor.
+ *
+ *     George (JBFqnCB…)  159 wpm   episodio completo · british · narrative_story
+ *     Daniel (onwK4e9…)  143 wpm   solo muestra corta · british · educational
+ *     Bill   (pqHfZKP…)  140 wpm   solo muestra corta · american · old
+ *
+ * La voz decide cuánto guion hay que escribir: con 159 wpm, veinte minutos son
+ * 3.180 palabras y no 3.480. Escribir para una voz y narrar con otra sigue
+ * cubriendo casi toda la banda de 15-28 minutos.
  */
 export const MEASURED_WPM: Record<string, number> = {
-  JBFqnCBsd6RMkjVDRZzb: 174,
+  JBFqnCBsd6RMkjVDRZzb: 159,
   onwK4e9ZLuTAKqWW03F9: 143,
   pqHfZKP75CvOlQylNhV4: 140,
 };

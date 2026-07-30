@@ -223,7 +223,7 @@ console.log('\n\x1b[1mRitmo de lectura por voz\x1b[0m');
   const george = 'JBFqnCBsd6RMkjVDRZzb';
   const bill = 'pqHfZKP75CvOlQylNhV4';
 
-  check('George mide 174 wpm', wordsPerMinute(george) === 174, `→ ${wordsPerMinute(george)}`);
+  check('George mide 159 wpm (episodio completo)', wordsPerMinute(george) === 159, `→ ${wordsPerMinute(george)}`);
   check('Bill mide 140 wpm', wordsPerMinute(bill) === 140, `→ ${wordsPerMinute(bill)}`);
   check(
     'una voz sin medir cae en la convención del género',
@@ -248,12 +248,12 @@ console.log('\n\x1b[1mRitmo de lectura por voz\x1b[0m');
   const crossLow = wordsForMinutes(20, bill) / wordsPerMinute(george);
   check(
     'cruzar voz y objetivo cubre casi toda la banda de 15-28 min',
-    crossHigh > 24 && crossLow < 17,
+    crossHigh > 22 && crossLow < 18,
     `${crossLow.toFixed(1)} - ${crossHigh.toFixed(1)} min`,
   );
   check(
     'wordsForMinutes compensa la voz',
-    wordsForMinutes(20, bill) === 2800 && wordsForMinutes(20, george) === 3480,
+    wordsForMinutes(20, bill) === 2800 && wordsForMinutes(20, george) === 3180,
     `Bill ${wordsForMinutes(20, bill)} · George ${wordsForMinutes(20, george)}`,
   );
 

@@ -1,0 +1,432 @@
+<title>Dos guiones — Memorable Stories</title>
+<style>
+:root{
+  --papel:#F3F4F1; --panel:#FFFFFF; --tinta:#15181A; --tenue:#5C6360;
+  --debil:#8B9290; --linea:#DFE2DC; --patina:#2E6A5C; --patina-suave:#E4EDE9;
+  --alerta:#8A5A1F;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --papel:#111413; --panel:#181C1B; --tinta:#E8EBE7; --tenue:#9BA39F;
+    --debil:#6E7674; --linea:#2A302E; --patina:#6FB5A1; --patina-suave:#1C2A26;
+    --alerta:#C79A5C;
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#111413; --panel:#181C1B; --tinta:#E8EBE7; --tenue:#9BA39F;
+  --debil:#6E7674; --linea:#2A302E; --patina:#6FB5A1; --patina-suave:#1C2A26;
+  --alerta:#C79A5C;
+}
+:root[data-theme="light"]{
+  --papel:#F3F4F1; --panel:#FFFFFF; --tinta:#15181A; --tenue:#5C6360;
+  --debil:#8B9290; --linea:#DFE2DC; --patina:#2E6A5C; --patina-suave:#E4EDE9;
+  --alerta:#8A5A1F;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--papel);color:var(--tinta);
+  font:400 18px/1.66 'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
+  -webkit-font-smoothing:antialiased;
+}
+.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',sans-serif}
+.mono{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
+
+/* ---- barra de comparación ---- */
+header{
+  position:sticky;top:0;z-index:20;background:var(--papel);
+  border-bottom:1px solid var(--linea);
+}
+.barra{
+  max-width:1180px;margin:0 auto;padding:14px 24px;
+  display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline;
+}
+.marca{
+  font-family:-apple-system,sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--patina);
+  margin-right:auto;
+}
+.salto{
+  font-family:-apple-system,sans-serif;font-size:13px;color:var(--tenue);
+  text-decoration:none;padding:5px 11px;border:1px solid var(--linea);
+  border-radius:100px;transition:.15s;
+}
+.salto:hover,.salto:focus-visible{color:var(--tinta);border-color:var(--patina)}
+
+main{max-width:1180px;margin:0 auto;padding:0 24px 120px}
+
+/* ---- portada ---- */
+.intro{padding:76px 0 52px;border-bottom:1px solid var(--linea);max-width:660px}
+.intro h1{
+  font-family:-apple-system,sans-serif;font-size:clamp(34px,5vw,52px);
+  line-height:1.04;letter-spacing:-.032em;font-weight:750;margin:0 0 18px;
+  text-wrap:balance;
+}
+.intro p{color:var(--tenue);font-size:19px;margin:0 0 14px}
+
+/* ---- cabecera de guion ---- */
+.guion{padding-top:64px;scroll-margin-top:64px}
+.guion h1{
+  font-family:-apple-system,sans-serif;font-size:clamp(28px,4vw,42px);
+  line-height:1.08;letter-spacing:-.028em;font-weight:750;margin:0 0 20px;
+  text-wrap:balance;
+}
+.metricas{
+  display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--linea);
+  border-radius:8px;overflow:hidden;background:var(--panel);margin-bottom:8px;
+}
+.metrica{padding:13px 20px;border-right:1px solid var(--linea);flex:1 1 auto;min-width:118px}
+.metrica:last-child{border-right:0}
+.metrica dt{
+  font-family:-apple-system,sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--debil);margin:0 0 3px;
+}
+.metrica dd{
+  margin:0;font-family:-apple-system,sans-serif;font-size:19px;font-weight:650;
+  font-variant-numeric:tabular-nums;letter-spacing:-.01em;
+}
+.metrica .sub{font-size:12px;font-weight:400;color:var(--tenue);margin-left:5px}
+.ok{color:var(--patina)} .aviso{color:var(--alerta)}
+
+/* ---- partitura de dos pistas ---- */
+h2{
+  font-family:-apple-system,sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--patina);
+  margin:56px 0 22px;padding-bottom:8px;border-bottom:1px solid var(--linea);
+  scroll-margin-top:80px;
+}
+.beat{display:grid;grid-template-columns:210px 1fr;gap:32px;margin-bottom:20px}
+.ve{
+  font-family:-apple-system,sans-serif;font-size:12.5px;line-height:1.45;
+  color:var(--debil);display:flex;flex-direction:column;gap:7px;
+  padding-top:7px;text-align:right;
+}
+.ve span{display:block}
+.ve span::before{content:"▸ ";color:var(--patina);opacity:.65}
+.beat p{margin:0;max-width:33em}
+
+/* ---- citas ---- */
+.cita{
+  font-family:-apple-system,sans-serif;font-size:10.5px;font-weight:700;
+  color:var(--patina);background:var(--patina-suave);border:0;
+  border-radius:4px;padding:1px 5px;margin-left:3px;cursor:pointer;
+  vertical-align:.42em;line-height:1.5;transition:.13s;
+}
+.cita:hover,.cita:focus-visible{background:var(--patina);color:var(--papel)}
+.cita[aria-expanded="true"]{background:var(--patina);color:var(--papel)}
+
+.ficha{
+  grid-column:2;margin:10px 0 4px;padding:15px 18px;background:var(--panel);
+  border:1px solid var(--linea);border-left:3px solid var(--patina);
+  border-radius:0 7px 7px 0;max-width:33em;
+  font-family:-apple-system,sans-serif;font-size:14px;line-height:1.5;
+}
+.ficha .t{font-weight:640;display:block;margin-bottom:5px}
+.ficha .m{color:var(--tenue);font-size:13px}
+.ficha .id{
+  font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--debil);
+  display:block;margin-top:7px;word-break:break-all;
+}
+.ficha a{color:var(--patina)}
+
+/* ---- bibliografía ---- */
+.biblio{margin-top:60px;padding-top:26px;border-top:1px solid var(--linea)}
+.biblio h3{
+  font-family:-apple-system,sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--debil);margin:0 0 18px;
+}
+.biblio ol{margin:0;padding:0;list-style:none;display:grid;gap:13px}
+.biblio li{
+  display:grid;grid-template-columns:26px 1fr;gap:12px;
+  font-family:-apple-system,sans-serif;font-size:14px;line-height:1.48;
+}
+.biblio .n{
+  font-weight:700;color:var(--patina);font-variant-numeric:tabular-nums;
+  font-size:12px;padding-top:2px;
+}
+.biblio .m{color:var(--tenue);display:block;font-size:13px}
+.biblio code{font-size:11.5px;color:var(--debil);font-family:ui-monospace,Menlo,monospace}
+
+@media (max-width:860px){
+  body{font-size:17px}
+  .beat{grid-template-columns:1fr;gap:9px}
+  .ve{text-align:left;padding-top:0;order:-1}
+  .ficha{grid-column:1}
+  .metrica{border-right:0;border-bottom:1px solid var(--linea)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+:focus-visible{outline:2px solid var(--patina);outline-offset:2px;border-radius:3px}
+</style>
+<header><div class="barra">
+  <span class="marca">Memorable Stories · guiones</span>
+  <a class="salto" href="#01-semmelweis">The Doctor Who Was Right</a><a class="salto" href="#02-antikythera">The Machine That Should Not Exist</a>
+</div></header>
+<main>
+  <div class="intro">
+    <h1>Dos guiones para elegir</h1>
+    <p>Documental histórico en inglés, narrado por George a 174 palabras por minuto —
+       un ritmo medido contra la API, no supuesto.</p>
+    <p>Cada afirmación lleva el número de la fuente del dossier que la sostiene.
+       <strong>Púlsalo</strong> y verás cuál es. Lo que se ve en pantalla va en el
+       margen; lo que se oye, en la columna.</p>
+  </div>
+  
+<section class="guion" id="01-semmelweis">
+  <h1>The Doctor Who Was Right</h1>
+  <dl class="metricas">
+    <div class="metrica"><dt>Duración con George</dt>
+      <dd class="ok">15.0<span class="sub">min</span></dd></div>
+    <div class="metrica"><dt>Palabras narradas</dt><dd>2.614</dd></div>
+    <div class="metrica"><dt>Fuentes citadas</dt><dd>6</dd></div>
+    <div class="metrica"><dt>Banda 15–28 min</dt>
+      <dd class="ok">Dentro</dd></div>
+    <div class="metrica"><dt>Narración</dt><dd>$1.61</dd></div>
+  </dl>
+  <h2 id="01-semmelweis-0">COLD OPEN</h2>
+<div class="beat"><aside class="ve"><span>Vienna General Hospital exterior, 1840s engraving, slow push in</span></aside><p>There was a hospital in Vienna where the women knew which door meant death.</p></div>
+<div class="beat"><p>The Vienna General Hospital had two maternity clinics. The first had opened in 1784. The second opened in 1833. And from 1840 they were staffed differently: medical students and junior physicians were taught in the first clinic, midwives in the second.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>Same building. Same city. Same year. Same women, assigned by nothing more than the day of the week they happened to go into labour.</p></div>
+<div class="beat"><aside class="ve"><span>Two doorways, archive photograph, hard cut between them</span></aside><p>Between 1840 and 1846, the first clinic had a maternal mortality rate of 98.4 deaths per 1,000 births. The second clinic, the one staffed by midwives, had a rate of 36.2.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>Read those two numbers again. Almost one hundred women dead in every thousand, against thirty-six. Nearly three times the death rate, in two wards of the same hospital, separated by a corridor.</p></div>
+<div class="beat"><aside class="ve"><span>Woman in 19th-century dress at hospital gate, held long</span></aside><p>The women knew. And the doctors knew about the difference too. They had known for years. They had compiled a list of thirty separate explanations for it.</p></div>
+<div class="beat"><p>Not one of those explanations was correct. And the man who found the correct one would be destroyed for saying it out loud — partly by his colleagues, and partly, as we will see, by himself.</p></div>
+<h2 id="01-semmelweis-8">PROMISE</h2>
+<div class="beat"><aside class="ve"><span>Portrait of Semmelweis, slow reveal from darkness</span></aside><p>This is the story of Ignaz Philipp Semmelweis, who lived from 1818 to 1865.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button><button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>He was probably the first physician of his era to use statistical methods to substantiate a medical finding.  He was right about the single most important question in the building he worked in. He proved it with numbers, and the numbers held.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>And he died in an asylum, at forty-seven, with the medical establishment of Europe still insisting he was wrong.</p></div>
+<div class="beat"><aside class="ve"><span>Modern hospital corridor, hand sanitiser dispenser, present day</span></aside><p>The intervention he proposed is the one you were told to perform, over and over, in 2020. It is the cheapest and most effective infection control measure ever devised.</p></div>
+<div class="beat"><p>It took the profession the better part of forty years to accept it. This is why — and the answer is more uncomfortable than the version you have probably been told.</p></div>
+<h2 id="01-semmelweis-14">ACT I — THE ARITHMETIC OF THE TWO DOORS</h2>
+<div class="beat"><aside class="ve"><span>Map of Vienna, 1840s, zoom to Allgemeines Krankenhaus</span></aside><p>In July 1846, Semmelweis was appointed to oversee the First Obstetrical Clinic.  By the 1850s and 1860s the hospital was treating something like 7,000 to 8,000 patients a year.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>It was one of the largest medical institutions in Europe. And it was a teaching hospital, which mattered more than anyone yet understood.</p></div>
+<div class="beat"><aside class="ve"><span>Ward interior, rows of beds, archive illustration</span></aside><p>What Semmelweis walked into was puerperal fever. Childbed fever.</p></div>
+<div class="beat"><p>It was an infection of the genital tract following delivery or abortion, and it could progress to peritonitis, septicaemia, pyaemia, and death.  The signs were fever, abdominal pain, and sepsis. Women who contracted it after childbirth typically experienced a rapid decline in health, leading to death within days.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>It was common in mid-nineteenth-century hospitals and often fatal, with mortality between 10 and 35 per cent.  In some hospitals it reached 30 per cent.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button><button class="cita" data-fuente="doi:10.5152/jtgga.2013.08" aria-label="Fuente 3">3</button></p></div>
+<div class="beat"><aside class="ve"><span>Anatomical illustration, period, held</span></aside><p>Think about what that means as a lived experience rather than a statistic. A woman gives birth. For a day or two she is well. Then the fever starts, and everyone in the room — her husband, the midwife, the physician — already knows how this ends, because they have watched it end this way before.</p></div>
+<div class="beat"><aside class="ve"><span>Cemetery, period photograph</span></aside><p>And here is the fact that makes the whole story turn. Mortality from puerperal fever had been kept relatively low until lying-in hospitals were created and operative obstetrics was developed.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>The hospitals made it worse.</p></div>
+<div class="beat"><p>These supposed improvements led to regular internal examinations for women in labour, unsterilised tools, bandages and fabrics, and the overcrowding of patients.  The lack of knowledge about asepsis let infection spread, and mortality climbed. It was considered safer to deliver at home than in a hospital.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><aside class="ve"><span>Modern hospital, sterile, cold light — visual contrast</span></aside><p>That sentence deserves to sit for a moment, because it inverts everything we assume about medical progress. The most advanced obstetric institution in the Habsburg empire was more dangerous than a bedroom.</p></div>
+<div class="beat"><aside class="ve"><span>Vienna street at night, period, snow</span></aside><p>And the women of Vienna had worked this out for themselves, without a single statistic.</p></div>
+<div class="beat"><p>Every year, something like a thousand women who could not reach the General Hospital in time delivered in the streets of Vienna. They were called street births.<button class="cita" data-fuente="doi:10.1007/s10654-022-00871-8" aria-label="Fuente 4">4</button></p></div>
+<div class="beat"><p>Many of these women went to the General Hospital afterwards anyway, because their children would be admitted to a foundling home for free. To get that, they had to agree to participate in the education of medical students and junior physicians in the first clinic.<button class="cita" data-fuente="doi:10.1007/s10654-022-00871-8" aria-label="Fuente 4">4</button></p></div>
+<div class="beat"><aside class="ve"><span>Foundling home, period engraving</span></aside><p>So: a woman gives birth on cobblestones, in winter, without a physician, without heat, without help. And then she walks into the deadliest maternity ward in Europe, and her survival odds go up.</p></div>
+<div class="beat"><p>That is not a metaphor. That is what the record shows.</p></div>
+<div class="beat"><aside class="ve"><span>Semmelweis at a desk with ledgers, reconstruction</span></aside><p>Semmelweis did something that was, in 1846, genuinely unusual. He treated the hospital as a dataset.</p></div>
+<div class="beat"><p>He noticed that deaths from puerperal fever in the first clinic were more than twice those of the second.  He went looking for what differed between them, and he did it by elimination, ruling out explanation after explanation.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>Handwritten mortality tables, macro shot</span></aside><p>This is the part of the story that usually gets flattened. Semmelweis is remembered as the handwashing man, as though he had a hunch about cleanliness. He did not have a hunch. He had a ledger, and he worked it for two years.</p></div>
+<div class="beat"><p>The disparity, one modern analysis notes, was likely due to the greater incidence of induced or accelerated labour among women attended by medical students — who often went directly from the dissecting room to the delivery room.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>That last clause is the answer. In 1846, nobody could see it.</p></div>
+<h2 id="01-semmelweis-35">PIVOT — KOLLETSCHKA</h2>
+<div class="beat"><aside class="ve"><span>Empty autopsy theatre, cold, held long</span></aside><p>Semmelweis was frustrated. The repercussions of his questioning had begun to cost him, and he needed a new perspective, so he stepped away from his hospital responsibilities and travelled to Venice.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>While he was away, something happened that would explain everything.</p></div>
+<div class="beat"><aside class="ve"><span>Scalpel, macro, extreme shallow focus</span></aside><p>His colleague Jakob Kolletschka, a professor who worked in the autopsy room, was performing a post-mortem. During the procedure he cut himself.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>One account records it more precisely: he pricked his finger during the autopsy of a woman who had died of childbed fever.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>He died soon afterwards from sepsis.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><aside class="ve"><span>Semmelweis reading a letter, reconstruction, no music</span></aside><p>Semmelweis returned to Vienna and was handed the report of his friend&#x27;s death.</p></div>
+<div class="beat"><p>And he recognised it. The pathology in Kolletschka&#x27;s body was the pathology he had been signing death certificates for, ward after ward, month after month. The same disease. In a man. Who had never given birth.</p></div>
+<div class="beat"><aside class="ve"><span>Diagram: autopsy room → delivery room, arrow</span></aside><p>Semmelweis therefore theorised that puerperal fever was not limited to postpartum women, but could affect others within the hospital environment.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>If a scalpel could carry the disease from a corpse into a living man through a cut in his finger, then something material was moving from the dead to the living. Something that could be carried.</p></div>
+<div class="beat"><aside class="ve"><span>Hands, unwashed, period reconstruction</span></aside><p>He compared the clinical practices in the two clinics and found that the doctors and students in the first clinic frequently performed autopsies, while the midwives in the second clinic were only involved in birthing.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>There it was. The midwives did not dissect corpses. The medical students did — and then they walked down the corridor and put their hands inside labouring women.</p></div>
+<div class="beat"><aside class="ve"><span>The two doors again, callback</span></aside><p>He called them cadaverous particles.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>He had no idea what they were. He realised the agent was transferred from the students&#x27; hands, but he did not understand what infection he was dealing with.  Bacteria would not be understood for decades.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>He did not need to know what they were. He only needed to know that they moved, and that they could be stopped.</p></div>
+<h2 id="01-semmelweis-50">ACT II — THE EXPERIMENT</h2>
+<div class="beat"><aside class="ve"><span>Basin of chlorinated lime solution, macro</span></aside><p>Semmelweis ordered all the medical personnel at the First Clinic to wash their hands.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>Not with soap and water. With a chlorinated lime solution — scrubbed thoroughly, which was more effective than basic soap and water at removing organic matter and potential pathogens.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><aside class="ve"><span>Hands scrubbing, sustained, uncomfortable duration</span></aside><p>This was a significant improvement over previous practices, which largely ignored hygiene in the clinical setting.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>And it worked. The intervention significantly reduced the spread of infection, demonstrating that cleanliness could prevent the transmission of puerperal fever.  The sharp decline in mortality provided robust evidence, and it challenged many of the existing beliefs held by his contemporaries.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><aside class="ve"><span>Mortality chart, line collapsing</span></aside><p>Consider what has just happened, methodologically. A man has formed a causal hypothesis from a natural experiment, designed an intervention that follows from the hypothesis, applied it to one arm and not the other, and measured the outcome against a baseline he had already established over six years of records.</p></div>
+<div class="beat"><p>That is a clinical trial. In 1847. Before germ theory. Before the word existed.</p></div>
+<div class="beat"><aside class="ve"><span>Semmelweis at ledgers again, older, tired</span></aside><p>He was, as one review puts it, most likely the first physician of his era to use statistical methods to substantiate his findings — demonstrating an unwavering commitment to evidence-based research.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>Modern epidemiology textbook, present day</span></aside><p>And yet a modern epidemiological reading of his work finds a real flaw in it. Semmelweis did not stratify his mortality data by place of birth — street or hospital — because he did not consider that stratification important.<button class="cita" data-fuente="doi:10.1007/s10654-022-00871-8" aria-label="Fuente 4">4</button></p></div>
+<div class="beat"><p>That matters. The street-birth women had lower exposure, because the placenta had usually been expelled before they arrived at the first clinic.  They were sitting inside his denominator, quietly making his own comparison harder to read.<button class="cita" data-fuente="doi:10.1007/s10654-022-00871-8" aria-label="Fuente 4">4</button></p></div>
+<div class="beat"><aside class="ve"><span>Two columns of figures, one shaded</span></aside><p>Which is worth saying plainly: he was right, and his analysis was not perfect. Those are not contradictory. Most correct science is not perfect science.</p></div>
+<div class="beat"><p>But the objections he actually received had nothing to do with stratification.</p></div>
+<h2 id="01-semmelweis-62">RECAP</h2>
+<div class="beat"><aside class="ve"><span>Rapid montage of the preceding beats</span></aside><p>So: two clinics, one hospital, three times the death rate on one side of a corridor. Women safer giving birth on the street. A friend killed by a scalpel that had touched a corpse. A hypothesis that something material travels on hands. A solution of chlorinated lime. And a mortality curve that falls off a cliff.</p></div>
+<div class="beat"><p>Every piece of that is correct. Now watch what the profession does with it.</p></div>
+<h2 id="01-semmelweis-65">ACT III — THE THIRTY CAUSES</h2>
+<div class="beat"><aside class="ve"><span>Medical faculty portraits, formal, cold</span></aside><p>The objection was not really about evidence. It was about what the evidence implied.</p></div>
+<div class="beat"><p>The concept that they themselves might be the source of infection — and therefore emblematic of some failure of diligence — alienated many of his colleagues.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>Accepting the hypothesis meant accepting responsibility for thousands of deaths.</p></div>
+<div class="beat"><aside class="ve"><span>Carl Braun portrait</span></aside><p>His most ardent opponent was Carl Braun, who lived from 1822 to 1891, and who succeeded Semmelweis as assistant professor in Vienna.<button class="cita" data-fuente="doi:10.1093/shm/hkab097" aria-label="Fuente 5">5</button></p></div>
+<div class="beat"><p>Braun compiled a list of thirty unrelated causes of puerperal fever.  Milk secretion. Chilling. Wrong diet. Missing ventilation. Crowded hospital wards.<button class="cita" data-fuente="doi:10.1093/shm/hkab097" aria-label="Fuente 5">5</button></p></div>
+<div class="beat"><aside class="ve"><span>The list rendered as text on screen, scrolling</span></aside><p>Thirty causes. Every one of them a reason it was not the physicians&#x27; fault.</p></div>
+<div class="beat"><p>This is what a profession looks like when it protects itself. Not a conspiracy — a preference. Thirty diffuse explanations are more comfortable than one specific accusation, and the thirty were defended by serious men in good faith who could not bear the alternative.</p></div>
+<div class="beat"><p>Braun was not alone. Prominent physicians including Rudolf Virchow and Friedrich Scanzoni rejected the findings.  Virchow was arguably the most influential pathologist alive.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><aside class="ve"><span>Semmelweis writing, candlelight, agitated</span></aside><p>Now the uncomfortable half of the story.</p></div>
+<div class="beat"><p>Semmelweis failed to publish his findings in a comprehensive and compelling manner that would have convinced his medical peers. Instead he relied heavily on giving direct instructions and implementing hospital protocols, which restricted the widespread adoption of his discoveries.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><aside class="ve"><span>Blank page, pen, unused</span></aside><p>He had, in his own words in the preface to his eventual book, an innate aversion to writing.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>His findings were first reported not by him, but by his friend Ferdinand von Hebra, in an article in December 1847 and another in April 1848.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>In 1849 he was invited to present his findings to the Vienna Medical Society. He declined, and left his colleague Josef Skoda to speak on his behalf.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>Empty podium, lecture hall</span></aside><p>Read that again. The most important preventive finding of the century, and its author was offered the floor at the leading medical society in the German-speaking world — and did not take it.</p></div>
+<div class="beat"><p>His reluctance to personally share and publish his work further hindered its acceptance.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>Two portraits side by side: the martyr and the man</span></aside><p>This is where the comfortable version of the story breaks. Semmelweis was not simply a genius shouted down by fools. He was a genius who would not write, would not speak, and would not persuade — and who was then shouted down by fools.</p></div>
+<div class="beat"><p>Both things are true. The second does not excuse the first, and the first does not excuse the second.</p></div>
+<div class="beat"><aside class="ve"><span>Harsh letters, handwriting, fast cuts</span></aside><p>His abrasive demeanour did not help. He made harsh statements about people who were not in his favour, which further distanced him from other practitioners, and the opposition ultimately led to his dismissal from the Vienna General Hospital.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>He called his opponents murderers. He was, by the standards of his profession, impossible.</p></div>
+<div class="beat"><p>He was also right, and the people he was calling murderers were still killing women.</p></div>
+<div class="beat"><aside class="ve"><span>Budapest, St Rochus Hospital, period photograph</span></aside><p>In 1850 he returned to Budapest, where he took up a position at St Rochus Hospital.  He continued to implement his handwashing protocols there, achieving similarly impressive results, with maternal mortality dropping to less than 1 per cent.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>Less than one per cent. From a baseline that had run near ten.</p></div>
+<div class="beat"><p>He was appointed Professor of Theoretical and Practical Midwifery at the University of Pest in 1855.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><aside class="ve"><span>The book, 1861, close on the spine</span></aside><p>And then, finally, fourteen years after Kolletschka died, he wrote the book.</p></div>
+<div class="beat"><p>In 1861 he published a scholarly monograph: <em>Die Ätiologie, der Begriff und die Prophylaxis des Kindbettfiebers</em> — The Etiology, Concept and Prophylaxis of Childbed Fever.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button><button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>It was received with indifference by the medical establishment, who found the writing style inaccessible.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><aside class="ve"><span>Unread book, dust</span></aside><p>Fourteen years of silence, and then a book nobody could read.</p></div>
+<h2 id="01-semmelweis-93">RESOLUTION</h2>
+<div class="beat"><aside class="ve"><span>Darkening, slow</span></aside><p>The rejection and the criticism took a severe toll on his mental health.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>By the late 1850s his behaviour had become increasingly erratic, and he showed signs of severe depression and possible neurological disorder.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><aside class="ve"><span>Asylum corridor, contemporary photograph, held</span></aside><p>In 1865 he was committed to an asylum, where he died under tragic circumstances shortly afterwards.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>He was forty-seven years old.</p></div>
+<div class="beat"><aside class="ve"><span>Grave marker</span></aside><p>The interventions he advocated were only accepted after his death, as germ theory and antiseptic practices became widely recognised and better understood.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>That is the sentence. <em>After his death.</em> The proof had been available since 1847. The acceptance arrived once the man who had been shouting it was safely gone, and the idea could arrive attached to someone else&#x27;s name.</p></div>
+<div class="beat"><aside class="ve"><span>Modern surgical scrub, present day, bright</span></aside><p>Almost thirty years after Semmelweis first proposed his theory of a single necessary cause of puerperal infection, it was still contested among the leading experts.<button class="cita" data-fuente="doi:10.1093/shm/hkab097" aria-label="Fuente 5">5</button></p></div>
+<div class="beat"><p>Thirty years. Count the wards.</p></div>
+<h2 id="01-semmelweis-102">CLOSE</h2>
+<div class="beat"><aside class="ve"><span>Slow pull back from a modern hospital ward</span></aside><p>Today he is widely hailed as a pioneer in the history of medicine, for combating a deadly disease and saving countless lives simply by requiring doctors and healthcare workers to wash their hands.  He is called the saviour of mothers and the conqueror of childbed fever.  He is also called the father of infection control.<button class="cita" data-fuente="doi:10.3205/dgkh000608" aria-label="Fuente 1">1</button><button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button><button class="cita" data-fuente="doi:10.5152/jtgga.2013.08" aria-label="Fuente 3">3</button></p></div>
+<div class="beat"><p>His work on infection prevention remains highly relevant today, in contemporary practice aimed at controlling the spread of disease and improving patient safety.<button class="cita" data-fuente="doi:10.7759/cureus.71689" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><aside class="ve"><span>The &quot;6 Cs&quot; as text, then a seventh appears</span></aside><p>One recent review reads his life as a lesson in what advancing science actually requires: curiosity, courage, challenge, confidence, concentration, continuity. And then it adds a seventh that Semmelweis did not have — communication. Scientific progress depends not only on discovery, but on how it is shared.<button class="cita" data-fuente="doi:10.36519/idcm.2025.747" aria-label="Fuente 6">6</button></p></div>
+<div class="beat"><aside class="ve"><span>Hands under running water, held to the end</span></aside><p>The comfortable reading of this story is that we would have listened. That we are the second clinic, and the thirty causes belong to the past.</p></div>
+<div class="beat"><p>But the thirty causes were not stupid. They were produced by careful, credentialed, well-intentioned people working from a framework in which the true answer was not merely unlikely but insulting. The evidence was not hidden. It was published, replicated, and read.</p></div>
+<div class="beat"><p>It simply asked them to believe something about themselves that they were not prepared to believe.</p></div>
+<div class="beat"><p>And the man who found it could not bring himself to write it down for fourteen years.</p></div>
+<div class="beat"><p>Semmelweis was right. It did not save him. And it did not save the women who died in the thirty years the profession spent deciding.</p></div>
+<div class="beat"><p>Wash your hands.</p></div>
+  <div class="biblio"><h3>Fuentes citadas en este guion</h3><ol><li><span class="n">1</span><span>Ignaz Philipp Semmelweis (1818-1865) - a public health visionary and champion of hand hygiene.<span class="m">Ravel V, Pandiyan C, Chandran K · 2025</span><code>doi:10.3205/dgkh000608</code></span></li><li><span class="n">2</span><span>Pioneering Hand Hygiene: Ignaz Semmelweis and the Fight Against Puerperal Fever<span class="m">Sheuli Paul, Shradha Salunkhe, Kasireddy Sravanthi · 2024 · Cureus</span><code>doi:10.7759/cureus.71689</code></span></li><li><span class="n">3</span><span>Medicine in stamps-Ignaz Semmelweis and Puerperal Fever<span class="m">Ahmet Dogan Ataman, Emine Elif Vatanoglu, Gazi Yildirim · 2013 · Journal of the Turkish German Gynecological Association</span><code>doi:10.5152/jtgga.2013.08</code></span></li><li><span class="n">4</span><span>A twenty-first century perspective on concepts of modern epidemiology in Ignaz Philipp Semmelweis&#x27; work on puerperal sepsis.<span class="m">Stang A, Standl F, Poole C · 2022</span><code>doi:10.1007/s10654-022-00871-8</code></span></li><li><span class="n">5</span><span>Antiseptics leave the Clinic-The Introduction of (Puerperal) Prophylaxis in Austrian Midwifery Education (1870s-1880s).<span class="m">Hilber M · 2022</span><code>doi:10.1093/shm/hkab097</code></span></li><li><span class="n">6</span><span>Ignaz Philip Semmelweis: The Tragic Pioneer of Hand Hygiene.<span class="m">Keske Ş · 2025</span><code>doi:10.36519/idcm.2025.747</code></span></li></ol></div>
+</section>
+<section class="guion" id="02-antikythera">
+  <h1>The Machine That Should Not Exist</h1>
+  <dl class="metricas">
+    <div class="metrica"><dt>Duración con George</dt>
+      <dd class="aviso">11.3<span class="sub">min</span></dd></div>
+    <div class="metrica"><dt>Palabras narradas</dt><dd>1.969</dd></div>
+    <div class="metrica"><dt>Fuentes citadas</dt><dd>5</dd></div>
+    <div class="metrica"><dt>Banda 15–28 min</dt>
+      <dd class="aviso">Fuera</dd></div>
+    <div class="metrica"><dt>Narración</dt><dd>$1.21</dd></div>
+  </dl>
+  <h2 id="02-antikythera-0">COLD OPEN</h2>
+<div class="beat"><aside class="ve"><span>Fragment A, museum lighting, extreme close on corroded bronze</span></aside><p>This is the oldest computer in the world, and for most of the last century nobody could read it.</p></div>
+<div class="beat"><aside class="ve"><span>Pull back slowly to reveal the whole fragment</span></aside><p>It was found by Greek sponge divers in 1901.   In the early years, no-one knew what it was.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button><button class="cita" data-fuente="doi:10.22323/1.170.0018" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>That is not a figure of speech. For decades this object sat in a museum in Athens as a corroded lump of bronze that some people thought was an astrolabe, some thought was a navigational instrument, and some thought had fallen into the wreck from a much later ship, because the alternative was impossible.</p></div>
+<div class="beat"><aside class="ve"><span>The 82 fragments laid out on black</span></aside><p>Today it is split into 82 fragments, and only a third of the original survives — including 30 corroded bronze gearwheels.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>Thirty gears. Cut by hand. Two thousand years ago.</p></div>
+<div class="beat"><aside class="ve"><span>Gear teeth, macro, rotating</span></aside><p>Nothing else like it survives from antiquity. Nothing close. The next machine of comparable mechanical sophistication appears in Europe more than a millennium later.</p></div>
+<div class="beat"><p>And here is the part that should unsettle you: we did not decode it by finding more of it. We decoded it by learning to see inside what we already had.</p></div>
+<h2 id="02-antikythera-8">PROMISE</h2>
+<div class="beat"><aside class="ve"><span>X-ray CT slice, translucent bronze, gears emerging from the corrosion</span></aside><p>In 2005, a small British X-ray company took an eight-tonne cabinet to Greece.<button class="cita" data-fuente="doi:10.22323/1.170.0022" aria-label="Fuente 3">3</button></p></div>
+<div class="beat"><p>What came out of it changed the history of technology.</p></div>
+<div class="beat"><aside class="ve"><span>Text characters emerging from inside the metal</span></aside><p>Microfocus X-ray computed tomography let researchers see beneath the corrosion, count gear teeth, and read inscriptions which had lain unread for 2,000 years at the bottom of the Mediterranean.<button class="cita" data-fuente="doi:10.22323/1.170.0022" aria-label="Fuente 3">3</button></p></div>
+<div class="beat"><p>Thousands of tiny text characters, buried inside the fragments.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>Slow assembly animation of the mechanism</span></aside><p>This is the story of how a machine explained itself, in its own words, from inside a block of corrosion — and what it turned out to be doing.</p></div>
+<h2 id="02-antikythera-14">ACT I — WHAT IT DOES</h2>
+<div class="beat"><aside class="ve"><span>Reconstruction, front dial, hand turning a knob</span></aside><p>Start with the object as a machine, before the mystery.</p></div>
+<div class="beat"><p>Using a handle — probably similar to a doorknob — the user could insert an input date on a dial on its front side.<button class="cita" data-fuente="doi:10.22323/1.170.0007" aria-label="Fuente 4">4</button></p></div>
+<div class="beat"><p>That is the entire user interface. You set a date. You turn a crank.</p></div>
+<div class="beat"><aside class="ve"><span>Gear train turning, cutaway</span></aside><p>The calculations were made using a set of gears, at least thirty of them, and the results were displayed on several scientific scales.<button class="cita" data-fuente="doi:10.22323/1.170.0007" aria-label="Fuente 4">4</button></p></div>
+<div class="beat"><aside class="ve"><span>Sun, Moon, planets, orbital diagram</span></aside><p>It was used to calculate the diurnal and annual motion of the Sun, the Moon, and most probably the planets among the stars.<button class="cita" data-fuente="doi:10.22323/1.170.0007" aria-label="Fuente 4">4</button></p></div>
+<div class="beat"><p>It put into practice the astronomical knowledge of the ancient Greeks about the motion of these objects with astonishing accuracy — including eccentric gearing for the anomalous orbit of the Moon.<button class="cita" data-fuente="doi:10.22323/1.170.0007" aria-label="Fuente 4">4</button></p></div>
+<div class="beat"><aside class="ve"><span>The Moon speeding up and slowing down, animated</span></aside><p>Stop on that. The Moon does not move at a constant speed across the sky. It accelerates and decelerates over its orbit. That irregularity is called the lunar anomaly, and it is a genuinely hard thing to model.</p></div>
+<div class="beat"><p>This machine models it. Mechanically. With bronze gears, one of which is deliberately mounted off-centre so that its rotation speeds up and slows down in step with the real Moon.</p></div>
+<div class="beat"><aside class="ve"><span>Eclipse, total solar, archive</span></aside><p>It could also predict eclipses of the Sun and the Moon, from the Saros period, which was found on one of its back scales.<button class="cita" data-fuente="doi:10.22323/1.170.0007" aria-label="Fuente 4">4</button></p></div>
+<div class="beat"><p>And it calculated the dates of the Olympic Games, and of the other major crown games of ancient Greece.<button class="cita" data-fuente="doi:10.22323/1.170.0007" aria-label="Fuente 4">4</button></p></div>
+<div class="beat"><aside class="ve"><span>Olympic stadium ruins, present day</span></aside><p>That last function is the one that tells you what this object was for. A machine that predicts eclipses is an instrument of astronomy. A machine that also tells you when the games are is an instrument of <em>civilisation</em> — it is keeping the calendar of an entire culture, sacred and civic at once.</p></div>
+<h2 id="02-antikythera-26">PIVOT — SEEING INSIDE</h2>
+<div class="beat"><aside class="ve"><span>The fragments again, damaged, unreadable</span></aside><p>Now the problem.</p></div>
+<div class="beat"><p>The major surviving fragments are labelled A to G, and the minor fragments 1 to 75. They are partial, damaged, corroded and covered in accretions.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>Fragment A alone contains 27 of the surviving 30 gears, with a single gear in each of Fragments B, C and D.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>Fragment A rotating, opaque</span></aside><p>So almost the entire gearbox is inside one lump of metal that you cannot open, cannot see into, and must not damage.</p></div>
+<div class="beat"><p>The fragments are, in the words of the team that solved them, a 3D puzzle of great complexity.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>X-Tek cabinet being lowered by crane, reconstruction</span></aside><p>Which brings us to 2005, and the eight-tonne cabinet.</p></div>
+<div class="beat"><p>X-Tek Systems, at the time a small UK-based X-ray company, developed a high-resolution, high-voltage X-ray source and took it to Greece.  Their CT was not medical CT. Medical scanners are built to image soft tissue at low doses. This needed to punch through solid corroded bronze and resolve detail at the millimetre level.<button class="cita" data-fuente="doi:10.22323/1.170.0022" aria-label="Fuente 3">3</button></p></div>
+<div class="beat"><aside class="ve"><span>CT reconstruction building up slice by slice</span></aside><p>In 2005, microfocus X-ray computed tomography and Polynomial Texture Mapping of the Mechanism&#x27;s 82 fragments added substantial data.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>Gear teeth being counted on screen, numbers appearing</span></aside><p>They could now count teeth on gears they had never seen. They could read letters carved on plates buried inside a solid block.</p></div>
+<div class="beat"><p>The fragments are rich in evidence at the millimetre level — fine details of mechanical components and thousands of tiny text characters, buried inside and unread for more than 2,000 years.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>The back of the machine, solved, animated</span></aside><p>This led to a solution to the back of the machine, with the discovery of eclipse prediction and the mechanisation of the lunar anomaly.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>The back was solved. And then the work stopped, for fifteen years, because of the front.</p></div>
+<h2 id="02-antikythera-39">ACT II — THE FRONT</h2>
+<div class="beat"><aside class="ve"><span>Front of the mechanism, mostly missing, dark</span></aside><p>The front remained deeply controversial, due to loss of physical evidence.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>This is the honest state of the problem. The back survived well enough to be read. The front did not. Most of the front gearing is simply gone — dissolved into the seabed over two millennia.</p></div>
+<div class="beat"><aside class="ve"><span>Inscription plate, letters visible in CT</span></aside><p>But the machine had left instructions.</p></div>
+<div class="beat"><p>Reconstructing the Cosmos at the front begins with analysing some remarkable inscriptions: the Front Cover Inscription and the Back Cover Inscription.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>Text overlay, Greek characters, translated</span></aside><p>The Back Cover Inscription describes the front display as a Planetarium — a Cosmos arranged in rings, with planets marked by &quot;little spheres&quot; and the Sun as a &quot;little golden sphere&quot; with a &quot;ray&quot; and a &quot;pointer&quot;.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>Rings of the Cosmos, animated, gold</span></aside><p>Read that again, because it is extraordinary. The people who built this machine wrote down what it looked like when it worked. On the cover. Like a manual.</p></div>
+<div class="beat"><p>Two thousand years later, with the mechanism itself destroyed, that description is how we know what the missing parts were doing.</p></div>
+<div class="beat"><aside class="ve"><span>Planetary cycles, numbers on screen</span></aside><p>The Front Cover Inscription lists the synodic cycles of the planets — the cycles relative to the Sun. It is a systematic list, itemising the synodic events and the intervals in days between them, with the planets written in the same geocentric order as the Back Cover Inscription.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>A reconstruction failing to fit, red</span></aside><p>And here is where it got difficult. Inscriptions specifying complex planetary periods forced new thinking on the mechanisation of this Cosmos — and no previous reconstruction had come close to matching the data.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>Every model built before had been wrong. Not slightly wrong. It did not match the numbers the machine itself had written on its own cover.</p></div>
+<h2 id="02-antikythera-50">RECAP</h2>
+<div class="beat"><aside class="ve"><span>Fast montage of the previous beats</span></aside><p>So: an object recovered in 1901 that nobody could identify. Eighty-two fragments, a third of the original, thirty surviving gears, twenty-seven of them locked inside a single lump. A tomography rig in 2005 that read the writing inside the metal. A back that gave up eclipse prediction and the lunar anomaly. A front that did not.</p></div>
+<div class="beat"><p>And an inscription, carved by the builders, describing a machine that no reconstruction could produce.</p></div>
+<h2 id="02-antikythera-53">ACT III — THE SOLUTION</h2>
+<div class="beat"><aside class="ve"><span>The 2021 model, assembling, precise</span></aside><p>In 2021, a team led by Tony Freeth published a new model.</p></div>
+<div class="beat"><p>Their discoveries led to a model satisfying and explaining the evidence. Solving this complex 3D puzzle, they wrote, reveals a creation of genius.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>Gear ratios, prime factorisations on screen</span></aside><p>The method is worth understanding, because it is not archaeology in the shovel sense. It is closer to cryptanalysis.</p></div>
+<div class="beat"><p>The surviving inscriptions give certain planetary periods. Others are missing. The team showed that the missing periods for Mercury and Mars are uniquely determined by their process.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>Single solution highlighted among alternatives</span></aside><p>Uniquely determined. Given the constraints — accuracy, factorisability into gear teeth, and economy of design — there is exactly one answer the builders could have used.</p></div>
+<div class="beat"><p>For Jupiter there were two additional options sharing a prime factor. The team showed one was not possible and the other very unlikely.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>Venus mechanism, epicycle, animated</span></aside><p>And then there is the physical evidence that confirms it.</p></div>
+<div class="beat"><p>No other surviving gear in the Mechanism has a disk attached.  In an inferior planet mechanism, a pin-and-slotted follower requires a pin attached to the epicyclic gear but beyond its edge — and this attached disk is exactly the right size to carry that pin at the correct distance from the centre to model the maximum elongation of Venus.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>The disk, macro, then the Venus orbit</span></aside><p>A single anomalous disk. On one gear. The right size, to a millimetre, to do one specific job.</p></div>
+<div class="beat"><aside class="ve"><span>The bearing on Spoke B</span></aside><p>There is one more, and it is my favourite.</p></div>
+<div class="beat"><p>There is a prominent bearing on one spoke of the main drive wheel whose purpose nobody had ever explained. The 2021 model shows a solution: the bearing enables a four-gear epicyclic system that calculates the lunar nodes — the points where the Moon&#x27;s orbit crosses the Sun&#x27;s path, which is what determines whether an eclipse happens.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><p>And the proposed tooth counts mean the bearing sits in exactly the right place on that spoke.  No other use had previously been found for it.<button class="cita" data-fuente="doi:10.1038/s41598-021-84310-w" aria-label="Fuente 1">1</button></p></div>
+<div class="beat"><aside class="ve"><span>The model completing, all systems turning</span></aside><p>This is what a correct reconstruction looks like. Not a plausible story — a model that predicts, in advance, where an unexplained piece of hardware must be, and then finds it there.</p></div>
+<h2 id="02-antikythera-67">RESOLUTION</h2>
+<div class="beat"><aside class="ve"><span>The complete mechanism turning, slow, reverent</span></aside><p>With its astonishing lunar anomaly mechanism, the Antikythera Mechanism emerges as a landmark in the history of technology and one of the true wonders of the ancient world.<button class="cita" data-fuente="doi:10.22323/1.170.0018" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>The latest model includes a mechanical representation of the Cosmos that exactly matches the inscription on the back cover of the instrument.  The researchers believe we are now close to the complete machine.<button class="cita" data-fuente="doi:10.22323/1.170.0018" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><aside class="ve"><span>Portraits: Rehm, Price, Wright, Freeth</span></aside><p>It took a hundred years, and it took a chain of people who each solved part of it: Albert Rehm, Derek de Solla Price, Michael Wright, and most recently the members of the Antikythera Mechanism Research Project.<button class="cita" data-fuente="doi:10.22323/1.170.0018" aria-label="Fuente 2">2</button></p></div>
+<div class="beat"><p>Not one of them could have finished it alone. Rehm could not have had CT. Price could not have had the inscriptions. The 2021 team could not have started from scratch.</p></div>
+<div class="beat"><aside class="ve"><span>The single object, alone, on black</span></aside><p>And here is the thing that makes this object different from almost every other discovery in science.</p></div>
+<div class="beat"><p>There is only one of them.<button class="cita" data-fuente="doi:10.22323/1.170.0047" aria-label="Fuente 5">5</button></p></div>
+<div class="beat"><aside class="ve"><span>Contrast: many astronomical objects vs one artefact</span></aside><p>That is a genuine epistemic problem, and one astronomer has put it precisely. In astronomy, the study of a <em>collection</em> of objects greatly aids our understanding — you find one strange thing, then you find forty more, and the forty teach you what the one meant.<button class="cita" data-fuente="doi:10.22323/1.170.0047" aria-label="Fuente 5">5</button></p></div>
+<div class="beat"><p>With the Antikythera Mechanism, there is no second example. There never has been. Every conclusion has to be wrung out of one damaged artefact, and there is no way to check it against another.</p></div>
+<h2 id="02-antikythera-76">CLOSE</h2>
+<div class="beat"><aside class="ve"><span>Seabed, dark water, slow drift</span></aside><p>Two thousand years ago, someone in the Greek world could build this.</p></div>
+<div class="beat"><p>They could model the irregular motion of the Moon in bronze. They could predict eclipses. They could track five planets. They could write the cycles on the cover so that the owner would know what they were looking at.</p></div>
+<div class="beat"><aside class="ve"><span>The gap: a timeline, empty for a thousand years</span></aside><p>And then the capability disappears from the record for over a millennium.</p></div>
+<div class="beat"><p>We do not know who made it. We do not know how many were made. We do not know what else that workshop could do, because nothing else from it survived — this object exists at all only because a ship sank, and the sea kept it.</p></div>
+<div class="beat"><aside class="ve"><span>The fragments, museum, present day</span></aside><p>Which raises the question the object actually asks, and it is not &quot;how did they do it&quot;.</p></div>
+<div class="beat"><p>It is: what else did they do that we do not know about, because no ship happened to sink at the right moment?</p></div>
+<div class="beat"><aside class="ve"><span>Slow fade on Fragment A</span></aside><p>The Antikythera Mechanism is not evidence of a lost civilisation of superscience. It is evidence of something more ordinary and more disturbing — that our picture of ancient technology is built almost entirely on what happened to survive, and that survival is close to random.</p></div>
+<div class="beat"><p>One shipwreck moved the known history of gearing back by a thousand years.</p></div>
+<div class="beat"><p>There is no reason to believe it was the only machine of its kind. There is only a reason to believe it was the only one that sank in the right place.</p></div>
+  <div class="biblio"><h3>Fuentes citadas en este guion</h3><ol><li><span class="n">1</span><span>A Model of the Cosmos in the ancient Greek Antikythera Mechanism.<span class="m">Freeth T, Higgon D, Dacanalis A · 2021</span><code>doi:10.1038/s41598-021-84310-w</code></span></li><li><span class="n">2</span><span>Building the Cosmos in the Antikythera Mechanism<span class="m">Tony Freeth · 2013 · Proceedings of From Antikythera to the Square Kilometre Array: Lessons from the Ancients — PoS(Antikythera &amp;amp; SKA)</span><code>doi:10.22323/1.170.0018</code></span></li><li><span class="n">3</span><span>X-ray Tomography of the Antikythera Mechanism<span class="m">Andrew Ramsey · 2013 · Proceedings of From Antikythera to the Square Kilometre Array: Lessons from the Ancients — PoS(Antikythera &amp;amp; SKA)</span><code>doi:10.22323/1.170.0022</code></span></li><li><span class="n">4</span><span>The Antikythera Mechanism: From the bottom of the sea to the scrutiny of modern technology<span class="m">John H. Seiradakis · 2013 · Proceedings of From Antikythera to the Square Kilometre Array: Lessons from the Ancients — PoS(Antikythera &amp;amp; SKA)</span><code>doi:10.22323/1.170.0007</code></span></li><li><span class="n">5</span><span>Hanny’s Voorwerp and the Antikythera Mechanism – similarities, differences and insights.<span class="m">Michael Garrett · 2013 · Proceedings of From Antikythera to the Square Kilometre Array: Lessons from the Ancients — PoS(Antikythera &amp;amp; SKA)</span><code>doi:10.22323/1.170.0047</code></span></li></ol></div>
+</section>
+</main>
+<script>
+const CAT = {"doi:10.3205/dgkh000608": {"titulo": "Ignaz Philipp Semmelweis (1818-1865) - a public health visionary and champion of hand hygiene.", "autores": "Ravel V, Pandiyan C, Chandran K", "anio": 2025, "contenedor": "", "url": "https://europepmc.org/article/PMC/PMC12720402", "revisada": true, "extractos": 30}, "doi:10.7759/cureus.71689": {"titulo": "Pioneering Hand Hygiene: Ignaz Semmelweis and the Fight Against Puerperal Fever", "autores": "Sheuli Paul, Shradha Salunkhe, Kasireddy Sravanthi", "anio": 2024, "contenedor": "Cureus", "url": "https://doi.org/10.7759/cureus.71689", "revisada": true, "extractos": 25}, "doi:10.5152/jtgga.2013.08": {"titulo": "Medicine in stamps-Ignaz Semmelweis and Puerperal Fever", "autores": "Ahmet Dogan Ataman, Emine Elif Vatanoglu, Gazi Yildirim", "anio": 2013, "contenedor": "Journal of the Turkish German Gynecological Association", "url": "https://doi.org/10.5152/jtgga.2013.08", "revisada": true, "extractos": 1}, "doi:10.1007/s10654-022-00871-8": {"titulo": "A twenty-first century perspective on concepts of modern epidemiology in Ignaz Philipp Semmelweis' work on puerperal sepsis.", "autores": "Stang A, Standl F, Poole C", "anio": 2022, "contenedor": "", "url": "https://europepmc.org/article/PMC/PMC9209376", "revisada": true, "extractos": 39}, "doi:10.1093/shm/hkab097": {"titulo": "Antiseptics leave the Clinic-The Introduction of (Puerperal) Prophylaxis in Austrian Midwifery Education (1870s-1880s).", "autores": "Hilber M", "anio": 2022, "contenedor": "", "url": "https://europepmc.org/article/PMC/PMC8902014", "revisada": true, "extractos": 128}, "doi:10.36519/idcm.2025.747": {"titulo": "Ignaz Philip Semmelweis: The Tragic Pioneer of Hand Hygiene.", "autores": "Keske Ş", "anio": 2025, "contenedor": "", "url": "https://europepmc.org/article/PMC/PMC12255899", "revisada": true, "extractos": 13}, "doi:10.1038/s41598-021-84310-w": {"titulo": "A Model of the Cosmos in the ancient Greek Antikythera Mechanism.", "autores": "Freeth T, Higgon D, Dacanalis A", "anio": 2021, "contenedor": "", "url": "https://europepmc.org/article/PMC/PMC7955085", "revisada": true, "extractos": 44}, "doi:10.22323/1.170.0018": {"titulo": "Building the Cosmos in the Antikythera Mechanism", "autores": "Tony Freeth", "anio": 2013, "contenedor": "Proceedings of From Antikythera to the Square Kilometre Array: Lessons from the Ancients — PoS(Antikythera &amp; SKA)", "url": "https://doi.org/10.22323/1.170.0018", "revisada": false, "extractos": 1}, "doi:10.22323/1.170.0022": {"titulo": "X-ray Tomography of the Antikythera Mechanism", "autores": "Andrew Ramsey", "anio": 2013, "contenedor": "Proceedings of From Antikythera to the Square Kilometre Array: Lessons from the Ancients — PoS(Antikythera &amp; SKA)", "url": "https://doi.org/10.22323/1.170.0022", "revisada": false, "extractos": 1}, "doi:10.22323/1.170.0007": {"titulo": "The Antikythera Mechanism: From the bottom of the sea to the scrutiny of modern technology", "autores": "John H. Seiradakis", "anio": 2013, "contenedor": "Proceedings of From Antikythera to the Square Kilometre Array: Lessons from the Ancients — PoS(Antikythera &amp; SKA)", "url": "https://doi.org/10.22323/1.170.0007", "revisada": false, "extractos": 1}, "doi:10.22323/1.170.0047": {"titulo": "Hanny’s Voorwerp and the Antikythera Mechanism – similarities, differences and insights.", "autores": "Michael Garrett", "anio": 2013, "contenedor": "Proceedings of From Antikythera to the Square Kilometre Array: Lessons from the Ancients — PoS(Antikythera &amp; SKA)", "url": "https://doi.org/10.22323/1.170.0047", "revisada": false, "extractos": 1}};
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('.cita');
+  if (!b) return;
+  const beat = b.closest('.beat');
+  const abierta = beat.querySelector('.ficha');
+  const mismo = abierta && abierta.dataset.fuente === b.dataset.fuente;
+  beat.querySelectorAll('.ficha').forEach(f => f.remove());
+  beat.querySelectorAll('.cita').forEach(c => c.setAttribute('aria-expanded','false'));
+  if (mismo) return;
+
+  const f = CAT[b.dataset.fuente];
+  const d = document.createElement('div');
+  d.className = 'ficha';
+  d.dataset.fuente = b.dataset.fuente;
+  if (!f) {
+    d.innerHTML = '<span class="t">Fuente no encontrada en el dossier</span>' +
+      '<span class="id">' + b.dataset.fuente + '</span>';
+  } else {
+    const meta = [f.autores, f.anio, f.contenedor].filter(Boolean).join(' · ');
+    d.innerHTML =
+      '<span class="t">' + f.titulo + '</span>' +
+      '<span class="m">' + meta + '</span>' +
+      (f.extractos ? '<span class="m"> · ' + f.extractos + ' extracto' +
+        (f.extractos === 1 ? '' : 's') + ' recuperado' + (f.extractos === 1 ? '' : 's') + '</span>' : '') +
+      '<span class="id">' + b.dataset.fuente +
+      (f.url ? ' — <a href="' + f.url + '" target="_blank" rel="noopener">abrir</a>' : '') +
+      '</span>';
+  }
+  beat.appendChild(d);
+  b.setAttribute('aria-expanded','true');
+});
+</script>
