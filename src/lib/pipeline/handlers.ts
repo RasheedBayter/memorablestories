@@ -376,11 +376,10 @@ export function defaultHandlers(): StageHandlers {
 }
 
 /** Etapas cableadas de punta a punta hoy. El resto lanza StageNotWiredError. */
-export const WIRED_STAGES = ['ideate', 'assets'] as const;
+export const WIRED_STAGES = ['ideate', 'research', 'assets'] as const;
 
 /** Etapas con el encadenado pendiente, con lo que falta en cada módulo. */
 export const PENDING_WIRING: Record<string, string> = {
-  research: 'research.dossierDesdeBusquedas()',
   script: "AdvanceResult necesita el caso 'awaiting_handoff'",
   narrate: 'narration.narrateOptionsFromEnv()',
   render: 'production.renderEpisode()',

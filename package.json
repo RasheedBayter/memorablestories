@@ -11,7 +11,8 @@
     "ideas": "tsx scripts/ingest-ideas.ts",
     "verify:canon": "tsx scripts/verify-canon.ts",
     "episode": "tsx scripts/episode.ts",
-    "narrate:sample": "tsx scripts/narrate-sample.ts"
+    "narrate:sample": "tsx scripts/narrate-sample.ts",
+    "audit:dossier": "tsx scripts/audit-dossier.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",
