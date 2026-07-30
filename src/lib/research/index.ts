@@ -132,3 +132,4 @@ export type {
 export { ContadorFetch } from './fetch-metrics';
 export type { InformeFetch, RegistroFetch } from './fetch-metrics';
 export * from './europepmc';
+export * from './relevance';

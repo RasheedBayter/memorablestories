@@ -4,6 +4,7 @@ import {
   buscarFuentesAcademicas,
   dossierDesdeBusquedas,
   evaluarPuertaCobertura,
+  filtrarResultados,
   type ResultadoBusqueda,
 } from '@/lib/research';
 import {
@@ -112,7 +113,27 @@ function researchHandler(deps: HandlerDeps) {
       );
     }
 
-    const { dossier, resumen } = dossierDesdeBusquedas([busqueda], { tema: topic });
+    // Un buscador de texto completo devuelve todo lo que MENCIONA el término.
+    // Sin este filtro, 87 % de los extractos del dossier de Anticitera venían de
+    // papers sobre sesgo en IA y neurociencia que citaban la palabra una vez en
+    // la introducción, como metáfora. Verificar contra ellos produce aciertos por
+    // casualidad sobre vocabulario compartido: el peor falso positivo, porque
+    // parece un acierto.
+    const { relevantes, descartadas, distintivos } = filtrarResultados(
+      busqueda.resultados,
+      topic,
+    );
+    if (descartadas.length) {
+      ctx.log(
+        `Relevancia [${distintivos.join(', ')}]: ` +
+          `${relevantes.length} tratan el tema, ${descartadas.length} solo lo mencionan.`,
+      );
+    }
+
+    const { dossier, resumen } = dossierDesdeBusquedas(
+      [{ ...busqueda, resultados: relevantes }],
+      { tema: topic },
+    );
     const fuentes = dossier.todas();
     const citables = dossier.citables();
 
