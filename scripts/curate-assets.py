@@ -37,15 +37,19 @@ import urllib.error
 import urllib.request
 
 WIKI = 'https://en.wikipedia.org/w/api.php'
-UA = 'MemorableStories/0.1 (documental histórico; contacto vía repositorio)'
+# Wikimedia pide un User-Agent con contacto REAL y aplica límites más duros a
+# los genéricos. Medido: con throttle activo ambos UA devolvían 429 por igual,
+# así que no era la causa — el límite es por IP y por ritmo. Se deja el contacto
+# de todas formas porque su política lo exige.
+UA = 'MemorableStories/0.1 (https://github.com/RasheedBayter/memorablestories; rasheed@y.uno)'
 DESTINO = pathlib.Path('scripts-out/01-semmelweis/assets')
-PAUSA_S = 2.5
+PAUSA_S = 4.0
 # Reintento con espera creciente. Wikimedia responde 429 y, una vez que te
 # limita, seguir pidiendo al mismo ritmo mantiene el castigo indefinidamente: la
 # única salida es esperar más en cada intento. Sin esto, una corrida perdió 33 de
 # 36 planos y la siguiente 11 de 21.
 REINTENTOS = 5
-ESPERA_429 = [5, 15, 40, 90, 180]
+ESPERA_429 = [20, 60, 150, 300, 600]
 
 
 def _con_reintento(fn, etiqueta: str):

@@ -80,29 +80,48 @@ def construir_segmento(idx: int, seccion: str, imagenes: list[dict], dur: float)
 
     entradas, filtros = [], []
     for i, img in enumerate(usar):
-        entradas += ['-loop', '1', '-t', f'{por_plano:.3f}', '-i', img['fichero']]
+        # `-framerate` ANTES de `-i` fija la cadencia de ENTRADA. Sin él, `-loop 1`
+        # entra a 25 fps y `-t 3` produce 75 frames en vez de 90: el segmento sale
+        # un 17 % corto y la narración se desincroniza acumulativamente.
+        entradas += ['-framerate', str(FPS), '-loop', '1',
+                     '-t', f'{por_plano:.3f}', '-i', img['fichero']]
         z = zoom_seguro(img['ancho'], img['alto'])
         frames = max(2, int(por_plano * FPS))
 
         if z <= 1.001:
-            # Plano fijo: encuadra, rellena con barras y no toques nada más.
+            # Plano fijo. Una imagen pequeña ampliada a pantalla completa se ve
+            # blanda, así que se encuadra a su tamaño con fondo desenfocado de
+            # ella misma: es la convención de archivo y no finge resolución que
+            # no existe.
             filtros.append(
-                f'[{i}:v]scale={W}:{H}:force_original_aspect_ratio=decrease,'
-                f'pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:color=black,'
+                f'[{i}:v]split[fg{i}][bg{i}];'
+                f'[bg{i}]scale={W}:{H}:force_original_aspect_ratio=increase,'
+                f'crop={W}:{H},gblur=sigma=28,eq=brightness=-0.14[b{i}];'
+                f'[fg{i}]scale={W}:{H}:force_original_aspect_ratio=decrease[f{i}];'
+                f'[b{i}][f{i}]overlay=(W-w)/2:(H-h)/2,'
                 f'setsar=1,fps={FPS},format=yuv420p[v{i}]')
         else:
-            # zoompan trabaja sobre la imagen ya ampliada: hacerlo al revés
-            # cuantiza el desplazamiento a píxeles de origen y produce el
-            # tirón característico del Ken Burns mal hecho.
-            grande_w, grande_h = W * 4, H * 4
-            paso = (z - 1) / frames
-            direccion = 'in' if i % 2 == 0 else 'out'
-            expr_z = (f"'min(zoom+{paso:.6f},{z:.4f})'" if direccion == 'in'
-                      else f"'if(lte(zoom,1.0),{z:.4f},max(1.0,zoom-{paso:.6f}))'")
+            # zoompan trabaja sobre la imagen YA ampliada: hacerlo al revés
+            # cuantiza el desplazamiento a píxeles de origen y produce el tirón
+            # característico del Ken Burns mal hecho. 2x la salida basta para
+            # zoom <= 1,30 y evita escalar a 8K, que multiplica el tiempo de
+            # render sin ganar un píxel visible.
+            grande_w, grande_h = W * 2, H * 2
+            paso = (z - 1) / max(1, frames - 1)
+
+            # `d=1` y rampa sobre `on`, NO `d=frames` acumulando sobre `zoom`.
+            # Con `d=N` zoompan emite N frames POR CADA frame de entrada, y como
+            # `-loop 1 -t` ya produce una secuencia, el segmento salía 75 veces
+            # más largo. Medido: un clip de 3 s daba 6.750 frames en vez de 90.
+            if i % 2 == 0:
+                expr_z = f"'min(1+{paso:.6f}*on,{z:.4f})'"
+            else:
+                expr_z = f"'max({z:.4f}-{paso:.6f}*on,1.0)'"
+
             filtros.append(
                 f'[{i}:v]scale={grande_w}:{grande_h}:force_original_aspect_ratio=increase,'
                 f'crop={grande_w}:{grande_h},'
-                f'zoompan=z={expr_z}:d={frames}:'
+                f'zoompan=z={expr_z}:d=1:'
                 f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps={FPS},"
                 f'setsar=1,format=yuv420p[v{i}]')
 
@@ -158,7 +177,30 @@ def main() -> None:
         ['ffmpeg', '-y', '-hide_banner', '-loglevel', 'error',
          '-f', 'concat', '-safe', '0', '-i', str(lista), '-c', 'copy', str(mudo)],
         check=True, capture_output=True)
-    print(f'\n  vídeo mudo  {ffprobe_dur(mudo):.1f}s')
+    dur_video = ffprobe_dur(mudo)
+    dur_audio = ffprobe_dur(NARRACION)
+    print(f'\n  vídeo mudo  {dur_video:.1f}s   ·   narración {dur_audio:.1f}s')
+
+    # El vídeo sale SIEMPRE algo más corto que la narración: `-t` por plano se
+    # cuantiza a frames enteros y la pérdida se acumula sobre ~100 planos. En la
+    # primera corrida fueron 7,7 s, y como el mux usa `-shortest`, esos segundos
+    # se los comía del FINAL del audio: el cierre del guion desaparecía sin que
+    # nada avisara. Se rellena con una cola congelada del último frame.
+    #
+    # `tpad` y no un plano nuevo a propósito: prolongar la última imagen es
+    # invisible; meter otra imagen en el cierre cambia el montaje.
+    falta = dur_audio - dur_video
+    if falta > 0.04:
+        cola = BASE / 'video-mudo-pad.mp4'
+        subprocess.run(
+            ['ffmpeg', '-y', '-hide_banner', '-loglevel', 'error', '-i', str(mudo),
+             '-vf', f'tpad=stop_mode=clone:stop_duration={falta + 0.2:.3f}',
+             '-c:v', 'libx264', '-preset', 'medium', '-crf', '20',
+             '-g', '60', '-keyint_min', '60', '-sc_threshold', '0',
+             '-pix_fmt', 'yuv420p', '-r', str(FPS), '-an', str(cola)],
+            check=True, capture_output=True)
+        mudo = cola
+        print(f'  cola congelada de {falta + 0.2:.2f}s → {ffprobe_dur(mudo):.1f}s')
 
     # Capítulos como metadatos: YouTube los lee, y son las MISMAS fronteras.
     meta = BASE / 'chapters.txt'
