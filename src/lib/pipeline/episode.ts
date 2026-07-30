@@ -144,7 +144,12 @@ export async function advanceEpisode(
       stage: nextStage(stage),
     };
 
-    const closed = endStage(advanced, stage, { notes: outcome.notes }, now);
+    // Hora NUEVA al cerrar. Reutilizar el `now` de la apertura registraba todas
+    // las etapas con duración cero, y con ello el pipeline perdía la única
+    // medida que tiene de sí mismo: `research 0.0 s` en un episodio real.
+    // Cuando `opts.now` viene inyectado se respeta, para que las pruebas sigan
+    // siendo deterministas.
+    const closed = endStage(advanced, stage, { notes: outcome.notes }, opts.now ?? new Date());
     await store.save(closed);
 
     for (const note of outcome.notes ?? []) log(`  ${note}`);
@@ -154,7 +159,7 @@ export async function advanceEpisode(
     const message = err instanceof Error ? err.message : String(err);
     // El estado se queda EN la etapa fallida, con el error registrado. El
     // siguiente paso del loop reintenta; al agotar intentos, escala a humano.
-    const failed = endStage(working, stage, { error: message }, now);
+    const failed = endStage(working, stage, { error: message }, opts.now ?? new Date());
     await store.save(failed);
     log(`✘ ${stage}: ${message}`);
     return { kind: 'failed', stage, error: message, attempts: attemptsSoFar + 1 };
