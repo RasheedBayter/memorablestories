@@ -33,7 +33,7 @@ EPISODIOS = RAIZ / '.episodes'
 WPM = 174
 VOZ = 'George'
 
-ANCLA = re.compile(r'\[((?:doi|isbn|url|s2|t):[^\]]+)\]')
+ANCLA = re.compile(r'\[((?:doi|isbn|url|s2|film|t):[^\]]+)\]')
 
 
 def catalogo_fuentes() -> dict[str, dict]:

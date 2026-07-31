@@ -1,26 +1,156 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Memorable Stories — sistema de diseño
+   Sala de control, no herramienta de "generar con IA": el color codifica
+   estado y nunca decora. Oscuro primero, claro completo, una sola definición
+   por token con light-dark().
+   --------------------------------------------------------------------------- */
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* superficies */
+  --color-bg: light-dark(#fafaf9, #0c0c0e);
+  --color-surface: light-dark(#ffffff, #131316);
+  --color-raised: light-dark(#f4f4f2, #1a1a1e);
+  --color-line: light-dark(#e4e4e2, #26262b);
+  --color-line-2: light-dark(#d8d8d6, #34343a);
+  --color-line-3: light-dark(#ececea, #1d1d21);
+
+  /* tinta */
+  --color-ink: light-dark(#1b1b1f, #ededef);
+  --color-ink-2: light-dark(#55555c, #9e9ea7);
+  --color-ink-3: light-dark(#75757c, #67676f);
+  --color-ink-4: light-dark(#a6a6ac, #4a4a52);
+
+  /* escala semántica de estado — cada una con forma redundante en la UI */
+  --color-done: light-dark(oklch(0.52 0.11 162), oklch(0.72 0.11 162));
+  --color-wait: light-dark(oklch(0.52 0.12 72), oklch(0.78 0.12 72));
+  --color-run: light-dark(oklch(0.52 0.13 255), oklch(0.71 0.12 255));
+  --color-fail: light-dark(oklch(0.5 0.15 30), oklch(0.68 0.14 30));
+  --color-block: light-dark(oklch(0.44 0.17 27), oklch(0.55 0.17 27));
+  --color-void: light-dark(#74747b, #6a6a72);
+  --color-dead: light-dark(#93939b, #7a7a82);
+  /* Tinta sobre relleno ámbar. En claro el ámbar es oscuro y en oscuro es
+     claro, así que el texto tiene que invertirse con él o el botón de firmar
+     —el más importante de la interfaz— queda ilegible en uno de los dos temas. */
+  --color-on-wait: light-dark(#fffaf2, #16100a);
+
+  /* Radios: 4 controles · 6 cartas · 8 paneles. Nada de píldoras. */
+  --radius-ctl: 4px;
+  --radius-card: 6px;
+  --radius-panel: 8px;
+
+  /* movimiento — la tabla de la espec vive aquí, no repartida por el código */
+  --ease-out-ui: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-micro: 120ms;
+  --dur-press: 80ms;
+  --dur-panel: 260ms;
+  --dur-cross: 180ms;
+  --dur-sign: 340ms;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    background: var(--color-bg);
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Foco visible siempre. Jamás suprimido: es la única pista del teclado. */
+  :focus-visible {
+    outline: 2px solid var(--color-run);
+    outline-offset: 1px;
+    border-radius: 3px;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--color-run) 30%, transparent);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Números tabulares en todo coste, duración, timestamp y score. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+  /* "no cableada": trama diagonal. Forma redundante al color. */
+  .hatch {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent 0 3px,
+      color-mix(in oklab, var(--color-void) 34%, transparent) 3px 5px
+    );
+  }
+  .hatch-fail {
+    background-image: repeating-linear-gradient(
+      45deg,
+      color-mix(in oklab, var(--color-block) 50%, transparent) 0 4px,
+      color-mix(in oklab, var(--color-block) 18%, transparent) 4px 8px
+    );
+  }
+  .label-caps {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+}
+
+/* Único elemento con animación ambiental de toda la interfaz:
+   "esperando persona". Si algo más pulsara, este dejaría de significar. */
+@keyframes ms-pulse {
+  from {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-wait) 45%, transparent);
+  }
+  to {
+    box-shadow: 0 0 0 9px transparent;
+  }
+}
+.ms-pulse {
+  animation: ms-pulse 1.6s ease-out infinite;
+}
+
+@keyframes ms-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.ms-spin {
+  animation: ms-spin 1.2s linear infinite;
+}
+
+/* prefers-reduced-motion no es un extra: con él activo todo degrada a
+   opacidad y cambios instantáneos, sin perder ninguna información. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@supports (scrollbar-width: thin) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-2) transparent;
+  }
 }

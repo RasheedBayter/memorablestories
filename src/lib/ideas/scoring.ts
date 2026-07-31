@@ -75,7 +75,12 @@ export interface ScoredIdea {
   rejectionReason?: string;
 }
 
-const WEIGHTS: Record<keyof ScoreBreakdown, number> = {
+/**
+ * Exportado porque el dashboard muestra el aporte de cada eje (valor × peso) y
+ * tiene que leer el peso REAL del motor. Una copia en la UI divergiría en
+ * silencio el día que se ajuste un peso aquí.
+ */
+export const WEIGHTS: Record<keyof ScoreBreakdown, number> = {
   // El archivo disponible manda: sin material visual no hay video, por bueno
   // que sea el dato. Es el eje con más peso por diseño.
   visualConcreteness: 0.28,

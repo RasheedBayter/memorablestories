@@ -42,7 +42,9 @@ WIKI = 'https://en.wikipedia.org/w/api.php'
 # así que no era la causa — el límite es por IP y por ritmo. Se deja el contacto
 # de todas formas porque su política lo exige.
 UA = 'MemorableStories/0.1 (https://github.com/RasheedBayter/memorablestories; rasheed@y.uno)'
-DESTINO = pathlib.Path('scripts-out/01-semmelweis/assets')
+import sys as _sys
+_ep = _sys.argv[1] if len(_sys.argv) > 1 else '01-semmelweis'
+DESTINO = pathlib.Path(f'scripts-out/{_ep}/assets')
 PAUSA_S = 4.0
 # Reintento con espera creciente. Wikimedia responde 429 y, una vez que te
 # limita, seguir pidiendo al mismo ritmo mantiene el castigo indefinidamente: la
@@ -67,29 +69,21 @@ def _con_reintento(fn, etiqueta: str):
 
 # (artículo de Wikipedia, cuántas imágenes coger, para qué sirven en el guion)
 ARTICULOS: list[tuple[str, int, str]] = [
-    ('Ignaz Semmelweis',              6, 'el protagonista, su libro, su tumba'),
-    ('Puerperal fever',               4, 'la enfermedad'),
-    ('Vienna General Hospital',       3, 'el hospital'),
-    ('History of Vienna',             3, 'la ciudad'),
-    ('Midwifery',                     3, 'las comadronas'),
-    ('History of obstetrics',         3, 'obstetricia de época'),
-    ('Bloodletting',                  3, 'sangría y purgas'),
-    ('Miasma theory',                 3, 'la teoría del miasma'),
-    ('Anatomical theatre',            3, 'la sala de autopsias'),
-    ('Autopsy',                       2, 'la autopsia'),
-    ('Carl Braun von Fernwald',       2, 'el opositor'),
-    ('Ferdinand Ritter von Hebra',    2, 'quien publicó por él'),
-    ('Josef Škoda',                   2, 'quien habló por él'),
-    ('Rudolf Virchow',                2, 'el rechazo'),
-    ('Louis Pasteur',                 4, 'la vindicación'),
-    ('Robert Koch',                   3, 'bacteriología'),
-    ('Streptococcus pyogenes',        2, 'el patógeno'),
-    ('Optical microscope',            2, 'el microscopio'),
-    ('Hand washing',                  3, 'el lavado, hoy'),
-    ('Budapest',                      2, 'Budapest'),
-    ('Lunatic asylum',                3, 'el manicomio'),
+    ('Duck and cover',                4, 'la instrucción'),
+    ('Civil defense',                 4, 'el programa'),
+    ('Fallout shelter',               4, 'los refugios'),
+    ('Atomic bombings of Hiroshima and Nagasaki', 4, 'lo que decían las películas'),
+    ('Nuclear fallout',               3, 'la precipitación radiactiva'),
+    ('Bert the Turtle',               2, 'la campaña escolar'),
+    ('Federal Civil Defense Administration', 3, 'la agencia'),
+    ('Nuclear weapons testing',       3, 'las pruebas'),
+    ('Cold War',                      3, 'el contexto'),
+    ('Geiger counter',                2, 'el instrumento'),
+    ('Air raid siren',                2, 'la sirena'),
+    ('Classroom',                     3, 'el aula'),
+    ('Nuclear warfare',               3, 'la escala real'),
+    ('Castle Bravo',                  2, 'la escala termonuclear'),
 ]
-
 # Iconos de interfaz, banderas, logos y mapas de localización que Wikipedia
 # incrusta en cada artículo. Sin este filtro, un tercio de lo descargado son
 # escudos y flechas.

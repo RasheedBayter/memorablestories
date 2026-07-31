@@ -38,7 +38,7 @@ CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 WPM = 174
 VOZ = 'George'
 
-ANCLA = re.compile(r'\[((?:doi|isbn|url|s2|t):[^\]]+)\]')
+ANCLA = re.compile(r'\[((?:doi|isbn|url|s2|film|t):[^\]]+)\]')
 
 
 def marcado_inline(texto: str) -> str:

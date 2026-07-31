@@ -38,7 +38,7 @@ import { normalizeForTts, ttsLint } from '../src/lib/script/tts-normalize';
 const DIM = '\x1b[2m', BOLD = '\x1b[1m', RESET = '\x1b[0m';
 const GREEN = '\x1b[32m', YELLOW = '\x1b[33m', RED = '\x1b[31m';
 
-const ANCLA = /\[(?:doi|isbn|url|s2|t):[^\]]+\]/g;
+const ANCLA = /\[(?:doi|isbn|url|s2|film|t):[^\]]+\]/g;
 
 interface Seccion {
   id: string;

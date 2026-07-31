@@ -25,7 +25,7 @@ const narrado = cuerpo
   .split('\n')
   .filter((l) => !/^(#|>>|\||\*\*|---)/.test(l.trim()) && l.trim())
   .join(' ')
-  .replace(/\[(doi|isbn|url|s2|t):[^\]]+\]/g, '')
+  .replace(/\[(doi|isbn|url|s2|film|t):[^\]]+\]/g, '')
   .replace(/\*/g, '')
   .replace(/\s+/g, ' ')
   .trim();

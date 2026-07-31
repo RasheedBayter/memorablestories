@@ -27,7 +27,7 @@ import type { Fuente } from '../src/lib/research/types';
 const DIM = '\x1b[2m', BOLD = '\x1b[1m', RESET = '\x1b[0m';
 const GREEN = '\x1b[32m', YELLOW = '\x1b[33m', RED = '\x1b[31m';
 
-const ANCLA = /\[((?:doi|isbn|url|s2|t):[^\]]+)\]/g;
+const ANCLA = /\[((?:doi|isbn|url|s2|film|t):[^\]]+)\]/g;
 
 /** Números con su forma escrita: la fuente dice "98.4", el guion puede decir lo mismo. */
 const CIFRA = /\b\d[\d.,]*\b/g;
@@ -91,8 +91,17 @@ function main(): void {
     const f = join('.episodes', d, 'research/dossier.json');
     try {
       for (const fu of JSON.parse(readFileSync(f, 'utf8')).fuentes as Fuente[]) {
-        const texto = fu.extractos.map((e) => e.texto).join('\n');
-        if (texto) {
+        // El AÑO de publicación entra al corpus verificable aunque no aparezca
+        // en el texto: es un metadato de la fuente, y una película de 1951 no
+        // dice "mil novecientos cincuenta y uno" en su propia locución.
+        // El TÍTULO y la publicación también son metadatos verificables. Una
+        // fuente sin texto recuperado —solo ficha bibliográfica— sigue
+        // sosteniendo una afirmación sobre su propio asunto: el artículo
+        // "Fallout Shelter Plan Cut out by House Committee" en Science avala
+        // decir que Science informó de que el comité de la Cámara lo recortó.
+        const meta = ` ${fu.anio ?? ''} ${fu.titulo} ${fu.contenedor ?? ''} `;
+        const texto = fu.extractos.map((e) => e.texto).join('\n') + meta;
+        if (texto.trim()) {
           extractos.set(fu.id, (extractos.get(fu.id) ?? '') + ' ' + normaliza(expandirRangos(texto)));
           titulos.set(fu.id, fu.titulo);
         }
