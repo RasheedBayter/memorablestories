@@ -160,6 +160,28 @@ def main() -> None:
         por_peli.setdefault(p['peli'], []).append(p)
     cursor_peli = {k: 0 for k in por_peli}
     cursor_foto = 0
+    # Fotos ya gastadas. Cuando se agotan, NO se repiten: se tira de un plano de
+    # archivo sin usar.
+    #
+    # Medido sobre la versión anterior: 325 s de 965 —el 34 % del episodio—
+    # mostraban imágenes repetidas, y tres de ellas salían SIETE veces. La causa
+    # es aritmética: 35 fotos rotando sobre ~90 huecos. Mientras tanto había 144
+    # planos de archivo y se usaba una fracción.
+    #
+    # Repetir una foto es lo peor de las tres opciones: el archivo no repetido
+    # siempre es preferible, porque además es material real.
+    fotos_usadas: set[int] = set()
+
+    def siguiente_plano_archivo(preferida: str | None = None):
+        """Un plano de archivo no usado. Prefiere la película indicada."""
+        orden = ([preferida] if preferida in por_peli else []) + \
+                sorted(por_peli, key=lambda k: cursor_peli[k] / max(1, len(por_peli[k])))
+        for peli in orden:
+            if cursor_peli[peli] < len(por_peli[peli]):
+                p = por_peli[peli][cursor_peli[peli]]
+                cursor_peli[peli] += 1
+                return peli, p
+        return None, None
 
     dur_audio = ffprobe_dur(B / 'narration.wav')
     ids = list(secciones.keys())
@@ -218,7 +240,9 @@ def main() -> None:
                 # el código no lo hacía.
                 sub, cubierto, k = [], 0.0, 0
                 while cubierto < por_plano - 0.05 and k < 12:
-                    p = lista[cursor_peli[peli] % len(lista)]
+                    if cursor_peli[peli] >= len(lista):
+                        break
+                    p = lista[cursor_peli[peli]]
                     cursor_peli[peli] += 1
                     d = min(p['dur'], por_plano - cubierto)
                     if d < 0.5:
@@ -243,14 +267,47 @@ def main() -> None:
                         q.unlink(missing_ok=True)
                 seg_archivo += cubierto
                 na += len(sub)
-            elif fotos:
-                img = fotos[cursor_foto % len(fotos)]
+            elif fotos and len(fotos_usadas) < len(fotos):
+                # Foto NUEVA. Si ya se gastaron todas, cae al archivo de abajo.
+                while cursor_foto % len(fotos) in fotos_usadas:
+                    cursor_foto += 1
+                idx = cursor_foto % len(fotos)
+                fotos_usadas.add(idx)
                 cursor_foto += 1
-                clip_de_foto(img, por_plano, trozo)
+                clip_de_foto(fotos[idx], por_plano, trozo)
                 seg_foto += por_plano
                 nf += 1
             else:
-                continue
+                # Sin fotos nuevas: archivo antes que repetir. Se encadenan
+                # planos hasta cubrir el hueco, igual que en la rama FILM.
+                sub, cubierto, k = [], 0.0, 0
+                while cubierto < por_plano - 0.05 and k < 12:
+                    peli, p = siguiente_plano_archivo()
+                    if p is None:
+                        break
+                    d = min(p['dur'], por_plano - cubierto)
+                    if d < 0.5:
+                        break
+                    sp = SEG / f'.{i:02d}-{j:02d}-r{k:02d}.mp4'
+                    clip_de_archivo(B / 'footage' / f'{peli}.mp4', p['ini'], d, sp)
+                    sub.append(sp)
+                    cubierto += d
+                    k += 1
+                if not sub:
+                    continue
+                if len(sub) == 1:
+                    sub[0].rename(trozo)
+                else:
+                    lt = SEG / f'.{i:02d}-{j:02d}-rl.txt'
+                    lt.write_text(''.join(f"file '{q.name}'\n" for q in sub))
+                    subprocess.run(
+                        ['ffmpeg', '-y', '-hide_banner', '-loglevel', 'error', '-f', 'concat',
+                         '-safe', '0', '-i', str(lt), '-c', 'copy', str(trozo)],
+                        check=True, capture_output=True)
+                    for q in [*sub, lt]:
+                        q.unlink(missing_ok=True)
+                seg_archivo += cubierto
+                na += len(sub)
             partes.append(trozo)
 
         # Los generados van al final de su sección, conformados al formato del
