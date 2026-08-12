@@ -155,6 +155,22 @@ def main() -> None:
             if pathlib.Path(g['fichero']).exists():
                 gen_por_seccion.setdefault(g['seccion'], []).append(g)
 
+    # Imágenes fijas generadas con Nano Banana.
+    #
+    # Van en su PROPIO diccionario y su propio contador, y no se mezclan con
+    # `fotos`, aunque se rendericen igual (Ken Burns sobre una fija). El motivo
+    # no es técnico: si entraran en `fotos` sumarían al porcentaje de "fotos de
+    # archivo" del informe final, y ese número es lo que este canal afirma en
+    # público. Una imagen inventada no puede subir la cifra de material real.
+    #
+    # Ver src/lib/production/generated-images.ts.
+    img_por_seccion: dict[str, list[dict]] = {}
+    plan_img = B / 'imagenes-generadas.json'
+    if plan_img.exists():
+        for g in json.loads(plan_img.read_text()):
+            if pathlib.Path(g['fichero']).exists():
+                img_por_seccion.setdefault(g['seccion'], []).append(g)
+
     por_peli: dict[str, list[dict]] = {}
     for p in planos:
         por_peli.setdefault(p['peli'], []).append(p)
@@ -195,7 +211,7 @@ def main() -> None:
     print(f'{len(planos)} planos de archivo · {len(fotos)} fotos\n')
 
     segmentos, capitulos = [], []
-    seg_archivo = seg_foto = seg_ia = 0.0
+    seg_archivo = seg_foto = seg_ia = seg_img_ia = 0.0
 
     for i, sid in enumerate(ids):
         dur = huecos[i]
@@ -213,7 +229,9 @@ def main() -> None:
             destino.unlink()
 
         gen = gen_por_seccion.get(sid, [])
-        dur_gen = sum(g['duracionSegundos'] for g in gen)
+        img_gen = img_por_seccion.get(sid, [])
+        dur_gen = sum(g['duracionSegundos'] for g in gen) \
+            + sum(g['duracionSegundos'] for g in img_gen)
         dur_resto = max(1.0, dur - dur_gen)
 
         cues = pistas.get(sid, []) or ['Foto']
@@ -326,6 +344,16 @@ def main() -> None:
             partes.append(gp)
             seg_ia += g['duracionSegundos']
 
+        # Las imágenes generadas se animan con el MISMO Ken Burns que una foto
+        # de archivo —`clip_de_foto` ya respeta el zoom que tolera el fichero,
+        # así que una de 1K sale en plano fijo sola— pero cuentan en su propio
+        # cajón. Ver el comentario de `img_por_seccion`.
+        for k, g in enumerate(img_gen):
+            ip = SEG / f'.{i:02d}-img{k}.mp4'
+            clip_de_foto(g, g['duracionSegundos'], ip)
+            partes.append(ip)
+            seg_img_ia += g['duracionSegundos']
+
         if not partes:
             continue
 
@@ -338,7 +366,8 @@ def main() -> None:
         for q in [*partes, lista_txt]:
             q.unlink(missing_ok=True)
         print(f'  ✓ {destino.name}  {na} archivo + {nf} foto'
-              f'{f" + {len(gen)} IA" if gen else ""} · {dur:.0f}s')
+              f'{f" + {len(gen)} vídeo IA" if gen else ""}'
+              f'{f" + {len(img_gen)} imagen IA" if img_gen else ""} · {dur:.0f}s')
         segmentos.append(destino)
 
     def concatenar(partes, destino):
@@ -369,13 +398,19 @@ def main() -> None:
     subprocess.run(cmd, check=True, capture_output=True)
 
     d = ffprobe_dur(salida)
-    total = seg_archivo + seg_foto + seg_ia
+    total = seg_archivo + seg_foto + seg_ia + seg_img_ia
     print(f'\n  ▸ {salida}')
     print(f'    {int(d//60)}:{int(d%60):02d} · {salida.stat().st_size/1048576:.0f} MB')
     print(f'\n  MEZCLA REAL CONSEGUIDA')
     print(f'    metraje de archivo  {seg_archivo:6.0f}s  {seg_archivo/total*100:5.1f} %')
     print(f'    fotos con Ken Burns {seg_foto:6.0f}s  {seg_foto/total*100:5.1f} %')
-    print(f'    vídeo IA            {seg_ia:6.0f}s  {seg_ia/total*100:5.1f} %\n')
+    print(f'    vídeo IA            {seg_ia:6.0f}s  {seg_ia/total*100:5.1f} %')
+    print(f'    imágenes IA         {seg_img_ia:6.0f}s  {seg_img_ia/total*100:5.1f} %')
+    # Lo sintético se suma y se dice junto: es la cifra que decide si el
+    # episodio necesita la declaración de contenido alterado de YouTube, y
+    # partida en dos filas se lee más pequeña de lo que es.
+    sint = seg_ia + seg_img_ia
+    print(f'    {"":19} {"":6}  {"":5}  ── sintético total {sint/total*100:.1f} %\n')
 
 
 if __name__ == '__main__':

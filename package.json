@@ -19,7 +19,8 @@
     "narrate": "tsx scripts/narrate-episode.ts",
     "assets": "tsx scripts/assets-episode.ts",
     "context": "tsx scripts/context-episode.ts",
-    "footage": "tsx scripts/find-footage.ts"
+    "footage": "tsx scripts/find-footage.ts",
+    "imagenes": "tsx scripts/generate-images.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",

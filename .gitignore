@@ -69,5 +69,52 @@ next-env.d.ts
 # El PDF se regenera con `python3 scripts/scripts-to-pdf.py`.
 scripts-out/*.pdf
 
-# Salidas de episodio: audio, video y assets. Pesados y regenerables.
-scripts-out/*/
+# ── Salidas de episodio ────────────────────────────────────────────────────
+# El criterio es por PESO y por ORIGEN, no por carpeta: el guion, la línea de
+# tiempo y los informes son el trabajo y pesan kilobytes; el metraje es
+# subproducto regenerable y pesa gigabytes.
+
+# Todo lo audiovisual, esté donde esté.
+scripts-out/**/*.mp4
+scripts-out/**/*.mov
+scripts-out/**/*.webm
+scripts-out/**/*.ogv
+scripts-out/**/*.wav
+scripts-out/**/*.mp3
+scripts-out/**/*.m4a
+scripts-out/**/*.pcm
+scripts-out/**/*.srt
+scripts-out/**/*.vtt
+
+# Directorios de material bruto y derivados pesados.
+scripts-out/*/archivo/fuentes/
+scripts-out/*/archivo/cortes/
+scripts-out/*/archivo/cortes16x9/
+scripts-out/*/archivo/fijas/
+scripts-out/*/footage/
+scripts-out/*/assets/
+scripts-out/*/segments/
+scripts-out/*/generated/
+scripts-out/*/frames/
+scripts-out/*/voz/
+scripts-out/*/montaje/planos/
+scripts-out/*/montaje/actos/
+
+# Excepción: las tarjetas tipográficas son diseño propio, pesan poco y
+# reproducirlas a mano cuesta más que guardarlas.
+!scripts-out/*/montaje/tipografia/
+
+# El PDF se regenera con `python3 scripts/scripts-to-pdf.py`.
+scripts-out/*.pdf
+
+# ── Vídeos de referencia ───────────────────────────────────────────────────
+# El vídeo descargado NO entra: es obra de terceros y meterlo en el repo
+# convierte un análisis privado en una redistribución. Los fotogramas
+# extraídos y las hojas de contacto son el mismo problema en trozos más
+# pequeños, así que tampoco. Se versiona **solo el análisis en texto**: el
+# guion reconstruido, las cifras y las observaciones, que son obra nuestra.
+referencias/*/fuente/
+referencias/**/frames/
+referencias/**/contactos-*.jpg
+referencias/**/*.mp4
+referencias/**/*.webm
