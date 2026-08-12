@@ -1,0 +1,29 @@
+n,inicio_s,fin_s,duracion_s,inicio_tc,fotograma,movimiento,n_frases,corte,detectado_por
+1,0.000,10.327,10.327,00:00,frames/plano-001.jpg,movimiento interno,0,,inicio
+2,10.327,15.215,4.888,00:10,frames/plano-002.jpg,movimiento interno,1,en la coma,ambos
+3,15.215,17.484,2.269,00:15,frames/plano-003.jpg,movimiento interno,0,a mitad de frase,ambos
+4,17.484,19.303,1.818,00:17,frames/plano-004.jpg,movimiento interno,0,a mitad de frase,fundido
+5,19.303,23.257,3.954,00:19,frames/plano-005.jpg,movimiento interno,0,a mitad de frase,ambos
+6,23.257,25.042,1.785,00:23,frames/plano-006.jpg,con movimiento,0,en pausa,fundido
+7,25.042,26.627,1.585,00:25,frames/plano-007.jpg,movimiento interno,0,en pausa,fundido
+8,26.627,30.814,4.188,00:27,frames/plano-008.jpg,movimiento interno,1,a mitad de frase,ambos
+9,30.814,34.184,3.370,00:31,frames/plano-009.jpg,movimiento interno,0,en pausa,fundido
+10,34.184,37.500,3.316,00:34,frames/plano-010.jpg,fijo,1,a mitad de frase,fundido
+11,37.500,39.072,1.572,00:38,frames/plano-011.jpg,movimiento interno,0,en la coma,encadenado
+12,39.072,42.342,3.270,00:39,frames/plano-012.jpg,con movimiento,0,en pausa,fundido
+13,42.342,45.762,3.420,00:42,frames/plano-013.jpg,movimiento interno,1,a mitad de frase,fundido
+14,45.762,48.899,3.137,00:46,frames/plano-014.jpg,con movimiento,0,en pausa,ambos
+15,48.899,52.085,3.187,00:49,frames/plano-015.jpg,con movimiento,1,a mitad de frase,fundido
+16,52.085,55.706,3.620,00:52,frames/plano-016.jpg,movimiento interno,0,en pausa,fundido
+17,55.706,58.000,2.294,00:56,frames/plano-017.jpg,fijo,0,en pausa,ambos
+18,58.000,64.064,6.064,00:58,frames/plano-018.jpg,movimiento interno,1,a mitad de frase,encadenado
+19,64.064,72.039,7.975,01:04,frames/plano-019.jpg,movimiento interno,1,en pausa,ambos
+20,72.039,76.376,4.337,01:12,frames/plano-020.jpg,movimiento interno,1,en pausa,ambos
+21,76.376,80.464,4.088,01:16,frames/plano-021.jpg,fijo,0,a mitad de frase,ambos
+22,80.464,90.707,10.244,01:20,frames/plano-022.jpg,movimiento interno,1,en pausa,ambos
+23,90.707,100.984,10.277,01:31,frames/plano-023.jpg,fijo,2,en pausa,fundido
+24,100.984,103.654,2.670,01:41,frames/plano-024.jpg,movimiento interno,1,en pausa,ambos
+25,103.654,108.141,4.488,01:44,frames/plano-025.jpg,movimiento interno,1,a mitad de frase,fundido
+26,108.141,111.328,3.187,01:48,frames/plano-026.jpg,movimiento interno,0,a mitad de frase,fundido
+27,111.328,119.403,8.075,01:51,frames/plano-027.jpg,movimiento interno,1,en pausa,fundido
+28,119.403,127.221,7.818,01:59,frames/plano-028.jpg,fijo,0,en pausa,fundido

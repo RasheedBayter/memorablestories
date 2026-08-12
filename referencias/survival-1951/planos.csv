@@ -1,0 +1,107 @@
+n,inicio_s,fin_s,duracion_s,inicio_tc,fotograma,movimiento,n_frases,corte,detectado_por
+1,0.000,0.634,0.634,00:00,frames/plano-001.jpg,fijo,0,,inicio
+2,0.634,8.250,7.616,00:01,frames/plano-002.jpg,fijo,0,en pausa,fundido
+3,8.250,12.250,4.000,00:08,frames/plano-003.jpg,movimiento interno,0,en pausa,encadenado
+4,12.250,16.250,4.000,00:12,frames/plano-004.jpg,fijo,0,en pausa,encadenado
+5,16.250,17.251,1.001,00:16,frames/plano-005.jpg,fijo,0,en pausa,encadenado
+6,17.251,22.089,4.838,00:17,frames/plano-006.jpg,movimiento interno,0,en pausa,fundido
+7,22.089,26.827,4.738,00:22,frames/plano-007.jpg,movimiento interno,1,en pausa,ambos
+8,26.827,30.464,3.637,00:27,frames/plano-008.jpg,fijo,1,a mitad de frase,ambos
+9,30.464,33.467,3.003,00:30,frames/plano-009.jpg,movimiento interno,1,en el punto,ambos
+10,33.467,42.142,8.675,00:33,frames/plano-010.jpg,movimiento interno,0,en pausa,ambos
+11,42.142,46.480,4.338,00:42,frames/plano-011.jpg,fijo,1,a mitad de frase,ffmpeg
+12,46.480,48.515,2.035,00:46,frames/plano-012.jpg,movimiento interno,1,a mitad de frase,ffmpeg
+13,48.515,55.422,6.907,00:49,frames/plano-013.jpg,fijo,1,a mitad de frase,ffmpeg
+14,55.422,58.158,2.736,00:55,frames/plano-014.jpg,fijo,0,a mitad de frase,ffmpeg
+15,58.158,60.794,2.636,00:58,frames/plano-015.jpg,movimiento interno,0,en pausa,ffmpeg
+16,60.794,67.367,6.573,01:01,frames/plano-016.jpg,con movimiento,1,en pausa,ambos
+17,67.367,70.203,2.836,01:07,frames/plano-017.jpg,fijo,1,a mitad de frase,ambos
+18,70.203,72.372,2.169,01:10,frames/plano-018.jpg,movimiento interno,0,a mitad de frase,ffmpeg
+19,72.372,73.206,0.834,01:12,frames/plano-019.jpg,fijo,0,en pausa,fundido
+20,73.206,74.500,1.294,01:13,frames/plano-020.jpg,movimiento interno,0,en pausa,fundido
+21,74.500,96.129,21.629,01:14,frames/plano-021.jpg,movimiento interno,4,en pausa,encadenado
+22,96.129,103.203,7.074,01:36,frames/plano-022.jpg,movimiento interno,1,a mitad de frase,ambos
+23,103.203,106.573,3.370,01:43,frames/plano-023.jpg,movimiento interno,1,a mitad de frase,ambos
+24,106.573,111.044,4.471,01:47,frames/plano-024.jpg,con movimiento,0,a mitad de frase,ambos
+25,111.044,117.084,6.039,01:51,frames/plano-025.jpg,movimiento interno,3,en pausa,ambos
+26,117.084,122.189,5.105,01:57,frames/plano-026.jpg,fijo,1,en pausa,ambos
+27,122.189,125.258,3.070,02:02,frames/plano-027.jpg,movimiento interno,1,a mitad de frase,ambos
+28,125.258,126.727,1.468,02:05,frames/plano-028.jpg,fijo,0,en pausa,fundido
+29,126.727,131.231,4.504,02:07,frames/plano-029.jpg,movimiento interno,1,en pausa,fundido
+30,131.231,135.369,4.137,02:11,frames/plano-030.jpg,movimiento interno,1,a mitad de frase,ffmpeg
+31,135.369,138.038,2.669,02:15,frames/plano-031.jpg,movimiento interno,0,a mitad de frase,ambos
+32,138.038,140.440,2.402,02:18,frames/plano-032.jpg,fijo,1,en pausa,ambos
+33,140.440,142.109,1.668,02:20,frames/plano-033.jpg,movimiento interno,0,a mitad de frase,ambos
+34,142.109,145.012,2.903,02:22,frames/plano-034.jpg,movimiento interno,1,en el punto,ambos
+35,145.012,146.780,1.768,02:25,frames/plano-035.jpg,movimiento interno,0,en pausa,ambos
+36,146.780,150.851,4.071,02:27,frames/plano-036.jpg,fijo,1,en pausa,ambos
+37,150.851,157.791,6.940,02:31,frames/plano-037.jpg,fijo,0,a mitad de frase,ffmpeg
+38,157.791,161.194,3.403,02:38,frames/plano-038.jpg,movimiento interno,1,a mitad de frase,ambos
+39,161.194,164.598,3.403,02:41,frames/plano-039.jpg,movimiento interno,0,a mitad de frase,ambos
+40,164.598,184.551,19.953,02:45,frames/plano-040.jpg,movimiento interno,3,a mitad de frase,ambos
+41,184.551,190.991,6.440,03:05,frames/plano-041.jpg,movimiento interno,1,a mitad de frase,ffmpeg
+42,190.991,193.727,2.736,03:11,frames/plano-042.jpg,movimiento interno,1,a mitad de frase,ambos
+43,193.727,226.460,32.733,03:14,frames/plano-043.jpg,movimiento interno,5,a mitad de frase,ffmpeg
+44,226.460,239.473,13.013,03:46,frames/plano-044.jpg,movimiento interno,1,a mitad de frase,ambos
+45,239.473,242.342,2.870,03:59,frames/plano-045.jpg,fijo,1,a mitad de frase,ambos
+46,242.342,244.111,1.768,04:02,frames/plano-046.jpg,movimiento interno,0,a mitad de frase,ffmpeg
+47,244.111,275.242,31.131,04:04,frames/plano-047.jpg,movimiento interno,10,en pausa,ambos
+48,275.242,278.745,3.504,04:35,frames/plano-048.jpg,movimiento interno,0,a mitad de frase,ambos
+49,278.745,284.151,5.405,04:39,frames/plano-049.jpg,movimiento interno,1,en pausa,ambos
+50,284.151,292.993,8.842,04:44,frames/plano-050.jpg,fijo,2,a mitad de frase,ambos
+51,292.993,294.427,1.435,04:53,frames/plano-051.jpg,con movimiento,0,en el punto,ambos
+52,294.427,296.163,1.735,04:54,frames/plano-052.jpg,movimiento interno,0,a mitad de frase,ambos
+53,296.163,297.731,1.568,04:56,frames/plano-053.jpg,movimiento interno,0,a mitad de frase,ambos
+54,297.731,299.032,1.301,04:58,frames/plano-054.jpg,movimiento interno,1,a mitad de frase,ambos
+55,299.032,310.177,11.144,04:59,frames/plano-055.jpg,movimiento interno,1,a mitad de frase,ambos
+56,310.177,312.279,2.102,05:10,frames/plano-056.jpg,movimiento interno,0,en pausa,ambos
+57,312.279,313.847,1.568,05:12,frames/plano-057.jpg,movimiento interno,0,en pausa,ambos
+58,313.847,314.915,1.068,05:14,frames/plano-058.jpg,fijo,0,en pausa,ambos
+59,314.915,315.849,0.934,05:15,frames/plano-059.jpg,movimiento interno,0,en pausa,ambos
+60,315.849,316.550,0.701,05:16,frames/plano-060.jpg,con movimiento,0,en pausa,ffmpeg
+61,316.550,326.026,9.476,05:17,frames/plano-061.jpg,movimiento interno,1,en pausa,ambos
+62,326.026,334.201,8.175,05:26,frames/plano-062.jpg,movimiento interno,1,a mitad de frase,ambos
+63,334.201,336.203,2.002,05:34,frames/plano-063.jpg,movimiento interno,1,en pausa,ffmpeg
+64,336.203,338.872,2.669,05:36,frames/plano-064.jpg,movimiento interno,0,a mitad de frase,ambos
+65,338.872,340.740,1.869,05:39,frames/plano-065.jpg,fijo,0,en pausa,ffmpeg
+66,340.740,341.908,1.168,05:41,frames/plano-066.jpg,movimiento interno,0,a mitad de frase,ambos
+67,341.908,344.778,2.870,05:42,frames/plano-067.jpg,movimiento interno,0,a mitad de frase,ambos
+68,344.778,346.780,2.002,05:45,frames/plano-068.jpg,movimiento interno,0,a mitad de frase,ffmpeg
+69,346.780,349.115,2.336,05:47,frames/plano-069.jpg,movimiento interno,0,a mitad de frase,ambos
+70,349.115,350.317,1.201,05:49,frames/plano-070.jpg,con movimiento,1,a mitad de frase,ambos
+71,350.317,352.786,2.469,05:50,frames/plano-071.jpg,movimiento interno,0,a mitad de frase,ffmpeg
+72,352.786,357.891,5.105,05:53,frames/plano-072.jpg,fijo,0,a mitad de frase,ambos
+73,357.891,360.093,2.202,05:58,frames/plano-073.jpg,movimiento interno,0,a mitad de frase,ambos
+74,360.093,363.563,3.470,06:00,frames/plano-074.jpg,movimiento interno,0,a mitad de frase,ambos
+75,363.563,365.265,1.702,06:04,frames/plano-075.jpg,movimiento interno,0,en pausa,ambos
+76,365.265,369.302,4.037,06:05,frames/plano-076.jpg,movimiento interno,1,a mitad de frase,ambos
+77,369.302,373.240,3.937,06:09,frames/plano-077.jpg,fijo,0,en pausa,ambos
+78,373.240,381.114,7.875,06:13,frames/plano-078.jpg,movimiento interno,0,en pausa,ambos
+79,381.114,392.592,11.478,06:21,frames/plano-079.jpg,movimiento interno,0,en pausa,ambos
+80,392.592,395.000,2.408,06:33,frames/plano-080.jpg,movimiento interno,1,a mitad de frase,ambos
+81,395.000,404.838,9.838,06:35,frames/plano-081.jpg,con movimiento,2,a mitad de frase,encadenado
+82,404.838,411.211,6.373,06:45,frames/plano-082.jpg,movimiento interno,1,en pausa,ambos
+83,411.211,415.015,3.804,06:51,frames/plano-083.jpg,movimiento interno,1,en pausa,ffmpeg
+84,415.015,422.500,7.485,06:55,frames/plano-084.jpg,fijo,0,a mitad de frase,ffmpeg
+85,422.500,425.000,2.500,07:02,frames/plano-085.jpg,fijo,0,en pausa,encadenado
+86,425.000,429.896,4.896,07:05,frames/plano-086.jpg,fijo,0,en pausa,encadenado
+87,429.896,432.165,2.269,07:10,frames/plano-087.jpg,movimiento interno,1,a mitad de frase,ambos
+88,432.165,434.634,2.469,07:12,frames/plano-088.jpg,movimiento interno,0,a mitad de frase,ambos
+89,434.634,436.903,2.269,07:15,frames/plano-089.jpg,con movimiento,0,en el punto,ffmpeg
+90,436.903,438.138,1.235,07:17,frames/plano-090.jpg,con movimiento,0,en pausa,ambos
+91,438.138,448.750,10.612,07:18,frames/plano-091.jpg,movimiento interno,1,en pausa,ambos
+92,448.750,450.350,1.600,07:29,frames/plano-092.jpg,con movimiento,0,a mitad de frase,encadenado
+93,450.350,452.250,1.900,07:30,frames/plano-093.jpg,movimiento interno,0,en pausa,ambos
+94,452.250,459.750,7.500,07:32,frames/plano-094.jpg,fijo,0,en pausa,encadenado
+95,459.750,464.000,4.250,07:40,frames/plano-095.jpg,fijo,1,a mitad de frase,encadenado
+96,464.000,466.266,2.266,07:44,frames/plano-096.jpg,movimiento interno,0,a mitad de frase,encadenado
+97,466.266,474.040,7.774,07:46,frames/plano-097.jpg,fijo,1,a mitad de frase,ambos
+98,474.040,481.348,7.307,07:54,frames/plano-098.jpg,fijo,1,en pausa,ambos
+99,481.348,486.353,5.005,08:01,frames/plano-099.jpg,fijo,1,a mitad de frase,ffmpeg
+100,486.353,489.956,3.604,08:06,frames/plano-100.jpg,fijo,0,en el punto,ambos
+101,489.956,508.808,18.852,08:10,frames/plano-101.jpg,movimiento interno,2,a mitad de frase,ambos
+102,508.808,517.250,8.442,08:29,frames/plano-102.jpg,fijo,1,a mitad de frase,ambos
+103,517.250,519.686,2.436,08:37,frames/plano-103.jpg,fijo,0,en pausa,encadenado
+104,519.686,523.750,4.064,08:40,frames/plano-104.jpg,fijo,0,en pausa,fundido
+105,523.750,525.392,1.642,08:44,frames/plano-105.jpg,fijo,0,en pausa,encadenado
+106,525.392,525.725,0.334,08:45,frames/plano-106.jpg,fijo,0,en pausa,fundido

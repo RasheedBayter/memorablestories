@@ -1,0 +1,428 @@
+[
+ {
+  "ini": 23.54,
+  "fin": 24.74,
+  "texto": "reality of our times.",
+  "plano": 7
+ },
+ {
+  "ini": 25.58,
+  "fin": 30.7,
+  "texto": "The fact that atom bombs may someday be dropped on our cities and let us prepare for survival.",
+  "plano": 8
+ },
+ {
+  "ini": 31.32,
+  "fin": 33.24,
+  "texto": "Understanding the weapon that threatens us.",
+  "plano": 9
+ },
+ {
+  "ini": 39.44,
+  "fin": 45.28,
+  "texto": "An atom bomb destroys or injures in three ways by blast heat and radioactivity.",
+  "plano": 11
+ },
+ {
+  "ini": 46.04,
+  "fin": 49.28,
+  "texto": "The blast of an atom bomb is its most important destructive agent.",
+  "plano": 12
+ },
+ {
+  "ini": 49.98,
+  "fin": 58.12,
+  "texto": "In Japan whole buildings were flattened by its force however many buildings of sturdy construction even though close to the explosion remain standing.",
+  "plano": 13
+ },
+ {
+  "ini": 61.63,
+  "fin": 64.71,
+  "texto": "The principal dangers of blast are flying glass and debris.",
+  "plano": 16
+ },
+ {
+  "ini": 66.87,
+  "fin": 71.13,
+  "texto": "The fires it may start and the danger of being crushed in collapsing buildings.",
+  "plano": 17
+ },
+ {
+  "ini": 75.21,
+  "fin": 77.15,
+  "texto": "The atom bomb destroys by heat.",
+  "plano": 21
+ },
+ {
+  "ini": 77.87,
+  "fin": 84.61,
+  "texto": "People caught in the open as far as two miles away suffered flash burns yet protection could have been easily achieved.",
+  "plano": 21
+ },
+ {
+  "ini": 85.25,
+  "fin": 88.63,
+  "texto": "Here a bridge post and rail shielded the surface behind it.",
+  "plano": 21
+ },
+ {
+  "ini": 89.35,
+  "fin": 91.61,
+  "texto": "Any solid material afforded similar protection.",
+  "plano": 21
+ },
+ {
+  "ini": 94.82,
+  "fin": 99.4,
+  "texto": "The third weapon of the bomb is radioactivity thrown off at the instant of explosion.",
+  "plano": 22
+ },
+ {
+  "ini": 101.76,
+  "fin": 109.68,
+  "texto": "However the majority of people exposed to radiation recovered completely including a large percentage of those who suffered serious radiation sickness.",
+  "plano": 23
+ },
+ {
+  "ini": 112.14,
+  "fin": 113.8,
+  "texto": "Today they lead normal lives.",
+  "plano": 25
+ },
+ {
+  "ini": 114.64,
+  "fin": 115.18,
+  "texto": "They bear children.",
+  "plano": 25
+ },
+ {
+  "ini": 115.84,
+  "fin": 116.92,
+  "texto": "Their children are normal.",
+  "plano": 25
+ },
+ {
+  "ini": 117.84,
+  "fin": 121.6,
+  "texto": "These then are the weapons of the atom bomb that we must protect against.",
+  "plano": 26
+ },
+ {
+  "ini": 121.6,
+  "fin": 124.28,
+  "texto": "Blast heat and radioactivity.",
+  "plano": 27
+ },
+ {
+  "ini": 127.27,
+  "fin": 132.41,
+  "texto": "Our cities are prime targets for atomic attack but mass evacuation would be distress.",
+  "plano": 29
+ },
+ {
+  "ini": 133.31,
+  "fin": 137.23,
+  "texto": "An enemy would like nothing better than to have us leave our cities empty and unproductive.",
+  "plano": 30
+ },
+ {
+  "ini": 138.21,
+  "fin": 142.11,
+  "texto": "If an emergency should come our factories will be battle stations.",
+  "plano": 32
+ },
+ {
+  "ini": 142.95,
+  "fin": 145.01,
+  "texto": "Production must go on if we are to win.",
+  "plano": 34
+ },
+ {
+  "ini": 148.07,
+  "fin": 152.09,
+  "texto": "Our officers and homes will also be posts of duty not to be deserted.",
+  "plano": 36
+ },
+ {
+  "ini": 154.52,
+  "fin": 166.04,
+  "texto": "With the knowledge of the first atomic explosions to guide us our chances for survival will be far better than those of the people of Hiroshima and Nagasaki if we act on our knowledge and are prepared.",
+  "plano": 38
+ },
+ {
+  "ini": 169.32,
+  "fin": 173.0,
+  "texto": "The first job is to look over your own home for shelter possibilities.",
+  "plano": 40
+ },
+ {
+  "ini": 174.16,
+  "fin": 178.72,
+  "texto": "If you live in a private home that is well built the cellar is the safest place to be.",
+  "plano": 40
+ },
+ {
+  "ini": 179.56,
+  "fin": 184.94,
+  "texto": "The lower you get the more barriers there are likely to be against blast heat and radioactivity.",
+  "plano": 40
+ },
+ {
+  "ini": 186.1,
+  "fin": 189.82,
+  "texto": "Select the basement wall nearest the probable target area of your city.",
+  "plano": 41
+ },
+ {
+  "ini": 190.68,
+  "fin": 194.38,
+  "texto": "If the house is blown over it will most likely fall away from this wall.",
+  "plano": 42
+ },
+ {
+  "ini": 195.24,
+  "fin": 202.7,
+  "texto": "If you have a workbench or strong table big enough to get under move it into your shelter area near a wall or strong supporting column.",
+  "plano": 43
+ },
+ {
+  "ini": 203.54,
+  "fin": 207.22,
+  "texto": "If the time comes when you actually have to take shelter lie under the table.",
+  "plano": 43
+ },
+ {
+  "ini": 213.74,
+  "fin": 218.97,
+  "texto": "If you live in a home that has no basement choose a shelter area without windows on the ground floor.",
+  "plano": 43
+ },
+ {
+  "ini": 219.63,
+  "fin": 221.79,
+  "texto": "An interior hallway is probably best.",
+  "plano": 43
+ },
+ {
+  "ini": 222.51,
+  "fin": 227.93,
+  "texto": "In time of the emergency the shelter area should be cleared of mirrors and other objects that might cause injury.",
+  "plano": 43
+ },
+ {
+  "ini": 232.61,
+  "fin": 237.21,
+  "texto": "If you live in an apartment house rules for taking shelter will be posted in your building.",
+  "plano": 44
+ },
+ {
+  "ini": 237.89,
+  "fin": 243.41,
+  "texto": "Learn them also learn the location of public shelters in areas where you work or frequently visit.",
+  "plano": 45
+ },
+ {
+  "ini": 247.93,
+  "fin": 250.33,
+  "texto": "There are many things you can begin doing right now.",
+  "plano": 47
+ },
+ {
+  "ini": 251.13,
+  "fin": 252.53,
+  "texto": "Fireproof housekeeping is one.",
+  "plano": 47
+ },
+ {
+  "ini": 253.09,
+  "fin": 254.09,
+  "texto": "So clean up that attic.",
+  "plano": 47
+ },
+ {
+  "ini": 257.15,
+  "fin": 259.05,
+  "texto": "Keep waste in covered containers.",
+  "plano": 47
+ },
+ {
+  "ini": 260.31,
+  "fin": 262.35,
+  "texto": "Don't let trash pile up in the yard.",
+  "plano": 47
+ },
+ {
+  "ini": 263.35,
+  "fin": 265.57,
+  "texto": "Set aside a small supply of canned goods.",
+  "plano": 47
+ },
+ {
+  "ini": 266.03,
+  "fin": 267.13,
+  "texto": "They're safe from radioactivity.",
+  "plano": 47
+ },
+ {
+  "ini": 268.77,
+  "fin": 270.51,
+  "texto": "Have a good flashlight on hand.",
+  "plano": 47
+ },
+ {
+  "ini": 271.03,
+  "fin": 272.23,
+  "texto": "Electric lights may go out.",
+  "plano": 47
+ },
+ {
+  "ini": 273.63,
+  "fin": 276.47,
+  "texto": "Keep a first aid jet and learn how to stop bleeding.",
+  "plano": 47
+ },
+ {
+  "ini": 279.23,
+  "fin": 281.61,
+  "texto": "Make a habit of keeping a bottle of fresh water handy.",
+  "plano": 49
+ },
+ {
+  "ini": 284.0,
+  "fin": 286.89,
+  "texto": "A radio will be important for receiving vital instructions.",
+  "plano": 50
+ },
+ {
+  "ini": 289.42,
+  "fin": 293.28,
+  "texto": "Finally prepare the shelter area and collect all necessary shelter equipment.",
+  "plano": 50
+ },
+ {
+  "ini": 293.8,
+  "fin": 302.73,
+  "texto": "A case of an actual raid or test drill.",
+  "plano": 54
+ },
+ {
+  "ini": 303.35,
+  "fin": 306.47,
+  "texto": "The alert will be a warbling siren blast blasting freedom.",
+  "plano": 55
+ },
+ {
+  "ini": 317.12,
+  "fin": 319.08,
+  "texto": "Once you hear this act fast.",
+  "plano": 61
+ },
+ {
+  "ini": 319.68,
+  "fin": 332.77,
+  "texto": "Pull down the shades or blinds and close the drapes against flying glass.",
+  "plano": 62
+ },
+ {
+  "ini": 335.04,
+  "fin": 337.31,
+  "texto": "Turn off the burners of your gas or electric stove.",
+  "plano": 63
+ },
+ {
+  "ini": 339.17,
+  "fin": 360.95,
+  "texto": "Disconnect any heating elements such as electric iron but plates or bathroom heaters outside doors but leave them unlocked.",
+  "plano": 70
+ },
+ {
+  "ini": 364.69,
+  "fin": 366.69,
+  "texto": "Turn off the gas or oil burners.",
+  "plano": 76
+ },
+ {
+  "ini": 389.85,
+  "fin": 397.39,
+  "texto": "Taking shelter may be a race against time even when you have some advanced warning but possibly there may be no time.",
+  "plano": 80
+ },
+ {
+  "ini": 398.17,
+  "fin": 399.77,
+  "texto": "An attack could come without warning.",
+  "plano": 81
+ },
+ {
+  "ini": 402.41,
+  "fin": 404.35,
+  "texto": "The sky would suddenly light up.",
+  "plano": 81
+ },
+ {
+  "ini": 405.21,
+  "fin": 410.67,
+  "texto": "If a door is more than a couple of steps away fall to the ground immediately.",
+  "plano": 82
+ },
+ {
+  "ini": 411.63,
+  "fin": 417.11,
+  "texto": "Flying glass into debris are immediate danger so stay where you are until you're sure it's safe to move.",
+  "plano": 83
+ },
+ {
+  "ini": 426.99,
+  "fin": 434.73,
+  "texto": "If you are at home when a surprise attack occurs fall beneath a table if it is very near or drop to the floor with your back to the window.",
+  "plano": 87
+ },
+ {
+  "ini": 444.53,
+  "fin": 449.95,
+  "texto": "The immediate danger is over in about a minute unless the explosion occurred near the ground or water.",
+  "plano": 91
+ },
+ {
+  "ini": 455.05,
+  "fin": 467.03,
+  "texto": "In this case radioactive materials are trapped in the when these particles fall back to work they may be dangerous so get indoors immediately after a ground level explosion.",
+  "plano": 95
+ },
+ {
+  "ini": 467.67,
+  "fin": 471.37,
+  "texto": "Cover broken windows against radioactive dust with blankets or cardboard.",
+  "plano": 97
+ },
+ {
+  "ini": 475.35,
+  "fin": 482.41,
+  "texto": "Civil defense radiological teams equipped with radiation survey meters will check on contamination in any bombed area.",
+  "plano": 98
+ },
+ {
+  "ini": 483.13,
+  "fin": 486.63,
+  "texto": "Stay undercover until you hear officially that it is safe outside.",
+  "plano": 99
+ },
+ {
+  "ini": 488.09,
+  "fin": 497.43,
+  "texto": "If you have been exposed to radioactive dust wash the exposed areas pay particular attention to your hair get all the dirt from under your fingernails.",
+  "plano": 101
+ },
+ {
+  "ini": 498.57,
+  "fin": 506.07,
+  "texto": "If the people of Hiroshima and Nagasaki had known what we know about civil defense thousands of lives would have been saved.",
+  "plano": 101
+ },
+ {
+  "ini": 507.05,
+  "fin": 516.11,
+  "texto": "Yes the knowledge is ours and preparation can mean survival for you so act now someday your life may depend on it.",
+  "plano": 102
+ }
+]
