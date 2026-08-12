@@ -1,0 +1,58 @@
+{
+  "durationSec": 965.3835,
+  "sampleRate": 24000,
+  "sections": {
+    "cold-open": {
+      "startSec": 0.6,
+      "endSec": 44.392833333333336
+    },
+    "promise": {
+      "startSec": 45.09283333333334,
+      "endSec": 65.01554166666668
+    },
+    "act-i-what-they-were-told": {
+      "startSec": 65.71554166666667,
+      "endSec": 246.83120833333334
+    },
+    "pivot-the-sentence-that-gives-it-away": {
+      "startSec": 247.53120833333332,
+      "endSec": 322.0208333333333
+    },
+    "act-i-b-you-are-on-that-team": {
+      "startSec": 322.7208333333333,
+      "endSec": 403.5262916666666
+    },
+    "act-ii-what-the-desk-was-actually-for": {
+      "startSec": 404.2262916666666,
+      "endSec": 457.3999999999999
+    },
+    "act-ii-b-the-family-that-does-everything-right": {
+      "startSec": 458.09999999999997,
+      "endSec": 542.4813333333333
+    },
+    "recap": {
+      "startSec": 543.1813333333333,
+      "endSec": 567.2836666666667
+    },
+    "act-iii-the-programme-that-was-never-built": {
+      "startSec": 567.9836666666666,
+      "endSec": 668.5725
+    },
+    "act-iv-the-physics-that-ended-the-argument": {
+      "startSec": 669.2724999999999,
+      "endSec": 762.8024583333332
+    },
+    "act-v-the-children": {
+      "startSec": 763.5024583333333,
+      "endSec": 830.0508333333332
+    },
+    "resolution": {
+      "startSec": 830.7508333333333,
+      "endSec": 859.5899999999999
+    },
+    "close": {
+      "startSec": 860.29,
+      "endSec": 965.3834999999999
+    }
+  }
+}

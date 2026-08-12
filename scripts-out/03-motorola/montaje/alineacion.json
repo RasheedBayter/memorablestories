@@ -1,0 +1,718 @@
+{
+ "parte-1-cold-open-acto-1": {
+  "segments": [
+   {
+    "i": 0,
+    "start": 0.0,
+    "end": 5.84,
+    "words": 21,
+    "text": "On the twentieth of July, 1969, a man came down a ladder and said a sentence almost everyo"
+   },
+   {
+    "i": 1,
+    "start": 5.84,
+    "end": 9.68,
+    "words": 12,
+    "text": "That's one small step for a man. One giant leap for mankind."
+   },
+   {
+    "i": 2,
+    "start": 9.68,
+    "end": 13.48,
+    "words": 10,
+    "text": "It travelled four hundred thousand kilometres, and not by magic."
+   },
+   {
+    "i": 3,
+    "start": 13.48,
+    "end": 20.56,
+    "words": 27,
+    "text": "It left a microphone inside a helmet, went into a radio in a backpack, and from there into"
+   },
+   {
+    "i": 4,
+    "start": 20.56,
+    "end": 28.2,
+    "words": 25,
+    "text": "That box took the voice, the television picture, the telemetry and the tracking data, fold"
+   },
+   {
+    "i": 5,
+    "start": 28.2,
+    "end": 36.06,
+    "words": 21,
+    "text": "It was built in Scottsdale, Arizona, by a company started in Chicago by a man with two fai"
+   },
+   {
+    "i": 6,
+    "start": 36.06,
+    "end": 44.5,
+    "words": 28,
+    "text": "Forty-two years after the Moon, that company was sold. Two years later it was sold again, "
+   },
+   {
+    "i": 7,
+    "start": 44.5,
+    "end": 51.5,
+    "words": 24,
+    "text": "This is a story about a company that spent most of a century being the best in the world a"
+   },
+   {
+    "i": 8,
+    "start": 51.5,
+    "end": 54.68,
+    "words": 7,
+    "text": "Not the wrong problem. The previous one."
+   },
+   {
+    "i": 9,
+    "start": 54.68,
+    "end": 62.02,
+    "words": 24,
+    "text": "Every triumph here is a piece of hardware that answered a question the world had been aski"
+   },
+   {
+    "i": 10,
+    "start": 62.02,
+    "end": 70.66,
+    "words": 27,
+    "text": "Every failure is the same mistake in a different decade: the perfect object, built for a w"
+   },
+   {
+    "i": 11,
+    "start": 70.66,
+    "end": 77.52,
+    "words": 17,
+    "text": "Paul Galvin was thirty-three in 1928, and he had already failed twice. Both times at batte"
+   },
+   {
+    "i": 12,
+    "start": 77.52,
+    "end": 84.42,
+    "words": 22,
+    "text": "What survived was a stock of battery eliminators: metal boxes that let a radio built for b"
+   },
+   {
+    "i": 13,
+    "start": 84.42,
+    "end": 92.66,
+    "words": 22,
+    "text": "He incorporated Galvin Manufacturing with his brother Joseph, five employees and five hund"
+   },
+   {
+    "i": 14,
+    "start": 92.66,
+    "end": 101.2,
+    "words": 22,
+    "text": "Homes were being wired for electricity. Radios were not. The eliminator closed a gap betwe"
+   },
+   {
+    "i": 15,
+    "start": 101.2,
+    "end": 109.08,
+    "words": 27,
+    "text": "A very good answer to a question with an expiry date. Within a few years the manufacturers"
+   },
+   {
+    "i": 16,
+    "start": 109.08,
+    "end": 112.08,
+    "words": 8,
+    "text": "Remember the shape of that. It comes back."
+   },
+   {
+    "i": 17,
+    "start": 112.08,
+    "end": 113.88,
+    "words": 6,
+    "text": "The way out was a car."
+   },
+   {
+    "i": 18,
+    "start": 113.88,
+    "end": 122.62,
+    "words": 30,
+    "text": "In 1930 it put a radio into an automobile — one of the first that worked and sold. A car i"
+   },
+   {
+    "i": 19,
+    "start": 122.62,
+    "end": 128.34,
+    "words": 17,
+    "text": "He needed a name for it. He took motor, for motorcar, and -ola, which then meant sound."
+   },
+   {
+    "i": 20,
+    "start": 128.34,
+    "end": 130.7,
+    "words": 4,
+    "text": "Motorola. Sound in motion."
+   },
+   {
+    "i": 21,
+    "start": 130.7,
+    "end": 141.82,
+    "words": 38,
+    "text": "Here is the part that gets left out. Motorola was the name of the radio, not of the compan"
+   },
+   {
+    "i": 22,
+    "start": 141.82,
+    "end": 152.36,
+    "words": 24,
+    "text": "Then the war. In 1940 the company delivered the SCR-536. Five pounds with the batteries in"
+   },
+   {
+    "i": 23,
+    "start": 152.36,
+    "end": 161.92,
+    "words": 29,
+    "text": "Generally credited as the first hand-held two-way radio to see widespread use. And the com"
+   },
+   {
+    "i": 24,
+    "start": 161.92,
+    "end": 164.6,
+    "words": 9,
+    "text": "This is one, in a soldier's hand, in 1944."
+   },
+   {
+    "i": 25,
+    "start": 164.6,
+    "end": 171.7,
+    "words": 24,
+    "text": "The backpack version came in 1943. The men who carried it called it a walkie-talkie, and t"
+   },
+   {
+    "i": 26,
+    "start": 171.7,
+    "end": 177.84,
+    "words": 13,
+    "text": "Radio already existed. What Galvin Manufacturing invented, twice, was the version that mov"
+   },
+   {
+    "i": 27,
+    "start": 177.84,
+    "end": 180.12,
+    "words": 8,
+    "text": "And a radio that moves is an object."
+   },
+   {
+    "i": 28,
+    "start": 180.12,
+    "end": 184.8,
+    "words": 14,
+    "text": "Every defeat in the rest of this story comes from something that is not."
+   }
+  ]
+ },
+ "parte-2-acto-2": {
+  "segments": [
+   {
+    "i": 0,
+    "start": 0.0,
+    "end": 6.36,
+    "words": 15,
+    "text": "In 1947 Galvin Manufacturing Corporation renamed itself after its own product. It became M"
+   },
+   {
+    "i": 1,
+    "start": 6.36,
+    "end": 19.42,
+    "words": 41,
+    "text": "That year it put a seven-inch television screen in a wooden cabinet you could set on a sid"
+   },
+   {
+    "i": 2,
+    "start": 19.42,
+    "end": 24.44,
+    "words": 19,
+    "text": "And in the part of the catalogue nobody wrote about, it was doing the same to the patrol c"
+   },
+   {
+    "i": 3,
+    "start": 24.44,
+    "end": 35.24,
+    "words": 25,
+    "text": "Two-way radio. Not for consumers — police departments, fire departments, taxi fleets. Cust"
+   },
+   {
+    "i": 4,
+    "start": 35.24,
+    "end": 49.72,
+    "words": 41,
+    "text": "A film shot in Detroit in 1951 follows a rookie. The reward, when it comes, is not a promo"
+   },
+   {
+    "i": 5,
+    "start": 49.72,
+    "end": 51.02,
+    "words": 3,
+    "text": "And then this."
+   },
+   {
+    "i": 6,
+    "start": 51.02,
+    "end": 55.42,
+    "words": 14,
+    "text": "He seldom saw those men. But their voices became a part of his life."
+   },
+   {
+    "i": 7,
+    "start": 55.42,
+    "end": 63.2,
+    "words": 14,
+    "text": "In 1962, in Scottsdale, Arizona, Motorola's Government Electronics Division began work on "
+   },
+   {
+    "i": 8,
+    "start": 63.2,
+    "end": 72.56,
+    "words": 22,
+    "text": "NASA wanted one link that carried everything at once: voice, television, the astronauts' h"
+   },
+   {
+    "i": 9,
+    "start": 72.56,
+    "end": 74.54,
+    "words": 5,
+    "text": "It weighed thirty-two pounds."
+   },
+   {
+    "i": 10,
+    "start": 74.54,
+    "end": 87.3,
+    "words": 39,
+    "text": "Days before the launch, a Motorola vice president gave reporters the only comparison that "
+   },
+   {
+    "i": 11,
+    "start": 87.3,
+    "end": 94.66,
+    "words": 21,
+    "text": "Past thirty thousand miles from Earth, that link was not the best one the astronauts had. "
+   },
+   {
+    "i": 12,
+    "start": 94.66,
+    "end": 99.92,
+    "words": 16,
+    "text": "On the twentieth of July, 1969, a man came down a ladder and said a sentence."
+   },
+   {
+    "i": 13,
+    "start": 99.92,
+    "end": 108.78,
+    "words": 30,
+    "text": "It left a blade antenna on top of his backpack, crossed a few metres of vacuum into the lu"
+   },
+   {
+    "i": 14,
+    "start": 108.78,
+    "end": 115.3,
+    "words": 20,
+    "text": "Then three hundred and eighty-four thousand kilometres, and it came out of a television se"
+   },
+   {
+    "i": 15,
+    "start": 115.3,
+    "end": 119.98,
+    "words": 18,
+    "text": "The company that built the box on the Moon had also built the box in the living room."
+   },
+   {
+    "i": 16,
+    "start": 119.98,
+    "end": 121.6,
+    "words": 4,
+    "text": "That was the summit."
+   },
+   {
+    "i": 17,
+    "start": 121.6,
+    "end": 127.2,
+    "words": 15,
+    "text": "Which leaves one question. What does a company do after it has reached the Moon?"
+   }
+  ]
+ },
+ "parte-3-acto-3": {
+  "segments": [
+   {
+    "i": 0,
+    "start": 0.0,
+    "end": 3.3,
+    "words": 14,
+    "text": "What a company does after the Moon is go back to something much smaller."
+   },
+   {
+    "i": 1,
+    "start": 3.3,
+    "end": 6.8,
+    "words": 9,
+    "text": "In 1973 the telephone still lived in a building."
+   },
+   {
+    "i": 2,
+    "start": 6.8,
+    "end": 13.42,
+    "words": 17,
+    "text": "Martin Cooper ran Motorola's communications systems division. For fifty years he has corre"
+   },
+   {
+    "i": 3,
+    "start": 13.42,
+    "end": 16.62,
+    "words": 10,
+    "text": "It wasn't Star Trek, he says. It was Dick Tracy."
+   },
+   {
+    "i": 4,
+    "start": 16.62,
+    "end": 25.0,
+    "words": 21,
+    "text": "Dick Tracy was Chester Gould's comic strip, one of the most read things in America. RKO ma"
+   },
+   {
+    "i": 5,
+    "start": 25.0,
+    "end": 33.1,
+    "words": 24,
+    "text": "The most famous detective in America, in 1945, doing what everyone did. He is in a room, b"
+   },
+   {
+    "i": 6,
+    "start": 33.1,
+    "end": 40.38,
+    "words": 22,
+    "text": "On the thirteenth of January 1946, Gould drew something new on that wrist. A two-way radio"
+   },
+   {
+    "i": 7,
+    "start": 40.38,
+    "end": 49.9,
+    "words": 28,
+    "text": "Note the date. The film came out the year before. The wrist radio is not in it — in 1945 i"
+   },
+   {
+    "i": 8,
+    "start": 49.9,
+    "end": 52.56,
+    "words": 7,
+    "text": "It stayed ink for twenty-seven years."
+   },
+   {
+    "i": 9,
+    "start": 52.56,
+    "end": 60.02,
+    "words": 21,
+    "text": "The Federal Communications Commission was deciding who would get the spectrum for mobile t"
+   },
+   {
+    "i": 10,
+    "start": 60.02,
+    "end": 64.4,
+    "words": 10,
+    "text": "Motorola built the other thing instead, in under ninety days."
+   },
+   {
+    "i": 11,
+    "start": 64.4,
+    "end": 73.34,
+    "words": 26,
+    "text": "On the third of April 1973, on Sixth Avenue in Manhattan, in front of reporters, Cooper ma"
+   },
+   {
+    "i": 12,
+    "start": 73.34,
+    "end": 83.52,
+    "words": 33,
+    "text": "He called Joel Engel, who had run AT&T's rival programme at Bell Labs. The first call ever"
+   },
+   {
+    "i": 13,
+    "start": 83.52,
+    "end": 87.02,
+    "words": 13,
+    "text": "The prototype weighed two and a half pounds and talked for twenty minutes."
+   },
+   {
+    "i": 14,
+    "start": 87.02,
+    "end": 100.82,
+    "words": 34,
+    "text": "Ten more years and a hundred million dollars turned that afternoon into a product. The Dyn"
+   },
+   {
+    "i": 15,
+    "start": 100.82,
+    "end": 110.16,
+    "words": 27,
+    "text": "Thirteen years later came the StarTAC: the lightest phone in the world, eighty-eight grams"
+   },
+   {
+    "i": 16,
+    "start": 110.16,
+    "end": 111.86,
+    "words": 8,
+    "text": "And it knew how to make them well."
+   },
+   {
+    "i": 17,
+    "start": 111.86,
+    "end": 123.62,
+    "words": 24,
+    "text": "In 1986 an engineer called Bill Smith turned that into a number: no more than three point "
+   },
+   {
+    "i": 18,
+    "start": 123.62,
+    "end": 133.96,
+    "words": 31,
+    "text": "On the fourteenth of November 1988, in the East Room of the White House, Ronald Reagan han"
+   },
+   {
+    "i": 19,
+    "start": 133.96,
+    "end": 139.86,
+    "words": 17,
+    "text": "Reagan does not say Motorola's name anywhere in the recording. He describes what the prize"
+   },
+   {
+    "i": 20,
+    "start": 139.86,
+    "end": 145.52,
+    "words": 22,
+    "text": "Quality is getting better at the thing you are already doing. It says nothing about whethe"
+   },
+   {
+    "i": 21,
+    "start": 145.52,
+    "end": 153.9,
+    "words": 22,
+    "text": "In November 1988 Motorola was the best-run company in America, and it had ten years of the"
+   }
+  ]
+ },
+ "parte-4-actos-4-5-cierre": {
+  "segments": [
+   {
+    "i": 0,
+    "start": 0.0,
+    "end": 6.26,
+    "words": 21,
+    "text": "The award was handed over in November 1988. By then the project that would break the compa"
+   },
+   {
+    "i": 1,
+    "start": 6.26,
+    "end": 12.3,
+    "words": 19,
+    "text": "There were places on Earth where a mobile phone did not work. In 1987 that was most of it."
+   },
+   {
+    "i": 2,
+    "start": 12.3,
+    "end": 22.1,
+    "words": 25,
+    "text": "Three engineers in Chandler, Arizona, drew the answer on two sheets of paper: seventy-seve"
+   },
+   {
+    "i": 3,
+    "start": 22.1,
+    "end": 32.14,
+    "words": 23,
+    "text": "The idea was old. A 1960 Bell Labs film about a call bounced off a balloon already names t"
+   },
+   {
+    "i": 4,
+    "start": 32.14,
+    "end": 37.94,
+    "words": 15,
+    "text": "Seventy-seven is the atomic number of iridium. That is where the name came from."
+   },
+   {
+    "i": 5,
+    "start": 37.94,
+    "end": 51.7,
+    "words": 31,
+    "text": "Bigger satellites meant fewer. In August 1992 the constellation was cut to sixty-six. Elem"
+   },
+   {
+    "i": 6,
+    "start": 51.7,
+    "end": 59.78,
+    "words": 27,
+    "text": "Then they built it. Sixty went up five at a time on Delta II rockets from one pad in Calif"
+   },
+   {
+    "i": 7,
+    "start": 59.78,
+    "end": 72.98,
+    "words": 38,
+    "text": "Service opened in November 1998. The handset cost three thousand dollars, calls three to e"
+   },
+   {
+    "i": 8,
+    "start": 72.98,
+    "end": 74.74,
+    "words": 5,
+    "text": "Which is where people are."
+   },
+   {
+    "i": 9,
+    "start": 74.74,
+    "end": 85.76,
+    "words": 17,
+    "text": "In August 1999 Iridium filed for Chapter 11. Twenty thousand subscribers. More than five b"
+   },
+   {
+    "i": 10,
+    "start": 85.76,
+    "end": 91.12,
+    "words": 13,
+    "text": "Nothing had failed. The system did what the 1987 drawing said it would."
+   },
+   {
+    "i": 11,
+    "start": 91.12,
+    "end": 103.18,
+    "words": 35,
+    "text": "The ground had moved. A mast on a hill is cheap and dull, and while Motorola built a const"
+   },
+   {
+    "i": 12,
+    "start": 103.18,
+    "end": 106.24,
+    "words": 9,
+    "text": "A ten-year project in a two-year market."
+   },
+   {
+    "i": 13,
+    "start": 106.24,
+    "end": 110.42,
+    "words": 13,
+    "text": "Motorola was the best company in the world at solving the previous problem."
+   },
+   {
+    "i": 14,
+    "start": 110.42,
+    "end": 120.4,
+    "words": 23,
+    "text": "In November 2000 a bankruptcy judge approved the sale. Sixty-six satellites in orbit, the "
+   },
+   {
+    "i": 15,
+    "start": 120.4,
+    "end": 128.36,
+    "words": 18,
+    "text": "They never stopped working. The originals flew until 2017 and were replaced one by one. Sa"
+   },
+   {
+    "i": 16,
+    "start": 128.36,
+    "end": 134.76,
+    "words": 13,
+    "text": "In June 2026, Rocket Lab agreed to buy Iridium for eight billion dollars."
+   },
+   {
+    "i": 17,
+    "start": 134.76,
+    "end": 137.76,
+    "words": 8,
+    "text": "Motorola does not own a share of it."
+   },
+   {
+    "i": 18,
+    "start": 137.76,
+    "end": 149.22,
+    "words": 24,
+    "text": "In 2004 Motorola shipped a phone thirteen point nine millimetres thick, cut from aluminium"
+   },
+   {
+    "i": 19,
+    "start": 149.22,
+    "end": 155.52,
+    "words": 17,
+    "text": "It is probably the most beautiful object of its decade. Motorola sold more than a hundred "
+   },
+   {
+    "i": 20,
+    "start": 155.52,
+    "end": 163.3,
+    "words": 22,
+    "text": "Behind it there was nothing. It ran software nobody outside Motorola wrote for. When it go"
+   },
+   {
+    "i": 21,
+    "start": 163.3,
+    "end": 169.76,
+    "words": 18,
+    "text": "There was no second act, because the second act would have been a platform, and Motorola b"
+   },
+   {
+    "i": 22,
+    "start": 169.76,
+    "end": 178.06,
+    "words": 23,
+    "text": "Its own filings: about twenty-two per cent of the world handset market in 2006, about six "
+   },
+   {
+    "i": 23,
+    "start": 178.06,
+    "end": 189.06,
+    "words": 27,
+    "text": "In the 2009 report the number is gone. The sentence reads: our share of the worldwide wire"
+   },
+   {
+    "i": 24,
+    "start": 189.06,
+    "end": 194.78,
+    "words": 12,
+    "text": "In January 2011 the company split in two. Solutions kept the radios."
+   },
+   {
+    "i": 25,
+    "start": 194.78,
+    "end": 202.68,
+    "words": 25,
+    "text": "Google bought Mobility for twelve and a half billion dollars, sold it to Lenovo for two po"
+   },
+   {
+    "i": 26,
+    "start": 202.68,
+    "end": 206.26,
+    "words": 9,
+    "text": "The patents were the point. Nobody wanted the phones."
+   },
+   {
+    "i": 27,
+    "start": 206.26,
+    "end": 216.18,
+    "words": 33,
+    "text": "In 1951 a film about the Detroit police department follows a rookie through his first year"
+   },
+   {
+    "i": 28,
+    "start": 216.18,
+    "end": 226.56,
+    "words": 24,
+    "text": "That is the business Motorola Solutions kept. It is worth about seventy billion dollars. L"
+   },
+   {
+    "i": 29,
+    "start": 226.56,
+    "end": 231.52,
+    "words": 15,
+    "text": "The company that invented the mobile phone survived by not depending on the mobile phone."
+   },
+   {
+    "i": 30,
+    "start": 231.52,
+    "end": 236.9,
+    "words": 16,
+    "text": "The radio in the patrol car is still there. It still says Motorola on the side."
+   }
+  ]
+ }
+}

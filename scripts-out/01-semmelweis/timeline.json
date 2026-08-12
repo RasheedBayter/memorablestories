@@ -1,0 +1,46 @@
+{
+  "durationSec": 1258.641375,
+  "sampleRate": 24000,
+  "sections": {
+    "cold-open": {
+      "startSec": 0.6,
+      "endSec": 77.5045
+    },
+    "promise": {
+      "startSec": 78.2045,
+      "endSec": 131.053125
+    },
+    "act-i-the-arithmetic-of-the-two-doors": {
+      "startSec": 131.753125,
+      "endSec": 438.53516666666667
+    },
+    "pivot-kolletschka": {
+      "startSec": 439.23516666666666,
+      "endSec": 581.5735
+    },
+    "act-ii-the-experiment": {
+      "startSec": 582.2735,
+      "endSec": 701.9027083333333
+    },
+    "recap": {
+      "startSec": 702.6027083333333,
+      "endSec": 727.587375
+    },
+    "act-iii-the-thirty-causes": {
+      "startSec": 728.287375,
+      "endSec": 962.5302916666667
+    },
+    "resolution": {
+      "startSec": 963.2302916666666,
+      "endSec": 1022.8127083333333
+    },
+    "act-iv-what-it-actually-was": {
+      "startSec": 1023.5127083333333,
+      "endSec": 1163.3897083333334
+    },
+    "close": {
+      "startSec": 1164.0897083333334,
+      "endSec": 1258.6413750000002
+    }
+  }
+}

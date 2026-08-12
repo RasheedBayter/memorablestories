@@ -1,0 +1,785 @@
+[
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "FILM",
+  "p": 0,
+  "a": "archivo/cortes16x9/01-PartiallyRestoredVideoEventsFromTheApollo11Mission-un-astronauta-al-pie-de-la-escalerilla.mp4",
+  "id": "PartiallyRestoredVideoEventsFromTheApollo11Mission",
+  "start": 0.0,
+  "dur": 9.68
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "FILM",
+  "p": 2,
+  "a": "archivo/cortes16x9/02-Apollo11MoonLanding-un-astronauta-junto-al-modulo-lunar-con.mp4",
+  "id": "Apollo11MoonLanding",
+  "start": 9.68,
+  "dur": 10.88
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "GEN",
+  "p": 4,
+  "a": "generated/S1/s1c1-casco.mp4",
+  "id": "senal-luna-tierra-esquema",
+  "start": 20.56,
+  "dur": 22.64
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "BLACK",
+  "p": 6,
+  "a": null,
+  "id": "negro",
+  "start": 43.2,
+  "dur": 1.3
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "FILM",
+  "p": 7,
+  "a": "archivo/cortes16x9/03-electronics_at_work-bateria-de-valvulas-encendidas-los.mp4",
+  "id": "electronics_at_work",
+  "start": 44.5,
+  "dur": 10.18
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "FILM",
+  "p": 9,
+  "a": "archivo/cortes16x9/04-MasterHa1936_4-plano-general-de-la-nave-de-montaje-en.mp4",
+  "id": "MasterHa1936_4",
+  "start": 54.68,
+  "dur": 14.68
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "BLACK",
+  "p": 10,
+  "a": null,
+  "id": "negro",
+  "start": 69.36,
+  "dur": 1.3
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "FILM",
+  "p": 11,
+  "a": "archivo/cortes16x9/06-ChicagoW1933-chicago-desde-el-aire-el-recinto-de-la.mp4",
+  "id": "ChicagoW1933",
+  "start": 70.66,
+  "dur": 6.86
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "GEN",
+  "p": 12,
+  "a": "generated/S2/s2c1-eliminador.mp4",
+  "id": "eliminador-baterias-1928",
+  "start": 77.52,
+  "dur": 6.9
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "FILM",
+  "p": 13,
+  "a": "archivo/cortes16x9/07-MasterHa1936_2-primer-plano-de-manos-trabajando-sobre.mp4",
+  "id": "MasterHa1936_2",
+  "start": 84.42,
+  "dur": 8.24
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "FILM",
+  "p": 14,
+  "a": "archivo/cortes16x9/08-Radioand1940-radio-consola.mp4",
+  "id": "Radioand1940",
+  "start": 92.66,
+  "dur": 19.42
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "GEN",
+  "p": 17,
+  "a": "generated/S3/s3c1-salpicadero.mp4",
+  "id": "radio-coche-1930-salpicadero",
+  "start": 112.08,
+  "dur": 1.8
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "FILM",
+  "p": 18,
+  "a": "archivo/cortes16x9/04-MasterHa1936_4-plano-general-de-la-nave-de-montaje-en.mp4",
+  "id": "MasterHa1936_4",
+  "start": 113.88,
+  "dur": 27.94
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "PHOTO",
+  "p": 22,
+  "a": "archivo/fijas/01-scr536.jpg",
+  "id": "foto1",
+  "start": 141.82,
+  "dur": 20.1
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "FILM",
+  "p": 24,
+  "a": "archivo/cortes16x9/09-CS-1252-primer-plano-un-soldado-tumbado-habla.mp4",
+  "id": "CS-1252",
+  "start": 161.92,
+  "dur": 2.68
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "FILM",
+  "p": 25,
+  "a": "archivo/cortes16x9/09-CS-1252-primer-plano-un-soldado-tumbado-habla.mp4",
+  "id": "CS-1252",
+  "start": 164.6,
+  "dur": 7.1
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "FILM",
+  "p": 26,
+  "a": "archivo/cortes16x9/11-MasterHa1936_3-primer-plano-de-una-mano-sobre-los.mp4",
+  "id": "MasterHa1936_3",
+  "start": 171.7,
+  "dur": 11.8
+ },
+ {
+  "acto": "parte-1-cold-open-acto-1",
+  "t": "BLACK",
+  "p": 27,
+  "a": null,
+  "id": "negro",
+  "start": 183.5,
+  "dur": 1.3
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 0,
+  "a": "archivo/cortes16x9/12-BehindYo1947-contrapicado-del-rascacielos-de.mp4",
+  "id": "BehindYo1947",
+  "start": 0.0,
+  "dur": 6.36
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "GEN",
+  "p": 1,
+  "a": "generated/S4/s4c1-televisor.mp4",
+  "id": "televisor-de-siete-pulgadas-1947",
+  "start": 6.36,
+  "dur": 6.53
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "PHOTO",
+  "p": 1,
+  "a": "archivo/fijas/02-vt71-chasis.jpg",
+  "id": "foto2",
+  "start": 12.89,
+  "dur": 6.53
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 2,
+  "a": "archivo/cortes16x9/13-Magicint1955-un-hombre-de-espaldas-sentado-en-su.mp4",
+  "id": "Magicint1955",
+  "start": 19.42,
+  "dur": 2.51
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 2,
+  "a": "archivo/cortes16x9/15-ThisIsYo1951-un-agente-asomado-a-la-ventanilla-de-un.mp4",
+  "id": "ThisIsYo1951",
+  "start": 21.93,
+  "dur": 2.51
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 3,
+  "a": "archivo/cortes16x9/20-ADTWhenE1958-central-de-alarmas-en-color-un-operador.mp4",
+  "id": "ADTWhenE1958",
+  "start": 24.44,
+  "dur": 10.8
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 4,
+  "a": "archivo/cortes16x9/15-ThisIsYo1951-un-agente-asomado-a-la-ventanilla-de-un.mp4",
+  "id": "ThisIsYo1951",
+  "start": 35.24,
+  "dur": 7.24
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 4,
+  "a": "archivo/cortes16x9/15-ThisIsYo1951-un-agente-asomado-a-la-ventanilla-de-un.mp4",
+  "id": "ThisIsYo1951",
+  "start": 42.48,
+  "dur": 7.24
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "BLACK",
+  "p": 5,
+  "a": null,
+  "id": "negro",
+  "start": 49.72,
+  "dur": 1.3
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 6,
+  "a": "archivo/cortes16x9/15-ThisIsYo1951-un-agente-asomado-a-la-ventanilla-de-un.mp4",
+  "id": "ThisIsYo1951",
+  "start": 51.02,
+  "dur": 4.4
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "PHOTO",
+  "p": 7,
+  "a": "archivo/fijas/03-usb-panel.jpg",
+  "id": "foto3",
+  "start": 55.42,
+  "dur": 7.78
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 8,
+  "a": "archivo/cortes16x9/21-VJSC_1425C-el-tablero-de-seguimiento-curvas-de.mp4",
+  "id": "VJSC_1425C",
+  "start": 63.2,
+  "dur": 9.36
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "PHOTO",
+  "p": 9,
+  "a": "archivo/fijas/04-usb-transponder.jpg",
+  "id": "foto4",
+  "start": 72.56,
+  "dur": 1.98
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 10,
+  "a": "archivo/cortes16x9/22-Apollo1116mmOnboardFilm-la-superficie-lunar-desde-la-orbita.mp4",
+  "id": "Apollo1116mmOnboardFilm",
+  "start": 74.54,
+  "dur": 12.76
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 11,
+  "a": "archivo/cortes16x9/22-Apollo1116mmOnboardFilm-la-superficie-lunar-desde-la-orbita.mp4",
+  "id": "Apollo1116mmOnboardFilm",
+  "start": 87.3,
+  "dur": 7.36
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 12,
+  "a": "archivo/cortes16x9/24-VJSC_1425L-la-escalerilla-y-la-pata-del-modulo.mp4",
+  "id": "VJSC_1425L",
+  "start": 94.66,
+  "dur": 5.26
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "PHOTO",
+  "p": 13,
+  "a": "archivo/fijas/05-as11-40-5903.jpg",
+  "id": "foto5",
+  "start": 99.92,
+  "dur": 4.43
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "GEN",
+  "p": 13,
+  "a": "generated/S1/s1c2-caja-lm.mp4",
+  "id": "trayecto-de-la-senal-1969",
+  "start": 104.35,
+  "dur": 4.43
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 14,
+  "a": "archivo/cortes16x9/25-HSF-mov-apollo11_onbclip17-la-imagen-que-volvio-la-emision-de.mp4",
+  "id": "HSF-mov-apollo11_onbclip17",
+  "start": 108.78,
+  "dur": 6.52
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "FILM",
+  "p": 15,
+  "a": "archivo/cortes16x9/13-Magicint1955-un-hombre-de-espaldas-sentado-en-su.mp4",
+  "id": "Magicint1955",
+  "start": 115.3,
+  "dur": 10.6
+ },
+ {
+  "acto": "parte-2-acto-2",
+  "t": "BLACK",
+  "p": 16,
+  "a": null,
+  "id": "negro",
+  "start": 125.9,
+  "dur": 1.3
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "FILM",
+  "p": 0,
+  "a": "archivo/cortes16x9/26-Televisi1970-telefono-en-mano.mp4",
+  "id": "Televisi1970",
+  "start": 0.0,
+  "dur": 3.3
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "FILM",
+  "p": 1,
+  "a": "archivo/cortes16x9/26-Televisi1970-telefono-en-mano.mp4",
+  "id": "Televisi1970",
+  "start": 3.3,
+  "dur": 3.5
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "FILM",
+  "p": 2,
+  "a": "archivo/cortes16x9/28-dick_tracy_detctive-cartela-de-credito-con-la-caricatura.mp4",
+  "id": "dick_tracy_detctive",
+  "start": 6.8,
+  "dur": 9.82
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "FILM",
+  "p": 4,
+  "a": "archivo/cortes16x9/28-dick_tracy_detctive-cartela-de-credito-con-la-caricatura.mp4",
+  "id": "dick_tracy_detctive",
+  "start": 16.62,
+  "dur": 8.38
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "FILM",
+  "p": 5,
+  "a": "archivo/cortes16x9/28-dick_tracy_detctive-cartela-de-credito-con-la-caricatura.mp4",
+  "id": "dick_tracy_detctive",
+  "start": 25.0,
+  "dur": 8.1
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "GEN",
+  "p": 6,
+  "a": "generated/S5/s5c1-pulsera-esquema.png",
+  "id": "radio-pulsera-esquema-1946",
+  "start": 33.1,
+  "dur": 7.28
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "FILM",
+  "p": 7,
+  "a": "archivo/cortes16x9/28-dick_tracy_detctive-cartela-de-credito-con-la-caricatura.mp4",
+  "id": "dick_tracy_detctive",
+  "start": 40.38,
+  "dur": 10.88
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "BLACK",
+  "p": 8,
+  "a": null,
+  "id": "negro",
+  "start": 51.26,
+  "dur": 1.3
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "FILM",
+  "p": 9,
+  "a": "archivo/cortes16x9/32-WhenYouG1973-cruce-de-calle-americano-en-color.mp4",
+  "id": "WhenYouG1973",
+  "start": 52.56,
+  "dur": 7.46
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "GEN",
+  "p": 10,
+  "a": "generated/S6/s6c1-acera.mp4",
+  "id": "sexta-avenida-1973-esquema",
+  "start": 60.02,
+  "dur": 4.38
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "FILM",
+  "p": 11,
+  "a": "archivo/cortes16x9/32-WhenYouG1973-cruce-de-calle-americano-en-color.mp4",
+  "id": "WhenYouG1973",
+  "start": 64.4,
+  "dur": 17.82
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "BLACK",
+  "p": 12,
+  "a": null,
+  "id": "negro",
+  "start": 82.22,
+  "dur": 1.3
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "PHOTO",
+  "p": 13,
+  "a": "archivo/fijas/06-dynatac.jpg",
+  "id": "foto6",
+  "start": 83.52,
+  "dur": 3.5
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "PHOTO",
+  "p": 14,
+  "a": "archivo/fijas/06-dynatac.jpg",
+  "id": "foto7",
+  "start": 87.02,
+  "dur": 13.8
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "PHOTO",
+  "p": 15,
+  "a": "archivo/fijas/08-startac.jpg",
+  "id": "foto8",
+  "start": 100.82,
+  "dur": 9.34
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "FILM",
+  "p": 16,
+  "a": "archivo/cortes16x9/34-American1960-interior-de-planta-industrial-en.mp4",
+  "id": "American1960",
+  "start": 110.16,
+  "dur": 1.7
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "FILM",
+  "p": 17,
+  "a": "archivo/cortes16x9/35-Precisel1937_2-primerisimo-plano-de-un-reloj.mp4",
+  "id": "Precisel1937_2",
+  "start": 111.86,
+  "dur": 11.76
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "PHOTO",
+  "p": 18,
+  "a": "archivo/fijas/09-baldrige.png",
+  "id": "foto9",
+  "start": 123.62,
+  "dur": 16.24
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "FILM",
+  "p": 20,
+  "a": "archivo/cortes16x9/35-Precisel1937_2-primerisimo-plano-de-un-reloj.mp4",
+  "id": "Precisel1937_2",
+  "start": 139.86,
+  "dur": 12.74
+ },
+ {
+  "acto": "parte-3-acto-3",
+  "t": "BLACK",
+  "p": 21,
+  "a": null,
+  "id": "negro",
+  "start": 152.6,
+  "dur": 1.3
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "PHOTO",
+  "p": 0,
+  "a": "archivo/fijas/09-baldrige.png",
+  "id": "foto10",
+  "start": 0.0,
+  "dur": 6.26
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "FILM",
+  "p": 1,
+  "a": "archivo/cortes16x9/37-BigBounc1960-antenas-parabolicas-de-holmdel-nueva.mp4",
+  "id": "BigBounc1960",
+  "start": 6.26,
+  "dur": 15.84
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "FILM",
+  "p": 3,
+  "a": "archivo/cortes16x9/37-BigBounc1960-antenas-parabolicas-de-holmdel-nueva.mp4",
+  "id": "BigBounc1960",
+  "start": 22.1,
+  "dur": 5.02
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "FILM",
+  "p": 3,
+  "a": "archivo/cortes16x9/37-BigBounc1960-antenas-parabolicas-de-holmdel-nueva.mp4",
+  "id": "BigBounc1960",
+  "start": 27.12,
+  "dur": 5.02
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "PHOTO",
+  "p": 4,
+  "a": "montaje/tipografia/constelacion-66-final.png",
+  "id": "foto11",
+  "start": 32.14,
+  "dur": 5.8
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "GEN",
+  "p": 5,
+  "a": "montaje/tipografia/constelacion-77-final.png",
+  "id": "constelacion-77-vs-66",
+  "start": 37.94,
+  "dur": 13.76
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "FILM",
+  "p": 6,
+  "a": "archivo/cortes16x9/40-RSS_253126main_vafb_062008_ostm_launch-un-delta-ii-despegando-de-noche-del-slc.mp4",
+  "id": "RSS_253126main_vafb_062008_ostm_launch",
+  "start": 51.7,
+  "dur": 8.08
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "PHOTO",
+  "p": 7,
+  "a": "archivo/fijas/12-telefono-marines.jpg",
+  "id": "foto12",
+  "start": 59.78,
+  "dur": 13.2
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "GEN",
+  "p": 8,
+  "a": "generated/S8/s8c1-oficina.png",
+  "id": "telefono-satelite-interior-oficina",
+  "start": 72.98,
+  "dur": 12.78
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "PHOTO",
+  "p": 10,
+  "a": "generated/S7/s7c1-tierra-noche.png",
+  "id": "foto13",
+  "start": 85.76,
+  "dur": 5.36
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "FILM",
+  "p": 11,
+  "a": "archivo/cortes16x9/41-Telegram1956-torre-de-microondas-de-celosia-a.mp4",
+  "id": "Telegram1956",
+  "start": 91.12,
+  "dur": 6.03
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "FILM",
+  "p": 11,
+  "a": "archivo/cortes16x9/42-Townandt1950-carretera-bordeada-de-postes-de.mp4",
+  "id": "Townandt1950",
+  "start": 97.15,
+  "dur": 6.03
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "GEN",
+  "p": 12,
+  "a": "generated/S9/s9c2-tres-mastiles.png",
+  "id": "mapa-cobertura-1990-1998",
+  "start": 103.18,
+  "dur": 3.06
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "PHOTO",
+  "p": 13,
+  "a": "generated/S7/s7c1-tierra-noche.png",
+  "id": "foto14",
+  "start": 106.24,
+  "dur": 4.18
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "GEN",
+  "p": 14,
+  "a": "montaje/tipografia/tres-cifras.png",
+  "id": "cinco-mil-veinticinco-ocho-mil",
+  "start": 110.42,
+  "dur": 9.98
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "PHOTO",
+  "p": 15,
+  "a": "archivo/fijas/15-lanzamiento-2017.jpg",
+  "id": "foto15",
+  "start": 120.4,
+  "dur": 16.06
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "BLACK",
+  "p": 17,
+  "a": null,
+  "id": "negro",
+  "start": 136.46,
+  "dur": 1.3
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "PHOTO",
+  "p": 18,
+  "a": "archivo/fijas/16-razr-cerrado.jpg",
+  "id": "foto16",
+  "start": 137.76,
+  "dur": 11.46
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "PHOTO",
+  "p": 19,
+  "a": "archivo/fijas/16-razr-cerrado.jpg",
+  "id": "foto17",
+  "start": 149.22,
+  "dur": 20.54
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "GEN",
+  "p": 22,
+  "a": "montaje/tipografia/curva-cuota.png",
+  "id": "curva-cuota-2006-2009",
+  "start": 169.76,
+  "dur": 8.3
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "GEN",
+  "p": 23,
+  "a": "montaje/tipografia/10k-2009.png",
+  "id": "parrafo-10k-2009",
+  "start": 178.06,
+  "dur": 11.0
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "PHOTO",
+  "p": 24,
+  "a": "archivo/fijas/18-logo-solutions.png",
+  "id": "foto18",
+  "start": 189.06,
+  "dur": 5.72
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "GEN",
+  "p": 25,
+  "a": "montaje/tipografia/google-lenovo.png",
+  "id": "google-lenovo-flujo",
+  "start": 194.78,
+  "dur": 10.18
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "BLACK",
+  "p": 26,
+  "a": null,
+  "id": "negro",
+  "start": 204.96,
+  "dur": 1.3
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "FILM",
+  "p": 27,
+  "a": "archivo/cortes16x9/15-ThisIsYo1951-un-agente-asomado-a-la-ventanilla-de-un.mp4",
+  "id": "ThisIsYo1951",
+  "start": 206.26,
+  "dur": 9.92
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "GEN",
+  "p": 28,
+  "a": "generated/S15/s15c1-microfono.png",
+  "id": "radio-hombro-hoy",
+  "start": 216.18,
+  "dur": 10.38
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "PHOTO",
+  "p": 29,
+  "a": "archivo/fijas/19-campus.jpg",
+  "id": "foto19",
+  "start": 226.56,
+  "dur": 9.04
+ },
+ {
+  "acto": "parte-4-actos-4-5-cierre",
+  "t": "BLACK",
+  "p": 30,
+  "a": null,
+  "id": "negro",
+  "start": 235.6,
+  "dur": 1.3
+ }
+]
